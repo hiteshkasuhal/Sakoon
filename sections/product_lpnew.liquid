@@ -1,0 +1,2476 @@
+{% if section.settings.product != blank %}
+  {% assign product = section.settings.product %}
+{%- style -%}
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="landing_page_product  section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }};color:{{ section.settings.color }};">
+   <div class="container_hk section-{{ section.id }}-padding isolate">
+     {% if section.settings.heading != blank %}
+       <div class="center product_top_custom_new mobile_only">
+       
+         {% if section.settings.text2 != blank %}
+ <div class="rich-text__text product_rating_lp">
+<div class="reviews_rating_html">
+<a href="#reviews">
+{% if section.settings.image != blank %}
+<img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+{% endif %}
+       <svg xmlns="http://www.w3.org/2000/svg" width="90" height="18" viewBox="0 0 90 18" fill="none">
+  <path d="M9 0L11.5392 5.50505L17.5595 6.21885L13.1086 10.335L14.2901 16.2812L9 13.32L3.70993 16.2812L4.89144 10.335L0.440492 6.21885L6.46077 5.50505L9 0Z" fill="#FF9524"/>
+  <path d="M27 0L29.5392 5.50505L35.5595 6.21885L31.1086 10.335L32.2901 16.2812L27 13.32L21.7099 16.2812L22.8914 10.335L18.4405 6.21885L24.4608 5.50505L27 0Z" fill="#FF9524"/>
+  <path d="M45 0L47.5392 5.50505L53.5595 6.21885L49.1086 10.335L50.2901 16.2812L45 13.32L39.7099 16.2812L40.8914 10.335L36.4405 6.21885L42.4608 5.50505L45 0Z" fill="#FF9524"/>
+  <path d="M63 0L65.5392 5.50505L71.5595 6.21885L67.1086 10.335L68.2901 16.2812L63 13.32L57.7099 16.2812L58.8914 10.335L54.4405 6.21885L60.4608 5.50505L63 0Z" fill="#FF9524"/>
+  <path d="M81 0L83.5392 5.50505L89.5595 6.21885L85.1086 10.335L86.2901 16.2812L81 13.32L75.7099 16.2812L76.8914 10.335L72.4405 6.21885L78.4608 5.50505L81 0Z" fill="#FF9524"/>
+</svg>
+<span>{{ section.settings.text2 }}</span>
+</a>
+</div>
+ </div>
+    {% endif %}
+       <h2 class="rich-text__heading  inline-richtext product_title_heading h1">{{ section.settings.heading }}</h2>
+         {% if section.settings.text != blank %}
+           <div class="rich-text__text  product_text">{{ section.settings.text }}</div>
+         {% endif %}
+       </div>
+       {% endif %}
+     <div class="landing_product_flex">
+     <div class="landing_product_media">
+     <div class="landing_product_media_inner">
+        
+
+     <div class="landing_product_media_inner_flex">
+
+<div class="relative thumb_slider_relative{% if section.settings.product_image5 == blank %} stop_scroll_thumb{% endif %}">
+ <div class="slider_thumb_{{ section.id }} product-thumb-slider">
+   
+   {% if section.settings.custom_images == true %}
+{% if section.settings.product_image1 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image1 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endif %}
+{% if section.settings.product_video != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_video.preview_image | image_url:width:200 }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endif %}
+{% if section.settings.product_image2 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image2 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endif %}
+{% if section.settings.product_image3 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image3 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endif %}
+{% if section.settings.product_image4 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image4 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endif %}
+{% if section.settings.product_image5 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image5 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high">
+  {% endif %}
+{% if section.settings.product_image6 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image6 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high">
+  {% endif %}
+{% if section.settings.product_image7 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image7 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high">
+  {% endif %}
+{% if section.settings.product_image8 != blank %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image8 | image_url:width:200 }}"  loading="eager" width="auto" height="auto" fetchpriority="high">
+  {% endif %}
+{% else %}
+  {%if product.metafields.custom.product_custom_images != blank %}
+{% for media in product.metafields.custom.product_custom_images.value %}
+  <img class="product_images" alt="{{product.title }}" src="{{ media | image_url:width:200 }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endfor %}
+    {%else %}
+{% for media in product.media %}
+  <img class="product_images" alt="{{product.title }}" src="{{ media | image_url:width:200 }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endfor %}
+   {% endif %}
+   {% endif %}
+     
+</div>
+
+ 
+     <div class="slider_navigations center desktop_only mobile_only">
+  <div class="slider_button_custom absolute_arrow absolute_arrow_prev prev_{{ section.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+  <circle cx="14" cy="14" r="14" fill="white"/>
+  <path d="M10.7049 14.495C10.4315 14.2216 10.4315 13.7784 10.7049 13.505L15.1596 9.05025C15.433 8.77689 15.8762 8.77689 16.1496 9.05025C16.423 9.32362 16.423 9.76684 16.1496 10.0402L12.1898 14L16.1496 17.9598C16.423 18.2332 16.423 18.6764 16.1496 18.9497C15.8762 19.2231 15.433 19.2231 15.1596 18.9497L10.7049 14.495ZM11.2 14.7H11.1999V13.3H11.2V14.7Z" fill="black"/>
+</svg></div>
+  <div class="slider_button_custom absolute_arrow absolute_arrow_next next_{{ section.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+  <circle cx="14" cy="14" r="14" transform="matrix(-1 0 0 1 28 0)" fill="white"/>
+  <path d="M17.2949 14.495C17.5682 14.2216 17.5682 13.7784 17.2949 13.505L12.8401 9.05025C12.5667 8.77689 12.1235 8.77689 11.8502 9.05025C11.5768 9.32362 11.5768 9.76684 11.8502 10.0402L15.81 14L11.8502 17.9598C11.5768 18.2332 11.5768 18.6764 11.8502 18.9497C12.1235 19.2231 12.5667 19.2231 12.8401 18.9497L17.2949 14.495ZM16.7998 14.7H16.7999V13.3H16.7998V14.7Z" fill="black"/>
+</svg></div>
+     </div>
+  </div>
+       
+     <div class="relative relative_main_slider">
+{% if section.settings.tag != blank %}
+<div class="custom_tag_lp">{{ section.settings.tag }}</div>
+{% endif %}
+ <div class="slider_{{ section.id }} product-main-slider">
+   {% if section.settings.custom_images == true %}
+{% if section.settings.product_image1 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image1 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image2 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image2 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image3 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image3 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image4 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image4 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image5 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image5 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image6 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image6 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image7 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image7 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% if section.settings.product_image8 != blank %}
+  <div class="product_image_wrapper">
+  <img class="product_images" alt="{{ product.title }}" src="{{ section.settings.product_image8 | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  </div>
+  {% endif %}
+{% else %}
+  {%if product.metafields.custom.product_custom_images != blank %}
+{% for media in product.metafields.custom.product_custom_images.value %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ media | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endfor %}
+    {%else %}
+{% for media in product.media %}
+  <img class="product_images" alt="{{ product.title }}" src="{{ media | image_url }}" loading="eager" width="auto" height="auto" fetchpriority="high" preload="true">
+  {% endfor %}
+   {% endif %}
+   {% endif %}
+</div>
+
+
+ <div class="slider_navigations center">
+    <div class="slider_button_custom custom_prev prev_{{ section.id }}_main_slider"><svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.75 16.5L1.25 9L8.75 1.5" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+       <div class="slider_dots_custom dots_{{ section.id }}"></div>
+  <div class="slider_button_custom custom_next next_{{ section.id }}_main_slider"><svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.25 16.5L8.75 9L1.25 1.5" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+</div>
+  </div>
+
+
+
+
+
+  </div>
+  
+    <div class="below_media_custom desktop_only">
+{%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'faq' -%}
+       {% if block.settings.custom_class contains 'below_media' %}
+       {% if block.settings.question != blank %}
+              <div class="rich-text__text  faq_product {{ block.settings.custom_class | replace: 'mobile_only',''}}" {{ block.shopify_attributes }}>
+               <div class="question_product">
+                 <span class="question_heading">{{ block.settings.question }}</span>
+               </div>
+               <div class="answer_product" style="display:none;">{{ block.settings.answer }}</div>
+              </div>
+         {% endif %}
+         {% endif %}
+    {%- when 'richtext' -%}
+       {% if block.settings.custom_class contains 'below_media' %}
+              <div  class="rich-text__text  {{ block.settings.custom_class | replace: 'mobile_only','' }}" {{ block.shopify_attributes }}>{{ block.settings.text | replace:'<li>','<li><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.44534 1.26161C8.00031 1.9543 7.54841 2.55524 7.44112 2.59689C7.33384 2.6387 6.88701 2.51011 6.44837 2.31135C6.00973 2.11258 5.35603 1.81709 4.99569 1.65466C4.63534 1.4924 4.28516 1.39351 4.21767 1.43516C4.15019 1.47664 4.09483 2.24714 4.09483 3.14706V4.78363L3.5625 4.94424C3.2698 5.0325 2.49572 5.19958 1.84267 5.31555C1.18947 5.43136 0.655172 5.583 0.655172 5.65236C0.655172 5.72171 1.02551 6.38337 1.47807 7.12252C2.43626 8.68742 2.44216 8.65341 0.996517 9.92696C0.448465 10.4099 0 10.9012 0 11.0187C0 11.1361 0.626509 11.5396 1.39224 11.9153C2.98775 12.6981 2.964 12.6382 2.4569 14.5983C2.27984 15.2827 2.13373 15.8987 2.13209 15.9671C2.12816 16.1443 3.40542 16.121 4.42389 15.9252C5.03533 15.8078 5.35259 15.8126 5.50607 15.9415C5.62531 16.0419 5.91588 16.7508 6.15158 17.5172C6.38744 18.2834 6.64197 18.949 6.71748 18.9963C6.79299 19.0434 7.40558 18.6333 8.07893 18.0846C8.75228 17.5359 9.38551 17.087 9.48608 17.087C9.58665 17.087 10.2256 17.5497 10.906 18.1155C12.3264 19.2963 12.2186 19.3408 12.8727 17.3042C13.1128 16.5566 13.4111 15.9052 13.5355 15.8569C13.66 15.8084 14.1396 15.8415 14.6015 15.9302C15.0634 16.0188 15.7261 16.0915 16.074 16.0915C16.8378 16.0915 16.855 15.9813 16.3737 14.1627C16.1559 13.339 16.0951 12.8373 16.198 12.7117C16.2845 12.6061 16.9503 12.2259 17.6777 11.8667C18.4049 11.5075 19 11.1317 19 11.0318C19 10.9317 18.4841 10.3819 17.8534 9.80999C17.2228 9.23809 16.7077 8.68161 16.7089 8.57344C16.7098 8.46509 17.0704 7.77921 17.5098 7.04919C17.9493 6.31916 18.2615 5.66945 18.2036 5.6054C18.146 5.54153 17.4477 5.37412 16.6524 5.23359C15.8568 5.09306 15.1384 4.93577 15.0555 4.88401C14.9728 4.83208 14.9052 4.12827 14.9052 3.31994C14.9052 1.44943 14.8492 1.28948 14.2772 1.52425C13.4183 1.87699 12.7672 2.15887 12.2108 2.41853C11.9001 2.5637 11.5672 2.63322 11.4711 2.57299C11.3751 2.51293 10.9268 1.90884 10.4751 1.23075C10.0235 0.552661 9.56388 -0.00115957 9.45414 1.82332e-06C9.34423 0.00116322 8.8902 0.568921 8.44534 1.26161ZM9.89474 8.66685C8.09908 10.8708 8.30365 10.721 7.69156 10.2797L7.16546 9.90025L6.86228 10.2998C6.69554 10.5194 6.55729 10.7535 6.55533 10.8199C6.54976 11.0029 8.18884 12.2755 8.4301 12.2755C8.54607 12.2755 8.74213 12.1344 8.86579 11.9621C8.98946 11.7897 9.71113 10.8752 10.4695 9.92962C11.228 8.98407 11.9146 8.12232 11.9956 8.01431C12.1479 7.8109 11.6169 7.13214 11.3053 7.13214C11.2174 7.13214 10.5825 7.82268 9.89474 8.66685Z" fill="#F1675B"/>
+</svg>' }}</div>
+         {% endif %}
+  {% endcase %}
+      {% endfor %}
+     </div>
+     </div>
+     </div>
+     <div class="landing_product_info left">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2 class="rich-text__heading  inline-richtext {{ block.settings.custom_class }} {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h2> 
+            {%- when 'richtext' -%}
+              <div  class="rich-text__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text | replace:'<li>','<li><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.44534 1.26161C8.00031 1.9543 7.54841 2.55524 7.44112 2.59689C7.33384 2.6387 6.88701 2.51011 6.44837 2.31135C6.00973 2.11258 5.35603 1.81709 4.99569 1.65466C4.63534 1.4924 4.28516 1.39351 4.21767 1.43516C4.15019 1.47664 4.09483 2.24714 4.09483 3.14706V4.78363L3.5625 4.94424C3.2698 5.0325 2.49572 5.19958 1.84267 5.31555C1.18947 5.43136 0.655172 5.583 0.655172 5.65236C0.655172 5.72171 1.02551 6.38337 1.47807 7.12252C2.43626 8.68742 2.44216 8.65341 0.996517 9.92696C0.448465 10.4099 0 10.9012 0 11.0187C0 11.1361 0.626509 11.5396 1.39224 11.9153C2.98775 12.6981 2.964 12.6382 2.4569 14.5983C2.27984 15.2827 2.13373 15.8987 2.13209 15.9671C2.12816 16.1443 3.40542 16.121 4.42389 15.9252C5.03533 15.8078 5.35259 15.8126 5.50607 15.9415C5.62531 16.0419 5.91588 16.7508 6.15158 17.5172C6.38744 18.2834 6.64197 18.949 6.71748 18.9963C6.79299 19.0434 7.40558 18.6333 8.07893 18.0846C8.75228 17.5359 9.38551 17.087 9.48608 17.087C9.58665 17.087 10.2256 17.5497 10.906 18.1155C12.3264 19.2963 12.2186 19.3408 12.8727 17.3042C13.1128 16.5566 13.4111 15.9052 13.5355 15.8569C13.66 15.8084 14.1396 15.8415 14.6015 15.9302C15.0634 16.0188 15.7261 16.0915 16.074 16.0915C16.8378 16.0915 16.855 15.9813 16.3737 14.1627C16.1559 13.339 16.0951 12.8373 16.198 12.7117C16.2845 12.6061 16.9503 12.2259 17.6777 11.8667C18.4049 11.5075 19 11.1317 19 11.0318C19 10.9317 18.4841 10.3819 17.8534 9.80999C17.2228 9.23809 16.7077 8.68161 16.7089 8.57344C16.7098 8.46509 17.0704 7.77921 17.5098 7.04919C17.9493 6.31916 18.2615 5.66945 18.2036 5.6054C18.146 5.54153 17.4477 5.37412 16.6524 5.23359C15.8568 5.09306 15.1384 4.93577 15.0555 4.88401C14.9728 4.83208 14.9052 4.12827 14.9052 3.31994C14.9052 1.44943 14.8492 1.28948 14.2772 1.52425C13.4183 1.87699 12.7672 2.15887 12.2108 2.41853C11.9001 2.5637 11.5672 2.63322 11.4711 2.57299C11.3751 2.51293 10.9268 1.90884 10.4751 1.23075C10.0235 0.552661 9.56388 -0.00115957 9.45414 1.82332e-06C9.34423 0.00116322 8.8902 0.568921 8.44534 1.26161ZM9.89474 8.66685C8.09908 10.8708 8.30365 10.721 7.69156 10.2797L7.16546 9.90025L6.86228 10.2998C6.69554 10.5194 6.55729 10.7535 6.55533 10.8199C6.54976 11.0029 8.18884 12.2755 8.4301 12.2755C8.54607 12.2755 8.74213 12.1344 8.86579 11.9621C8.98946 11.7897 9.71113 10.8752 10.4695 9.92962C11.228 8.98407 11.9146 8.12232 11.9956 8.01431C12.1479 7.8109 11.6169 7.13214 11.3053 7.13214C11.2174 7.13214 10.5825 7.82268 9.89474 8.66685Z" fill="#F1675B"/>
+</svg>' }}</div>
+            
+            {%- when 'text' -%}
+              <div  class="rich-text__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            
+            {%- when 'html' -%}
+              <div class="rich-text__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- when 'stock' -%}
+            
+            <div class="rich-text__text {{ block.settings.custom_class }}">
+{% assign date = "now" | date: '%s' %}
+{% assign first_date = 3 | times: 24 | times: 60 | times: 60 %}
+                   <div class="in_stock_text">
+                    <span class="stock_outer"><span class="stock_inner"></span></span>
+                    <p>{{ block.settings.text }}<span>{{ date | date: "%s" | plus: first_date | date: "%B %dth" }}</span></p>
+                    </div> 
+              </div>
+            
+            
+            
+        {%- when 'rating_custom' -%}
+            {% assign avg = product.metafields.loox.avg_rating | default:0 | plus:0.0 %}
+ <div class="rich-text__text product_rating_lp {{ block.settings.custom_class }}">
+<div class="reviews_rating_html">
+<a href="#reviews">
+{% if block.settings.image != blank %}
+<img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" width="auto" height="auto" loading="lazy">
+{% endif %}
+            {{ block.settings.star }}
+<span>{{ block.settings.text | replace:'[avg]',avg }}</span>
+</a>
+</div>
+ </div>
+            {%- when 'faq' -%}
+       {% if block.settings.question != blank %}
+              <div class="rich-text__text  faq_product {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+               <div class="question_product">
+                 <span class="question_heading">{{ block.settings.question }}</span>
+               </div>
+               <div class="answer_product" style="display:none;">{{ block.settings.answer }}</div>
+              </div>
+         {% endif %}
+            {%- when 'image' -%}
+            {% if block.settings.image != blank %}
+              <div  class="rich-text__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }} >
+  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" width="auto" height="auto" loading="lazy" {% if block.settings.image_mobile != blank %} class="desktop_only"{% endif %}>
+            {% if block.settings.image_mobile != blank %}
+  <img src="{{ block.settings.image_mobile | image_url }}" alt="{{ block.settings.image_mobile.alt }}" width="auto" height="auto" loading="lazy" class="mobile_only">
+              {% endif %}
+              </div>
+              {% endif %}
+            {%- when 'button' -%}
+              <div class="rich-text__buttons {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label != blank -%}
+                  <a href="{{ block.settings.button_link | default:'#'}}" class="custom_hk_button" >{{- block.settings.button_label  -}} </a>
+                {%- endif -%}
+              </div> 
+    {% when 'checkout_button' %}
+
+            {% assign atc_text = block.settings.text %}
+<select name="variants_id" style="display:none;">
+{% for variant in product.variants %}
+<option value="{{ variant.id }}"{% if forloop.index == 2 %} selected{% endif %}>{{ variant.title }}</option>
+{% endfor %}
+</select>
+          <div class="custom_checkout_button_landing_page">
+            <span class="custom_checkout_button custom_lp_button trigger_{{ section.id }} custom_hk_button" quantity="1" variant_id="{{ product.variants[1].id }}" selling_plan="{{ product.variants[1].selling_plan_allocations.first.selling_plan.id }}">
+     <span class="subscription_trigger" data_tab="1" style="display:none;">
+             {%- for variant in product.variants -%}
+             <span class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+             {% if variant.available %}{{ atc_text }} {{price | money }}
+             {% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{% else %}Sold Out{% endif %}
+              </span>
+   {% endfor %}  
+             </span>
+     <span class="subscription_trigger" data_tab="2">
+             {%- for variant in product.variants -%}
+             <span class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.selling_plan_allocations.first.per_delivery_price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+             {% if variant.available %}{{ atc_text }} {{price | money }}
+             {% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{% else %}Sold Out{% endif %}
+              </span>
+   {% endfor %}  
+             </span>
+             </span>
+          </div>
+
+
+
+       
+    {% when 'buy_once' %}
+            {% assign atc_text = block.settings.text %}
+
+          <div class="custom_checkout_button_landing_page2">
+            <span class="custom_checkout_button2 custom_lp_button2 trigger_{{ section.id }}2" quantity="1" variant_id="{{ product.variants[1].id }}">
+             {%- for variant in product.variants -%}
+             <span class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+             {% if variant.available %}{{ atc_text }} {{price | money }}
+             {% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{% else %}Sold Out{% endif %}
+              </span>
+   {% endfor %}  
+             </span>
+          </div>
+    {% when 'price' %}
+          <div class="custom_price_landing_page">
+{% assign save_text = block.settings.text1 %}
+{% assign quantity = block.settings.quantity | plus:0 %}
+  <div class="subscription_trigger" data_tab="1" style="display:none;">
+             {%- for variant in product.variants -%}
+              {%if forloop.index == 1 %}
+{% assign bottles = 1  %}
+             {% endif %}
+              {%if forloop.index == 2 %}
+{% assign bottles = 3  %}
+             {% endif %}
+              {%if forloop.index == 3 %}
+{% assign bottles = 6  %}
+             {% endif %}
+             <div class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+                <div class="price_flex_inner">
+{% assign per_bottle = price | divided_by:bottles %}
+{% assign per_price = per_bottle | divided_by:quantity | money %}
+<span class="per_price_main">{{ save_text | replace:'[price]',per_price }} </span>
+                <div class="price_flex_inner-right">
+                  <span class="price_single">{{ price | money }}</span>
+                  {% if compare_price > price %} 
+                  <span class="price_compare">{{ compare_price | money }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+   {% endfor %}  
+             </div>
+     <div class="subscription_trigger" data_tab="2">
+             {%- for variant in product.variants -%}
+              {%if forloop.index == 1 %}
+{% assign bottles = 1  %}
+             {% endif %}
+              {%if forloop.index == 2 %}
+{% assign bottles = 3  %}
+             {% endif %}
+              {%if forloop.index == 3 %}
+{% assign bottles = 6  %}
+             {% endif %}
+             <div class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.selling_plan_allocations.first.per_delivery_price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+                <div class="price_flex_inner">
+{% assign per_bottle = price | divided_by:bottles %}
+{% assign per_price = per_bottle | divided_by:quantity | money %}
+<span class="per_price_main">{{ save_text | replace:'[price]',per_price }} </span>
+                <div class="price_flex_inner-right">
+                  <span class="price_single">{{ price | money }}</span>
+                  {% if compare_price > price %} 
+                  <span class="price_compare">{{ compare_price | money }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+   {% endfor %}  
+  </div>
+ 
+          </div>
+
+
+            {% when 'icon_with_text' %}
+              <div  class="custom_icon_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icon_with_text_flex">
+                <div class="icon_with_text_item">
+                  {{ block.settings.svg1 }}
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                 </div>
+                 </div>
+              </div>
+
+            
+    {% when 'variants' %}
+          <div class="custom_variants_landing_page">
+<div class="options_main">
+<div class="options_flex">
+  {% if block.settings.badge1 != blank %}
+    <div class="variant_badge">{{ block.settings.badge1 }}</div>
+    {% endif %}
+  {% for variant in product.variants %}
+<div class="option_item{% if forloop.index == 2 %} active{% endif %}" variant_title="{{ variant.title }}" variant_id="{{ variant.id }}">
+<div class="selected_css_main"><div class="selected_css_main_inner"></div></div>
+<div class="option_item_inner">
+  
+  {% if forloop.index == 1 %}
+{% if block.settings.image1 != blank %}
+<img src="{{ block.settings.image1 | image_url }}"width="auto" height="auto" fetchpriority="high" loading="eager" alt="{{ block.settings.image1.alt }}">
+  {% endif %}
+  {% endif %}
+  {% if forloop.index == 2 %}
+{% if block.settings.image2 != blank %}
+<img src="{{ block.settings.image2 | image_url }}"width="auto" height="auto" fetchpriority="high" loading="eager" alt="{{ block.settings.image2.alt }}">
+  {% endif %}
+  {% if block.settings.badge2 != blank %}
+    <div class="variant_badge">{{ block.settings.badge2 }}</div>
+    {% endif %}
+  {% endif %}
+  {% if forloop.index == 3 %}
+{% if block.settings.image3 != blank %}
+<img src="{{ block.settings.image3 | image_url }}"width="auto" height="auto" fetchpriority="high" loading="eager" alt="{{ block.settings.image3.alt }}">
+  {% endif %}
+  {% if block.settings.badge3 != blank %}
+    <div class="variant_badge">{{ block.settings.badge3 }}</div>
+    {% endif %}
+  {% endif %}
+<div class="option_item_flex">
+  
+<div class="option_item_flex_left">
+<div class="option_item_flex_left_top">
+
+{% assign quantity = 1 %}
+  {% if forloop.index == 1 %}
+{% if block.settings.title1 != blank %}
+  <div class="variant_title">{{block.settings.title1 }}</div>
+  {% else %}
+  <div class="variant_title">{{ variant.title }}</div>
+  {% endif %}
+  {% endif %}
+     {% if forloop.index == 2 %}
+{% if block.settings.title2 != blank %}
+  <div class="variant_title">{{block.settings.title2 }}</div>
+  {% else %}
+  <div class="variant_title">{{ variant.title }}</div>
+  {% endif %}
+  {% endif %}
+     {% if forloop.index == 3 %}
+{% if block.settings.title3 != blank %}
+  <div class="variant_title">{{block.settings.title3 }}</div>
+  {% else %}
+  <div class="variant_title">{{ variant.title }}</div>
+  {% endif %}
+  {% endif %}
+</div>
+    {% if forloop.index == 1 %}
+{% if block.settings.text1 != blank %}
+  {% assign days = 30 %}
+  {%assign price = variant.price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="variant_text subscription_trigger" data_tab="1" style="display:none;">{{block.settings.text1 | replace:'[price]',serving_price }}</div>
+  {% assign days = 30 %}
+  {%assign price_sub = variant.selling_plan_allocations.first.per_delivery_price %}
+{% assign serving_price_sub = price_sub | divided_by:days  %}
+{% assign serving_price_sub = serving_price_sub | money  %}
+  <div class="variant_text subscription_trigger" data_tab="2">{{block.settings.text1 | replace:'[price]',serving_price_sub }}</div>
+  {% endif %}
+  {% endif %}
+     {% if forloop.index == 2 %}
+{% if block.settings.text2 != blank %}
+  {% assign days = 60 %}
+  {%assign price = variant.price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="variant_text subscription_trigger" data_tab="1" style="display:none;">{{block.settings.text2 | replace:'[price]',serving_price }}</div>
+  {% assign days = 60 %}
+  {%assign price_sub = variant.selling_plan_allocations.first.per_delivery_price %}
+{% assign serving_price_sub = price_sub | divided_by:days  %}
+{% assign serving_price_sub = serving_price_sub | money  %}
+  <div class="variant_text subscription_trigger" data_tab="2">{{block.settings.text2 | replace:'[price]',serving_price_sub }}</div>
+  {% endif %}
+  {% endif %}
+     {% if forloop.index == 3 %}
+{% if block.settings.text3 != blank %}
+  {% assign days = 90 %}
+  {%assign price = variant.price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="variant_text subscription_trigger" data_tab="1" style="display:none;">{{block.settings.text3 | replace:'[price]',serving_price }}</div>
+  {% assign days = 90 %}
+  {%assign price_sub = variant.selling_plan_allocations.first.per_delivery_price %}
+{% assign serving_price_sub = price_sub | divided_by:days  %}
+{% assign serving_price_sub = serving_price_sub | money  %}
+  <div class="variant_text subscription_trigger" data_tab="2">{{block.settings.text3 | replace:'[price]',serving_price_sub }}</div>
+  {% endif %}
+  {% endif %}
+</div>
+<div class="option_item_flex_right">
+  <div class="subscription_trigger" data_tab="1" style="display:none;">
+<div class="option_item_price">
+<span>{{ variant.price | money }}</span>
+{% if variant.compare_at_price > variant.price %}
+  <s>{{ variant.compare_at_price | money }}</s>
+{% endif %}
+</div>
+{% if variant.compare_at_price > variant.price %}
+<div class="option_save_bottom">
+<span class="save">SAVE {{ variant.compare_at_price | minus:variant.price | times:100 | divided_by:variant.compare_at_price }}%</span>
+</div>
+{% endif %}
+
+  </div>
+  <div class="subscription_trigger" data_tab="2">
+<div class="option_item_price">
+<span>{{ variant.selling_plan_allocations.first.per_delivery_price | divided_by:quantity | money }}{%if quantity > 1 %} Each{%endif %}</span>
+{% if variant.compare_at_price > variant.price %}
+  <s>{{ variant.compare_at_price | money }}</s>
+<span class="save">SAVE {{ variant.compare_at_price | minus:variant.selling_plan_allocations.first.per_delivery_price | times:100 | divided_by:variant.compare_at_price }}%</span>
+{% else %}
+  <s>{{ variant.price | money }}</s>
+<span class="save">SAVE {{ variant.price | minus:variant.selling_plan_allocations.first.per_delivery_price | times:100 | divided_by:variant.price }}%</span>
+{% endif %}
+</div>
+
+{% if variant.compare_at_price > variant.price %}
+<div class="option_save_bottom">
+<span class="save">SAVE {{ variant.compare_at_price | minus:variant.selling_plan_allocations.first.per_delivery_price | times:100 | divided_by:variant.compare_at_price }}%</span>
+</div>
+{% else %}
+<div class="option_save_bottom">
+<span class="save">SAVE {{ variant.price | minus:variant.selling_plan_allocations.first.per_delivery_price | times:100 | divided_by:variant.price }}%</span>
+</div>
+{% endif %}
+    
+  </div>
+</div>
+</div>
+
+  
+</div>
+     
+</div>
+{% endfor %}
+</div>
+</div>   
+          </div>
+            
+            
+    {% when 'subscription' %}
+
+          <div class="subscription_landing_page">
+
+<div class="subscription_flex">
+<div class="subscription_item subscription_item_sub active" data_tab="2" selling_plan="{{ product.selected_or_first_available_variant.selling_plan_allocations.first.selling_plan.id }}">
+  <div class="sub_flex">
+  <div class="sub_flex_title">
+  <div class="selected_css_main"><div class="selected_css_main_inner"></div></div>
+  <div class="subscription_label">{{ block.settings.sub_label }}
+  </div>
+  <div class="subscription_sublabel price_trigger" data_tab="1" style="display:none;">{{ block.settings.sub_label2_1 }}</div>
+  <div class="subscription_sublabel price_trigger" data_tab="2">{{ block.settings.sub_label2 }}</div>
+  <div class="subscription_sublabel price_trigger" data_tab="3" style="display:none;">{{ block.settings.sub_label2_3 }}</div>
+  </div> 
+  <div class="_sub_price">
+   {%- for variant in product.variants -%}
+             <div class="product_price_custom price_trigger one_time" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.selling_plan_allocations.first.per_delivery_price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+        <div class="price_flex_inner_sub_main">
+        <div class="price_flex_inner_sub">
+       <span class="price_single_sub">
+       {{ price | money }}</span>
+        {% if compare_price > price %} <span class="price_compare_sub">{{ compare_price | money }}</span>{% endif %}
+        </div>
+{%if forloop.index == 1 %}
+  {% assign days = 30 %}
+{% endif %}
+{%if forloop.index == 2 %}
+  {% assign days = 60 %}
+{% endif %}
+{%if forloop.index == 3 %}
+  {% assign days = 90 %}
+{% endif %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+ <span class="price_single_days">{{serving_price }} Per Day</span>
+</div>
+
+              </div>
+   {% endfor %} 
+  </div>
+  <div class="sub_flex_bottom">
+    
+    <div class="sub_flex_bottom_list">
+            {% if block.settings.sub_list1_image != blank %}
+    <div class="sub_flex_bottom_list_item">
+     <img src="{{ block.settings.sub_list1_image | image_url }}" alt="{{ block.settings.sub_list1_image.alt }}" width="auto" height="auto" loading="lazy" fetchrpriority="low"> <p>{{ block.settings.sub_list1 }}</p>
+    </div>
+      {% endif %}
+            {% if block.settings.sub_list1_image != blank %}
+    <div class="sub_flex_bottom_list_item">
+     <img src="{{ block.settings.sub_list2_image | image_url }}" alt="{{ block.settings.sub_list2_image.alt }}" width="auto" height="auto" loading="lazy" fetchrpriority="low"> <p>{{ block.settings.sub_list2 }}</p>
+    </div>
+      {% endif %}
+            {% if block.settings.sub_list1_image != blank %}
+    <div class="sub_flex_bottom_list_item">
+     <img src="{{ block.settings.sub_list3_image | image_url }}" alt="{{ block.settings.sub_list3_image.alt }}" width="auto" height="auto" loading="lazy" fetchrpriority="low"> <p>{{ block.settings.sub_list3 }}</p>
+    </div>
+      {% endif %}
+            {% if block.settings.sub_list4_image != blank %}
+    <div class="sub_flex_bottom_list_item">
+     <img src="{{ block.settings.sub_list4_image | image_url }}" alt="{{ block.settings.sub_list4_image.alt }}" width="auto" height="auto" loading="lazy" fetchrpriority="low"> <p>{{ block.settings.sub_list4 }}</p>
+    </div>
+      {% endif %}
+    </div>
+    
+  <div class="sub_flex_bottom_delivery_label">Delivery every: <span>{{ product.selected_or_first_available_variant.selling_plan_allocations.first.selling_plan.name| replace:'Delivery every ','' }}</span></div>
+  <div class="sub_flex_bottom_delivery_list">
+    {% for selling_plan in product.selected_or_first_available_variant.selling_plan_allocations %}
+      {% if selling_plan.selling_plan.name contains '6' %}
+        {% else %}
+  <div class="sub_flex_bottom_delivery_item{% if forloop.first %} active{% endif %}" selling_plan="{{ selling_plan.selling_plan.id }}">{{ selling_plan.selling_plan.name | replace:'Delivery every ','' }}</div>
+        {% endif %}
+    {% endfor %}
+  </div>
+  </div>
+</div>
+</div>
+<div class="subscription_item" data_tab="1">
+  <div class="sub_flex">
+  <div class="sub_flex_title">
+  <div class="selected_css_main"><div class="selected_css_main_inner"></div></div>
+  <div class="subscription_label">{{ block.settings.one_time_label }}</div> 
+  </div>
+  <div class="one_time_price">
+             {%- for variant in product.variants -%}
+             <div class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+        <div class="price_flex_inner_one_time_main">
+        <div class="price_flex_inner_one_time">
+       <span class="price_single_one_time">{{ price | money }}</span>
+        {% if compare_price > price %} <span class="price_compare_one_time">{{ compare_price | money }}</span>{% endif %}
+        </div>
+
+{%if forloop.index == 1 %}
+  {% assign days = 30 %}
+{% endif %}
+{%if forloop.index == 2 %}
+  {% assign days = 60 %}
+{% endif %}
+{%if forloop.index == 3 %}
+  {% assign days = 90 %}
+{% endif %}
+
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+ <span class="price_single_days">{{serving_price }} Per Day</span>
+              </div>
+              </div>
+   {% endfor %}  
+  </div>
+  </div>
+</div>
+</div>     
+
+            
+
+          </div>
+
+            {% when 'icons_with_text' %}
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icons_with_text_flex">
+                <div class="icons_with_text_item">
+                  {{ block.settings.svg1 }}
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  {{ block.settings.text1 }}
+                 </div>
+                <div class="icons_with_text_item">
+                  {{ block.settings.svg2 }}
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  {{ block.settings.text2 }}
+                 </div>
+                   {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  {{ block.settings.svg3 }}
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  {{ block.settings.text3 }}
+                 </div>
+                   {% endif %}
+                 </div>
+              </div>
+
+
+             {%- when '@app' -%}
+                {%- render block -%}
+
+
+{% when 'order_time' %}
+            <div class="order_time_html {{ block.settings.custom_class }}">
+<div class="order_time_flex">
+<div class="order_time_item">
+{{ block.settings.svg1 }}
+<p>{{ block.settings.text1 }}</p>
+</div>
+<div class="order_time_item">
+{{ block.settings.svg2 }}
+</div>
+<div class="order_time_item">
+{{ block.settings.svg3 }}
+<p>{{ block.settings.text2 }}</p>
+</div>
+</div>
+</div>
+            
+            
+      {% when 'related_products' %}
+{% if block.settings.products != blank %}
+  {% assign product_related =block.settings.products  %}
+ <div class="related_products_lp {{ block.settings.custom_class }}">
+{% if block.settings.heading != blank %}
+<div class="related_products_lp_title">{{ block.settings.heading }}</div>
+{% endif %}
+
+<div class="related_products_slider_flex">
+<div class="related_products_slider_flex_item">
+<div class="related_products_slider_flex_left">
+  {% if block.settings.image != blank %}
+<img src="{{  block.settings.image | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high" alt="{{ product_related.title }}">
+    {% else %}
+<img src="{{ product_related.featured_image | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high" alt="{{ product_related.title }}">
+    {% endif %}
+<div class="related_products_slider_title">{{ block.settings.title }}</div>
+</div>
+<div class="related_products_slider_flex_right">
+<div class="related_products_slider_flex_right-top">
+             <div class="price_flex_inner">
+  {% assign price = product_related.selected_or_first_available_variant.price %}
+  {% if product_related.selected_or_first_available_variant.selling_plan_allocations.first.selling_plan.id != blank %}
+  {% assign price = product_related.selected_or_first_available_variant.selling_plan_allocations.first.per_delivery_price %}
+    {% endif %}
+  {% assign compare_price = product_related.selected_or_first_available_variant.price %}
+  {% if product_related.selected_or_first_available_variant.compare_at_price > product_related.selected_or_first_available_variant.price %}
+  {% assign compare_price = product_related.selected_or_first_available_variant.compare_at_price %}
+    {% endif %}
+                  <span class="price_single">{{ price | money }}</span>
+                  {% if compare_price > price %} <span class="price_compare">{{ compare_price | money }}</span>
+                  <span class="discounted_percentage">
+                 SAVE {{ compare_price | minus:price | times:100 | divided_by:compare_price  }}%
+                  </span>
+                    {% endif %}
+                </div>
+  </div>
+<div class="related_products_slider_cart ajax_add_cart"{% if product_related.available %}{% else %} disabled{% endif %} variant_id="{{ product_related.selected_or_first_available_variant.id }}" selling_plan="{{ product_related.selected_or_first_available_variant.selling_plan_allocations.first.selling_plan.id }}">
+  {% if product_related.available %}Add to cart{% else %}Sold Out{% endif %}</div>
+</div>
+</div>
+</div>
+
+
+</div>
+{% endif %}
+
+
+    {% when 'quantity' %}
+
+          <div class="quantity_landing_page">
+
+
+
+            
+          <div class="quantity_flex">
+          <div class="quantity_flex_item">
+          <div class="quantity_item" data_tab="1" quantity="{{ block.settings.quantity1 }}" label="{{ block.settings.label1 }}">
+            {% if block.settings.badge1 != blank %}
+            <div class="quantity_badge">{{ block.settings.badge1 }}</div>
+            {% endif %}
+            {% if block.settings.image1 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[0].id }}">
+            <img src="{{ block.settings.image1 | image_url }}" alt="{{ block.settings.image1.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.image1_2 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[1].id }}" style="display:none;">
+            <img src="{{ block.settings.image1_2 | image_url }}" alt="{{ block.settings.image1_2.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.title1 != blank %}
+            <div class="quantity_title">{{ block.settings.title1 }}</div>
+            {% endif %}
+
+{% if block.settings.title1_middle != blank %}
+{% assign days = 30 | times: block.settings.quantity1 %}
+<div class="subscription_trigger" data_tab="1" style="display:none;">
+{% assign price = product.variants[0].price | times: block.settings.quantity1 %}
+{% assign compare_price =  product.variants[0].price | times: block.settings.quantity1 %}
+{% assign discount =  block.settings.discount1 | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title1_middle | replace:'[price]',serving_price }}</div>
+</div>
+<div class="subscription_trigger" data_tab="2">
+{% assign price = product.variants[0].product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity1 %}
+{% assign compare_price =  product.variants[0].product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity1 %}
+{% assign discount =  block.settings.discount1_sub | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title1_middle | replace:'[price]',serving_price }}</div>
+</div>
+ {% endif %}
+        
+            
+            <div class="quantity_price">{% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{{price | money }}</div>
+            {% if block.settings.title1_bottom != blank %}
+            <div class="quantity_title_bottom">{{ block.settings.title1_bottom }}</div>
+            {% endif %}
+          </div>
+            
+          </div>
+
+
+            
+          <div class="quantity_flex_item">
+          <div class="quantity_item active" data_tab="2" quantity="{{ block.settings.quantity2 }}" label="{{ block.settings.label2 }}">
+            {% if block.settings.badge2 != blank %}
+            <div class="quantity_badge">{{ block.settings.badge2 }}</div>
+            {% endif %}
+            {% if block.settings.image2 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[0].id }}">
+            <img src="{{ block.settings.image2 | image_url }}" alt="{{ block.settings.image2.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.image2_2 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[1].id }}" style="display:none;">
+            <img src="{{ block.settings.image2_2 | image_url }}" alt="{{ block.settings.image2_2.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.title2 != blank %}
+            <div class="quantity_title">{{ block.settings.title2 }}</div>
+            {% endif %}
+
+{% if block.settings.title2_middle != blank %}
+{% assign days = 30 | times: block.settings.quantity2 %}
+<div class="subscription_trigger" data_tab="1" style="display:none;">
+{% assign price = product.variants[0].price | times: block.settings.quantity2 %}
+{% assign compare_price =  product.variants[0].price | times: block.settings.quantity2 %}
+{% assign discount =  block.settings.discount2 | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title2_middle | replace:'[price]',serving_price }}</div>
+</div>
+<div class="subscription_trigger" data_tab="2">
+{% assign price = product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity2 %}
+{% assign compare_price = product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity2 %}
+{% assign discount =  block.settings.discount2_sub | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price | round %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title2_middle | replace:'[price]',serving_price }}</div>
+</div>
+ {% endif %}
+            <div class="quantity_price">{% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{{price | money }}</div>
+            {% if block.settings.title2_bottom != blank %}
+            <div class="quantity_title_bottom">{{ block.settings.title2_bottom }}</div>
+            {% endif %}
+          </div>
+            
+          </div>
+
+
+            
+          <div class="quantity_flex_item">
+          <div class="quantity_item" data_tab="3" quantity="{{ block.settings.quantity3 }}" label="{{ block.settings.label3 }}">
+            {% if block.settings.badge3 != blank %}
+            <div class="quantity_badge">{{ block.settings.badge3 }}</div>
+            {% endif %}
+            {% if block.settings.image3 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[0].id }}">
+            <img src="{{ block.settings.image3 | image_url }}" alt="{{ block.settings.image3.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.image3_2 != blank %}
+            <div class="quantity_image variant_trigger" data_tab="{{ product.variants[1].id }}" style="display:none;">
+            <img src="{{ block.settings.image3_2 | image_url }}" alt="{{ block.settings.image3_2.alt }}" width="auto" height="auto" loading="lazy" fetchpriority="low">  
+            </div>
+            {% endif %}
+            {% if block.settings.title3 != blank %}
+            <div class="quantity_title">{{ block.settings.title3 }}</div>
+            {% endif %}
+{% if block.settings.title3_middle != blank %}
+{% assign days = 30 | times: block.settings.quantity3 %}
+<div class="subscription_trigger" data_tab="1" style="display:none;">
+{% assign price = product.variants[0].price | times: block.settings.quantity3 %}
+{% assign compare_price =  product.variants[0].price | times: block.settings.quantity3 %}
+{% assign discount =  block.settings.discount3 | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price | round%}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title3_middle | replace:'[price]',serving_price }}</div>
+</div>
+<div class="subscription_trigger" data_tab="2">
+{% assign price = product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity3 %}
+{% assign compare_price =  product.variants[0].selling_plan_allocations.first.per_delivery_price | times: block.settings.quantity3 %}
+{% assign discount =  block.settings.discount3_sub | plus:0 %}
+{% assign discount_price = compare_price | times: discount | divided_by:100 %}
+{% assign price = price | minus:discount_price %}
+{% assign serving_price = price | divided_by:days  %}
+{% assign serving_price = serving_price | money  %}
+<div class="quantity_title_middle">{{ block.settings.title3_middle | replace:'[price]',serving_price }}</div>
+</div>
+ {% endif %}
+            <div class="quantity_price">{% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{{price | money }}</div>
+            {% if block.settings.title3_bottom != blank %}
+            <div class="quantity_title_bottom">{{ block.settings.title3_bottom }}</div>
+            {% endif %}
+          </div>
+            
+
+            
+          </div>
+
+
+            
+          </div>
+          </div>
+            {% when 'review' %}
+            <div class="review_slider_custom_slider_new_item_product">
+       <div class="review_slider_custom_slider_new_item_inner_product loop_{{ forloop.index }}">
+       <div class="review_slider_custom_slider_new_item_bg_product left">
+       <div class="review_slider_custom_slider_left_product">
+       
+          {% if block.settings.image != blank %}
+            <div class="review_user_image_product">
+            <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image.alt }}">  
+            </div>
+            {% endif %}
+            
+          
+          </div>
+          
+       <div class="review_slider_custom_slider_right_product">
+         {% if block.settings.name != blank %}
+          <div class="review_name_product">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="14" viewBox="0 0 90 14" fill="none">
+  <path d="M7 0L8.57585 4.83103L13.6574 4.83688L9.54978 7.82847L11.1145 12.6631L7 9.681L2.8855 12.6631L4.45022 7.82847L0.342604 4.83688L5.42415 4.83103L7 0Z" fill="#1A2D95"/>
+  <path d="M26 0L27.5759 4.83103L32.6574 4.83688L28.5498 7.82847L30.1145 12.6631L26 9.681L21.8855 12.6631L23.4502 7.82847L19.3426 4.83688L24.4241 4.83103L26 0Z" fill="#1A2D95"/>
+  <path d="M45 0L46.5759 4.83103L51.6574 4.83688L47.5498 7.82847L49.1145 12.6631L45 9.681L40.8855 12.6631L42.4502 7.82847L38.3426 4.83688L43.4241 4.83103L45 0Z" fill="#1A2D95"/>
+  <path d="M64 0L65.5759 4.83103L70.6574 4.83688L66.5498 7.82847L68.1145 12.6631L64 9.681L59.8855 12.6631L61.4502 7.82847L57.3426 4.83688L62.4241 4.83103L64 0Z" fill="#1A2D95"/>
+  <path d="M83 0L84.5759 4.83103L89.6574 4.83688L85.5498 7.82847L87.1145 12.6631L83 9.681L78.8855 12.6631L80.4502 7.82847L76.3426 4.83688L81.4241 4.83103L83 0Z" fill="#1A2D95"/>
+</svg>
+            <span>{{ block.settings.name }}</span>
+          </div>
+            {% endif %}
+
+          {% if block.settings.text != blank %}
+            <div class="review_text_slider_new_product">{{ block.settings.text }}</div>
+            {% endif %}
+       </div>
+       </div>
+          </div>
+       </div>
+ {% when 'bundle' %}
+
+<div class="bundle-routine-wrapper">
+  <h2 class="bundle_heading">{{ block.settings.heading }}</h2>
+  <p class="bundle_text">{{ block.settings.subheading }}</p>
+  <div class="bundle_products">
+    {% assign total_price = 0 %}
+    {% assign total_compare_price = 0 %}
+    {% assign variant_ids = '' %}
+    {% assign selling_plan_ids = '' %}
+
+    {% for product in block.settings.product_list %}
+      {% assign variant = product.variants.first %}
+      <div class="product_bundle_item">
+        {% if forloop.index == 1 %}
+        <img src="{{ block.settings.image1 | image_url }}" alt="{{ product.title }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+        {% endif %}
+        {% if forloop.index == 2 %}
+        <img src="{{ block.settings.image2 | image_url }}" alt="{{ product.title }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+        {% endif %}
+        {% if forloop.index == 3 %}
+        <img src="{{ block.settings.image3 | image_url }}" alt="{{ product.title }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+        {% endif %}
+        <p class="bundle_product_title">{{ product.title }}</p>
+      </div>
+      {% assign total_price = total_price | plus: variant.selling_plan_allocations.first.per_delivery_price %}
+      {% assign total_compare_price = total_price | plus: variant.price %}
+      {% assign variant_ids = variant_ids | append: variant.id | append: ',' %}
+      {% if variant.selling_plan_allocations.first.selling_plan.id %}
+        {% assign selling_plan_ids = selling_plan_ids | append: variant.selling_plan_allocations.first.selling_plan.id | append: ',' %}
+      {% else %}
+        {% assign selling_plan_ids = selling_plan_ids | append: 'null,' %}
+      {% endif %}
+      {% unless forloop.last %}<span class="plus_icon">+</span>{% endunless %}
+    {% endfor %}
+  </div>
+
+  {% assign discount_amount = total_price | times: block.settings.discount_percent | divided_by: 100 %}
+  {% assign discounted_price = total_price | minus: discount_amount %}
+
+  <p class="total_price left">Total Price: <span class="text-[#dd3b3b]">{{ discounted_price | money }}</span> <s class="text-gray-500">{{ total_compare_price | money }}</s></p>
+  <div class="custom_add_bundle custom_hk_button" id="add-bundle-to-cart">{{ block.settings.button_label }}</div>
+  <p class="delivery_text">
+        {% if block.settings.image_delivery != blank %}
+        <img src="{{ block.settings.image_delivery | image_url }}" alt="{{ block.settings.image_delivery.alt }}" width="auto" height="auto" loading="eager" fetchpriority="high">
+        {% endif %}
+       <span>{{ block.settings.delivery_note }}</span>
+    
+  </p>
+  
+
+<script>
+  document.getElementById('add-bundle-to-cart')?.addEventListener('click', function () {
+    var $btn = $(this).addClass('loading_hk');
+
+    const variantIds = "{{ variant_ids | strip_newlines | strip | replace_last: ',', '' }}".split(',');
+    const sellingPlanIds = "{{ selling_plan_ids  | strip_newlines | strip | replace_last: ',', ''  }}".split(',');
+
+
+    let items = [];
+    variantIds.forEach((id, index) => {
+      if (id) {
+        const payload = {
+          id: parseInt(id),
+          quantity: 1
+        };
+        const plan = sellingPlanIds[index];
+        if (plan !== 'null' && plan !== '') {
+          payload.selling_plan = parseInt(plan);
+        }
+        items.push(payload);
+      }
+    });
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ items })
+    }).then(() => {
+      window.location.href = '/cart'; // ✅ Fix: removed accidental comment
+      $btn.removeClass('loading_hk');
+    }).catch((err) => {
+      console.error('Add to cart failed:', err);
+    });
+  });
+</script>
+</div>
+
+    
+            {% endcase %}
+       {% endfor %}
+     </div>
+   </div>
+   </div>
+  </div>
+
+{% endif %}
+
+
+
+
+    
+
+
+
+    
+  
+{% schema %}
+  {
+    "name": "Product LPnew",
+    "settings": [
+     {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+     {
+      "type": "color",
+      "id": "color",
+      "label": "Section Text Color"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "bought",
+      "label": "Recent Bought Today",
+      "default":"<strong>100+</strong> Bought Today"
+     },
+      {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Section Heading"
+    },
+      {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Section Text"
+    },
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+        },
+           {
+          "type": "inline_richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+     {
+      "type": "checkbox",
+      "id": "custom_images",
+      "label": "Show Custom Images",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "variant1_image",
+      "label":  "Variant1 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "variant2_image",
+      "label":  "Variant2 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image1",
+      "label":  "Product Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image2",
+      "label":  "Product Image2"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image3",
+      "label":  "Product Image3"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image4",
+      "label":  "Product Image4"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image5",
+      "label":  "Product Image5"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image6",
+      "label":  "Product Image6"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image7",
+      "label":  "Product Image7"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image8",
+      "label":  "Product Image8"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image1_2",
+      "label":  "Product2 Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image2_2",
+      "label":  "Product2 Image2"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image3_2",
+      "label":  "Product2 Image3"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image4_2",
+      "label":  "Product2 Image4"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image5_2",
+      "label":  "Product2 Image5"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image6_2",
+      "label":  "Product2 Image6"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image7_2",
+      "label":  "Product2 Image7"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image8_2",
+      "label":  "Product2 Image8"
+    },
+    {
+      "type": "image_picker",
+      "id": "popup_image",
+      "label":  "Popup Image"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Small"
+            },
+            {
+              "value": "h1",
+              "label": "Medium"
+            },
+            {
+              "value": "h0",
+              "label": "Large"
+            }
+          ],
+          "default": "h1",
+          "label": "Heading Size"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
+          "label": "Text"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "RichText",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "Text"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "html",
+      "name": "Html",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "text",
+          "label": "Html"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image Mobile"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "First button label",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "First button link"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "stock",
+      "name": "Stock",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "rating_custom",
+      "name": "Rating Custom",
+      "settings": [
+       {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+        },
+         {
+          "type": "liquid",
+          "id": "star",
+          "label": "Stars",
+        },
+          {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "checkout_button",
+      "name": "Checkout Button",
+      "limit":1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default":"ORDER NOW"
+        }
+      ]
+    },
+    {
+      "type": "buy_once",
+      "name": "Buy Once Button",
+      "limit":1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default":"Buy once for "
+        }
+      ]
+    },
+    {
+      "type": "variants",
+      "name": "Variants",
+      "settings": [
+        {
+          "type": "number",
+          "id": "loop",
+          "default": 1,
+          "label": "Variant Option"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Custom Image1"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title1",
+          "label": "Custom Title1"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Custom Text1"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge1",
+          "label": "Custom Badge1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Custom Image2"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title2",
+          "label": "Custom Title2"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text2",
+          "label": "Custom Text2"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge2",
+          "label": "Custom Badge2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Custom Image3"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title3",
+          "label": "Custom Title3"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text3",
+          "label": "Custom Text3"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge3",
+          "label": "Custom Badge3"
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit":1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text1",
+          "default": "80 Capsules ( [price] Per Capsule )",
+          "label": "Text Before Price"
+        },
+        {
+          "type": "number",
+          "id": "quantity",
+          "default": 80,
+          "label": "Quantity In Pack"
+        }
+      ]
+    },
+    {
+      "type": "icons_with_text",
+      "name": "Icons With Text",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+         {
+          "type": "liquid",
+          "id": "svg2",
+          "label": "Svg2",
+        },
+         {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+         {
+          "type": "liquid",
+          "id": "svg3",
+          "label": "Svg3",
+        },
+         {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text3",
+          "label": "Text3",
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+         {
+          "type": "inline_richtext",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "icon_with_text",
+      "name": "Icon With Text",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "order_time",
+      "name": "Order Time",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+         {
+          "type": "liquid",
+          "id": "svg2",
+          "label": "Svg2",
+        },
+         {
+          "type": "liquid",
+          "id": "svg3",
+          "label": "Svg3",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+        {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+     {
+      "type": "@app"
+    },
+    {
+      "type": "related_products",
+      "name": "Related Products",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title",
+        },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+        },
+         {
+          "type": "product",
+          "id": "products",
+          "label": "Products",
+        },
+        {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "subscription",
+      "name": "Subscription",
+      "limit":1,
+      "settings": [
+       {
+          "type": "inline_richtext",
+          "id": "sub_label",
+          "label": "Subscription label",
+          "default": "Subscribe & Save"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "sub_label2_1",
+          "label": "Subscription Subtitle",
+          "default": "60 Day Supply"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "sub_label2",
+          "label": "Subscription Subtitle",
+          "default": "120 Day Supply"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "sub_label2_3",
+          "label": "Subscription Subtitle",
+          "default": "180 Day Supply"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Best Value"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "one_time_label",
+          "label": "One Time label",
+          "default": "One time purchase"
+        },
+       {
+          "type": "image_picker",
+          "id": "sub_list1_image",
+          "label": "Subscription List1 Image"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "sub_list1",
+          "label": "Subscription List1",
+          "default": "30 day money back guarantee"
+        },
+       {
+          "type": "image_picker",
+          "id": "sub_list2_image",
+          "label": "Subscription List2 Image"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "sub_list2",
+          "label": "Subscription List2",
+          "default": "Pause or cancel anytime"
+        },
+       {
+          "type": "image_picker",
+          "id": "sub_list3_image",
+          "label": "Subscription List3 Image"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "sub_list3",
+          "label": "Subscription List3",
+          "default": "30% off every order"
+        },
+       {
+          "type": "image_picker",
+          "id": "sub_list4_image",
+          "label": "Subscription List4 Image"
+        },
+       {
+          "type": "inline_richtext",
+          "id": "sub_list4",
+          "label": "Subscription List4",
+          "default": "30% off every order"
+        }
+      ]
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit":1,
+      "settings": [
+         {
+          "type": "number",
+          "id": "quantity1",
+          "label": "Quantity1"
+        },
+        {
+          "type": "number",
+          "id": "quantity1_free",
+          "label": "Free Quantity"
+        },
+        {
+          "type": "text",
+          "id": "discount1",
+          "label": "Discount Percentage"
+        },
+        {
+          "type": "text",
+          "id": "discount1_sub",
+          "label": "Discount Percentage Subscription"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge1",
+          "label": "Badge1"
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1"
+        },
+         {
+          "type": "image_picker",
+          "id": "image1_2",
+          "label": "Image1 Variant2"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "label1",
+          "label": "Label1"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title1",
+          "label": "Title1"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title1_middle",
+          "label": "Title1 Middle"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title1_bottom",
+          "label": "Title1 Bottom"
+        },
+         {
+          "type": "number",
+          "id": "quantity2",
+          "label": "Quantity2"
+        },
+        {
+          "type": "number",
+          "id": "quantity2_free",
+          "label": "Free Quantity"
+        },
+        {
+          "type": "text",
+          "id": "discount2",
+          "label": "Discount Percentage"
+        },
+        {
+          "type": "text",
+          "id": "discount2_sub",
+          "label": "Discount Percentage Subscription"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge2",
+          "label": "Badge2"
+        },
+         {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2"
+        },
+         {
+          "type": "image_picker",
+          "id": "image2_2",
+          "label": "Image2 Variant2"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "label2",
+          "label": "Label2"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title2",
+          "label": "Title2"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title2_middle",
+          "label": "Title2 Middle"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title2_bottom",
+          "label": "Title2 Bottom"
+        },
+         {
+          "type": "number",
+          "id": "quantity3",
+          "label": "Quantity3"
+        },
+        {
+          "type": "number",
+          "id": "quantity3_free",
+          "label": "Free Quantity"
+        },
+        {
+          "type": "text",
+          "id": "discount3",
+          "label": "Discount Percentage"
+        },
+        {
+          "type": "text",
+          "id": "discount3_sub",
+          "label": "Discount Percentage Subscription"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "badge3",
+          "label": "Badge3"
+        },
+         {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3"
+        },
+         {
+          "type": "image_picker",
+          "id": "image3_2",
+          "label": "Image3 Variant2"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "label3",
+          "label": "Label3"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title3",
+          "label": "Title3"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title3_middle",
+          "label": "Title3 Middle"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title3_bottom",
+          "label": "Title3 Bottom"
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [ 
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "User Image"
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "name",
+          "label": "Name"
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bundle",
+      "settings": [ 
+        {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get The Full Numara Routine"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Why Stop at One? Get the Full Glow-Up"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Add Bundle to Cart"
+    },
+    {
+      "type": "text",
+      "id": "delivery_note",
+      "label": "Delivery Note",
+      "default": "Delivers every 30-days"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_delivery",
+      "label": "Delivery Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "discount_percent",
+      "label": "Discount Percentage",
+      "default": "38.0543634"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products in Bundle"
+    },
+    {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Product1 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Product2 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image3",
+      "label": "Product3 Image"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product LPnew"
+    }
+  ]
+  }
+{% endschema %}
+
+<script>
+    $('.slider_{{ section.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+  cssEase:'linear',
+    asNavFor: '.slider_thumb_{{ section.id }}',
+    prevArrow: $('.prev_{{ section.id }}_main_slider'),
+    nextArrow: $('.next_{{ section.id }}_main_slider'),
+    appendDots: $('.dots_{{ section.id }}'),
+      responsive: [{
+      breakpoint: 915,
+      settings: {
+        slidesToShow:1, 
+        slidesToScroll: 1, 
+adaptiveHeight: false,
+  dots: true,
+      }
+    }
+  ]
+ 
+});
+  
+    $('.slider_thumb_{{ section.id }}').slick({
+  dots: false,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+  cssEase:'linear',
+      vertical:true,
+    asNavFor: '.slider_{{ section.id }}',
+    focusOnSelect: true,
+    prevArrow: $('.prev_{{ section.id }}'),
+    nextArrow: $('.next_{{ section.id }}'),
+  responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+      vertical:false,
+        speed: 300,
+        slidesToShow:6,
+      }
+    }
+  ]
+});
+
+ 
+$(document).on("click", '.trigger_{{ section.id }}', function(e) {
+  e.preventDefault();
+  var $btn = $(this).addClass('loading_hk'),
+      id = $btn.attr('variant_id'),
+      quantity = $btn.attr('quantity'),
+      selling_plan = $btn.attr('selling_plan'),
+      data = { id: id, quantity: quantity };
+
+  if (selling_plan) data.selling_plan = selling_plan;
+
+  $.post('/cart/add.js', data, function () {
+    
+      $btn.removeClass('loading_hk');
+      //window.location.href = '/checkout';
+    /*$.get(window.location.pathname, function (res) {
+      var $new = $(res).find('#cart_drawer_content');
+      $('#cart_drawer_content').replaceWith($new);
+         // Update cart count
+      const $newCartCount = $(res).find('.cart_count_js');
+      const cartCount = parseInt($newCartCount.text().trim(), 10);
+      
+      if (cartCount > 0) {
+        $('.cart_count_js').text(cartCount).show();
+      } else {
+        $('.cart_count_js').text('').hide();
+      }
+      $('#cart-drawer').removeClass('is_empty').addClass('open');
+      $('.custom_overlay2').addClass('active');
+      $btn.removeClass('loading_hk');
+    });*/
+  }, 'json');
+});
+$(document).on("click", '.trigger_{{ section.id }}2', function(e) {
+  e.preventDefault();
+  var $btn = $(this).addClass('loading_hk'),
+      id = $btn.attr('variant_id'),
+      quantity = $btn.attr('quantity'),
+      data = { id: id, quantity: quantity };
+
+
+  $.post('/cart/add.js', data, function () {
+      window.location.href = '/checkout';
+    $.get(window.location.pathname, function (res) {
+      var $new = $(res).find('#cart_drawer_content');
+      $('#cart_drawer_content').replaceWith($new);
+         // Update cart count
+      const $newCartCount = $(res).find('.cart_count_js');
+      const cartCount = parseInt($newCartCount.text().trim(), 10);
+      
+      if (cartCount > 0) {
+        $('.cart_count_js').text(cartCount).show();
+      } else {
+        $('.cart_count_js').text('').hide();
+      }
+      $('#cart-drawer').removeClass('is_empty').addClass('open');
+      $('.custom_overlay2').addClass('active');
+      $btn.removeClass('loading_hk');
+    });
+  }, 'json');
+});
+
+$(document).on("click", '.option_item', function(e) { 
+$('.option_item').removeClass('active');  
+$(this).addClass('active');  
+
+var selected_variant_text = $('.option_item.active').eq(0).attr('variant_title');
+$('select[name="variants_id"] option').each(function(){
+var option_text = $(this).text();
+var option_value = $(this).attr('value');
+if(option_text.indexOf(selected_variant_text) != -1){
+$('select[name="variants_id"]').val(option_value).trigger('change'); 
+return false;
+}
+});
+var selected_variant = $('select[name="variants_id"]').val();
+$('span.custom_checkout_button').attr('variant_id',selected_variant);
+
+$('.price_trigger').hide().removeClass('active');
+$('.price_trigger[data_tab="'+selected_variant+'"]').show().addClass('active');
+});
+
+
+    
+
+$(document).on("click", '.quantity_item', function(e) {  
+$('.quantity_item').removeClass('active');
+$(this).addClass('active');  
+var quantity = $(this).attr('quantity');
+var data_tab = $(this).attr('data_tab');
+$('.trigger_{{ section.id }}').attr('quantity',quantity);
+$('.price_trigger').hide().removeClass('active');
+$('.price_trigger[data_tab="'+data_tab+'"]').show();
+var selected_text = $(this).attr('label');
+$('.product_text_3 strong').text(selected_text);
+});
+    
+$(document).on("click", '.subscription_item', function(e) {
+$('.subscription_item').removeClass('active');  
+$(this).addClass('active');  
+var selected_tab = $(this).attr('data_tab');
+if (selected_tab == '2'){
+var selling_plan = $(this).attr('selling_plan');
+$('.trigger_{{ section.id }}').attr('selling_plan',selling_plan);
+} else {
+$('.trigger_{{ section.id }}').removeAttr('selling_plan');
+}
+$('.subscription_trigger').hide();
+$('.subscription_trigger[data_tab="'+selected_tab+'"]').show();
+});
+  
+$(document).on("change", '.sub_flex_bottom_delivery_dropdown', function() {
+  var selected_text = $(this).find("option:selected").text();
+  var selling_plan = $(this).val();
+
+  $('.landing_page_product .sub_flex_bottom_delivery_label span').text(selected_text);
+  $('.trigger_{{ section.id }}').attr('selling_plan', selling_plan);
+  $('.subscription_item_sub').attr('selling_plan', selling_plan);
+});
+
+$(document).on("click", '.sub_flex_bottom_delivery_item', function(e) {
+$('.sub_flex_bottom_delivery_item').removeClass('active');  
+$(this).addClass('active');  
+var selected_text = $(this).text();
+var selling_plan = $(this).attr('selling_plan');
+$('.landing_page_product .sub_flex_bottom_delivery_label span').text(selected_text);
+$('.trigger_{{ section.id }}').attr('selling_plan',selling_plan);
+$('.subscription_item_sub').attr('selling_plan',selling_plan);
+});
+
+</script>
+
+
+
+
+<div class="custom_sticky_bottom" style="display:none;">
+<div class="container_hk">
+<div class="custom_sticky_flex">
+<div class="custom_sticky_flex_left">
+<div class="custom_sticky_flex_image">
+  {%if section.settings.product_image1 != blank %}
+<img src="{{ section.settings.product_image1 | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high" alt="{{ product.title }}">
+    {%else %}
+<img src="{{  product.featured_image | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high" alt="{{ product.title }}">
+{% endif %}
+</div>
+<div class="custom_sticky_flex_title">{{product.title }}
+</div>
+</div>
+<div class="custom_sticky_flex-right">
+<a href="#" class="custom_hk_button"> <span class="subscription_trigger" data_tab="1" style="display:none;">
+             {%- for variant in product.variants -%}
+             <span class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+             {% if variant.available %}{{ atc_text }} {{price | money }}
+             {% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{% else %}Sold Out{% endif %}
+              </span>
+   {% endfor %}  
+             </span>
+     <span class="subscription_trigger" data_tab="2">
+             {%- for variant in product.variants -%}
+             <span class="product_price_custom price_trigger one_time{% if variant.available %}{% else %} sold_out_custom{% endif %}" data_tab="{{ variant.id }}"{% if variant.id != product.variants[1].id %} style="display:none;"{% endif %}>
+            {% assign price = variant.selling_plan_allocations.first.per_delivery_price  %}
+            {% assign compare_price = variant.price %}
+    {% if variant.compare_at_price > variant.price %}
+            {% assign compare_price = variant.compare_at_price %}
+      {% endif %}
+             {% if variant.available %}{{ atc_text }} {{price | money }}
+             {% if compare_price > price %}<s>{{ compare_price | money }}</s>{% endif %}{% else %}Sold Out{% endif %}
+              </span>
+   {% endfor %}  
+             </span></a>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function isAnyElementInViewport(selectors) {
+  return selectors.some(function(selector) {
+    var $el = $(selector);
+    return $el.is(':visible') &&
+      $(window).scrollTop() + $(window).height() > $el.offset().top &&
+      $(window).scrollTop() < $el.offset().top + $el.outerHeight();
+  });
+}
+
+$(window).on('scroll resize', function () {
+  if (!isAnyElementInViewport(['.custom_checkout_button', '.pdt_textheading', '.pdt_text_1', '.product_images', '.subscription_item', '.footer_logo'])) {
+    $('.custom_sticky_bottom').addClass('active');
+  } else {
+    $('.custom_sticky_bottom').removeClass('active');
+  }
+});
+
+</script>

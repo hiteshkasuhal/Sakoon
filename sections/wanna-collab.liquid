@@ -1,0 +1,40 @@
+
+ 
+
+{% if product.metafields.arena.wannaimage != blank %}
+<div class="container last_sec_prod">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-6 last_sec_prod_left">
+            <img src="{{product.metafields.arena.wannaimage}}">
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 last_sec_prod_right">
+            <h1>{{product.metafields.arena.wannaheading}}</h1>
+            <p>{{product.metafields.arena.wannasubheading}}</p>
+            <button onclick="window.location=' {{product.metafields.arena.btn-linkk}} '" class="black_btn">APPLY NOW</button>
+        </div>
+    </div>
+</div>
+  {% endif %}
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Wanna Collab",
+    "settings": [],
+    "presets":[{
+                 "name":"wanna collab",
+                 "category":"custom"
+              }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

@@ -1,0 +1,251 @@
+{%- style -%}
+  .product-info-sec {
+    padding-top: {{ section.settings.padding_top | times: 0.41 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+  }
+  
+   @media screen and (min-width: 767px) {
+    .product-info-sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .product-info-sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .product-info-sec .sec-head {
+    margin-bottom: 100px;
+    gap: 20px;
+  }
+  .checklistblock {
+    padding: 0;
+    list-style: none;
+    margin: 30px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .checklistblock li {
+    font-size: 20px;
+    font-weight: 500;
+    splay: flex;
+    align-items: center;
+  }
+  .checklistblock li img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  .infocontent_box {
+    max-width: 611px;
+    margin: 0 auto;
+  }
+  span.infobadge {
+    background: #FFB800;
+    font-size: 17px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 30px;
+    line-height: 22px;
+    border-radius: 100px;
+    font-weight: 500;
+    margin-bottom: 21px;
+  }
+  .infocontent_box p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .imgbox img {
+    border: 2px solid #000000;
+  }
+  .infocontent_box strong {
+    font-weight: 500;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .product-info-sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+    .checklistblock {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    .checklistblock li {
+        font-size: 14px;
+    }
+    .checklistblock li img {
+        width: 15px;
+        margin-right: 7px;
+    }
+    .infocontent_box p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    span.infobadge {
+      padding: 7px 15px;
+      font-size: 11px;
+      text-align: center;
+      width: 100%;
+      line-height: 14px;
+      margin-bottom: 10px;
+  }
+    .imgbox img {
+      border: 1px solid #000000;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .infocontent_box {
+      margin-top: 15px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Product Info Section --------------------- -->
+<section class="product-info-sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-center">
+          {% if section.settings.badgetxt != blank %}
+          <span class="infobadge text-center">{{section.settings.badgetxt}}</span>
+          {% endif %}
+      <h2 class="sec-title">{{section.settings.secheading}}</h2>
+      <div class="sec-description">{{section.settings.secdescription}}</div>
+    </div>
+    {% endif %}
+    <div class="row align-items-center">
+      <div class="col-md-6 col-12">
+        <div class="imgbox">
+          <img loading="lazy" src="{{ section.settings.leftimage | image_url }}" class="img-fluid{% if section.settings.leftimage_mobile != blank %} desktop_only{% endif %}" alt="{{ section.settings.secheading | escape }}" width="auto" height="auto" loading="lazy">
+          {% if section.settings.leftimage_mobile != blank %}
+          <img src="{{ section.settings.leftimage_mobile | image_url }}" class="img-fluid mobile_only" alt="{{ section.settings.secheading | escape }}" width="auto" height="auto" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="infocontent_box">
+          {% if section.settings.blockdescription != blank %}
+          <div>{{section.settings.blockdescription}}</div>
+          {% endif %}
+          <ul class="checklistblock">
+            {% for block in section.blocks %}
+              {% if block.settings.listtxt != blank %}
+                        {% if template.suffix == 'shilajit-new'%}
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+  <circle cx="10.587" cy="11.4184" r="7.49625" fill="white"/>
+  <path d="M10.9488 0.235352C5.22984 0.235352 0.536621 4.92857 0.536621 10.6476C0.536621 16.3665 5.22984 21.0598 10.9488 21.0598C16.6678 21.0598 21.361 16.3665 21.361 10.6476C21.361 4.92857 16.6678 0.235352 10.9488 0.235352ZM9.68875 15.3835L5.12914 10.8239L6.85456 9.0985L9.76859 12.0125L15.6187 6.6945L17.2607 8.49976L9.68875 15.3835Z" fill="#B39743"/>
+</svg> {{block.settings.listtxt}}</li>
+                        {% else %}
+              <li>{% if block.settings.image != blank %}<img loading="lazy" src="{{  block.settings.image | image_url }}"  alt="checklist Image" width="auto" height="auto" loading="lazy" fetchpriority="low" />{% endif %} {{block.settings.listtxt}}</li>
+                          {% endif %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Info Capsules",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "image_picker",
+      "id": "leftimage",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "leftimage_mobile",
+      "label": "Left Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "badgetxt",
+      "label": "Badge Text"
+    },
+    {
+      "type": "richtext",
+      "id": "blockdescription",
+      "label": "Block Description"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "Text",
+        "name": "List Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "listtxt",
+            "label": "List Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Info Capsules",
+        "category": "Product Info Capsules"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,99 @@
+<style>
+  .quick_access--with-images {
+    display:none;
+  } 
+  @media(max-width:767px){
+    .quick_access--with-images {
+      border-bottom: 1px solid #e6e1db;
+      display: flex;
+      flex-direction: row;
+      height: 48px;
+      justify-content: space-between;
+      overflow: scroll;
+      padding: 0 10px;
+    }
+    .quick_access--with-images {
+      -webkit-column-gap: 7px;
+      column-gap: 7px;
+      height: 100%;
+      padding: 10px 10px 0;
+    }
+    .quick_access--with-images .quick_access_img_container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 10px;
+      width: 100%;
+    }
+    .quick_access--with-images img {
+      border-radius: 50%;
+      display: inline-block;
+      height: 78px;
+      margin: 0 4px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      width: 78px;
+    }
+    .quick_access--with-images .quick_access_link_text {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 14px;
+      align-items: center;
+      display: flex;
+      margin-top: 5px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      justify-content: center;
+      padding: 0;
+      white-space: nowrap;
+    }
+  }
+</style>
+<div class="quick_access--with-images" style="">
+  {% for block in section.blocks %}
+  <a class="quick_access_img_container" href="{{ block.settings.link }}">
+    <img data-src="{{ block.settings.img | img_url : 'master' }}" class="lazyload" alt="{{ block.settings.text }}">
+    <span class="quick_access_link_text">{{ block.settings.text }}</span>
+  </a>
+  {% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Mobile Quick Links",
+    "settings": [],
+    "blocks":[
+      {
+        "type":"link",
+        "name":"Quick Link",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"img",
+            "label":"Image"
+          },
+          {
+            "type":"text",
+            "id":"text",
+            "label":"Text"
+          },
+          {
+            "type":"url",
+            "id":"link",
+            "label":"Link"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name": "Mobile Quick Links"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

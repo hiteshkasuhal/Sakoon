@@ -1,0 +1,52 @@
+<style>
+  .pdp_scroll-background .pdp_scroll-background__inner {
+    width: 100%;
+    height: 282px;
+    top: 0;
+    left: 0; 
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    animation: moveSlide 50s linear infinite;
+    {% if product.metafields.custom.banner_image != blank %}
+    background-image: url({{product.metafields.custom.banner_image | img_url : 'master'}});
+    {% else %}
+    background-image: url({{section.settings.product_slider | img_url : 'master'}});
+    {% endif %}
+  }
+  @keyframes moveSlide{
+    0% {
+      background-position: 0;
+    }
+    100% {
+      background-position: -1200px;
+    }
+  }
+</style>
+<div class="pdp_scroll-background">
+  <div class="pdp_scroll-background__inner">
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Product page scroll",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"product_slider",
+        "label":"Product image"
+      }
+    ],
+    "presets":[
+      {
+        "name": "Product page scroll"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

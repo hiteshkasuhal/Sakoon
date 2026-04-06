@@ -1,0 +1,272 @@
+{%- style -%}
+  .video_with_text {
+    padding-top: {{ section.settings.padding_top | times: 0.41 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .video_with_text {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .video_with_text {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .video_with_text .sec-head {
+    gap: 20px;
+  }
+  .checklistblock {
+    padding: 0;
+    list-style: none;
+    margin: 30px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .checklistblock li {
+    font-size: 20px;
+    font-weight: 500;
+    splay: flex;
+    align-items: center;
+  }
+  .checklistblock li img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  .infocontent_box {
+    max-width: 611px;
+    margin: 0 auto;
+  }
+  span.infobadge {
+    background: #FFB800;
+    font-size: 17px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 30px;
+    line-height: 22px;
+    border-radius: 100px;
+    font-weight: 500;
+    margin-bottom: 21px;
+  }
+  .infocontent_box p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .imgbox img {
+    border: 2px solid #000000;
+  }
+  .infocontent_box strong {
+    font-weight: 500;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .video_with_text .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+    .checklistblock {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    .checklistblock li {
+        font-size: 14px;
+    }
+    .checklistblock li img {
+        width: 15px;
+        margin-right: 7px;
+    }
+    .infocontent_box p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    span.infobadge {
+      padding: 7px 15px;
+      font-size: 11px;
+      text-align: center;
+      width: 100%;
+      line-height: 14px;
+      margin-bottom: 10px;
+  }
+    .imgbox img {
+      border: 1px solid #000000;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .infocontent_box {
+      margin-top: 15px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Product Info Section --------------------- -->
+<section class="video_with_text" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-12">
+        <div class="infocontent_box">
+          
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-left">
+      {% if section.settings.image != blank %}
+        <div class="rating_custom">
+        <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image.alt }}" width="auto" height="auto" loading="lazy">
+        </div>
+          {% endif %}
+      <h2 class="sec-title">{{section.settings.secheading}}{% if section.settings.image2 != blank %}
+        <img src="{{ section.settings.image2 | image_url }}" alt="{{ section.settings.image2.alt }}" width="auto" height="auto" loading="lazy">
+          {% endif %}</h2>
+      <div class="sec-description">{{section.settings.secdescription}}</div>
+      {% if section.settings.image3 != blank %}
+        <div class="image_below_custom">
+        <img src="{{ section.settings.image3 | image_url }}" alt="{{ section.settings.image3.alt }}" width="auto" height="auto" loading="lazy">
+        </div>
+          {% endif %}
+    </div>
+    {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        {% if section.blocks.size > 0 %}
+        <div class="imgbox slider_{{ section.id }}">
+          {% for block in section.blocks %}
+            {% if block.settings.video != blank %}
+          <div class="video_slider_item">
+         {{ block.settings.video | video_tag:controls:true, image_size: 'master'| replace:'<img','<img alt="video poster" width="auto" height="auto" fetchpriority="low"' }}
+          </div>
+              {% endif %}
+          {% endfor %}
+        </div>
+              <div class="sliderarrows">
+                <a href="javascript:void(0);" class="customervideoprev prev"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/left-arrow.svg"  alt="Slide Previous" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Slide Previous</span></a>
+                <div class="slick-slider-dots customervideo-slider-dots"></div>
+                <a href="javascript:void(0);" class="customervideonext next"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/right-arrow.svg"  alt="Slide next" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Slide Next</span></a>
+              </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $(document).ready(function(){    
+    $('.slider_{{ section.id }}').slick({
+    dots: true,
+    arrows: true,
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: $('.customervideoprev'),
+    nextArrow: $('.customervideonext'),
+    appendDots: $('.customervideo-slider-dots'),
+    responsive: [
+      {
+      breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+      }
+    ]
+    });
+  });
+</script>
+{% schema %}
+  {
+    "name": "Video With Text LP",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Rating Image"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Image"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video With Text LP"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

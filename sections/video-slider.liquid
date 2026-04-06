@@ -1,0 +1,261 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    } 
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 750px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="video_slider_custom section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }}">
+   <div class="page-width section-{{ section.id }}-padding isolate">
+     <div class="videos_top_text center">
+       {% if section.settings.html != blank %}
+      <div class="rich-text__html">{{ section.settings.html }}</div>
+       {% endif %}
+       {% if section.settings.heading != blank %}
+      <h2 class="rich-text__heading rte inline-richtext h1">{{ section.settings.heading }}</h2>
+       {% endif %}
+       {% if section.settings.text != blank %}
+      <div class="rich-text__text"><p>{{ section.settings.text }}</p></div>
+       {% endif %}
+     </div>
+
+
+     <div class="videos_center left">
+       <div class="videos_slider_main slider_{{ section.id }}">
+        {%- for block in section.blocks -%}
+              {%- if block.settings.video != blank -%}
+       <div class="videos_slider_item">
+          <div class="video_wrapper_custom">
+                {% capture videoLayout %}
+            {{ block.settings.video | media_tag: image_size: "master", autoplay: false, loop: true, controls: true, preload: "true", class:"lazy lazy video_paused_custom" | replace:'<img','<img alt="video poster" width="auto" height="auto" fetchpriority="low"' }}
+                {% endcapture %} {{ videoLayout | replace: "<source src","<source data-src" }}
+            {% if  block.settings.image != blank %}
+           <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image.alt }}" class="trigger_video_play_js trigger_video_play_css">
+            {% else %}
+              <img src="{{ block.settings.video.preview_image | image_url }}" width="auto" height="auto" loading="lazy" alt="video" class="trigger_video_play_js trigger_video_play_css">
+           
+              {% endif %}
+             <div class="custom_button">
+                <span>
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="84" viewBox="0 0 62 84" fill="none">
+  <path d="M0.748474 81.1272V2.47201C0.748474 0.722456 2.70872 -0.311492 4.15263 0.676452L60.1945 39.0209C61.4393 39.8726 61.4608 41.7019 60.2364 42.5826L4.19451 82.8934C2.75527 83.9287 0.748474 82.9001 0.748474 81.1272Z" fill="white"/>
+</svg></span>
+                </div>
+                </div>
+           </div>
+        
+              {%- endif -%}
+       {% endfor %}
+       </div>
+     </div>
+      
+       {% if section.settings.text != blank %}
+      <div class="videos_bottom_text center">
+      <div class="rich-text__text">{{ section.settings.text2 }}</div>
+     </div>
+       {% endif %}
+     
+   </div>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+ let lazyVideos = [...document.querySelectorAll("video.lazy")]
+
+ if ("IntersectionObserver" in window) {
+   let lazyVideoObserver = new IntersectionObserver(function(entries) {
+     entries.forEach(function(video) {
+       if (video.isIntersecting) {
+         for (let source in video.target.children) {
+           let videoSource = video.target.children[source];
+           if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+             videoSource.src = videoSource.dataset.src;
+           }
+         }
+
+         video.target.load();
+         video.target.classList.remove("lazy");
+         lazyVideoObserver.unobserve(video.target);
+       }
+     });
+   });
+
+   lazyVideos.forEach(function(lazyVideo) {
+     lazyVideoObserver.observe(lazyVideo);
+   });
+ }
+});
+</script>
+<script>
+    $('.slider_{{ section.id }}').slick({
+  centerMode: true,
+  centerPadding: '0px',
+  dots: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+  cssEase:'linear',
+  prevArrow:'<button class="slick-arrow slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none"><g opacity="1"><circle cx="21.2986" cy="21.2986" r="20.571" transform="rotate(180 21.2986 21.2986)" fill="white" stroke="black" stroke-width="1.45522"/><path d="M24.453 10.7554L15.6383 20.6719L24.453 30.5885" stroke="black" stroke-width="2.69263" stroke-linecap="round" stroke-linejoin="round"/></g></svg>Slide Previous</button>',
+nextArrow:'<button class="slick-arrow slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none"><circle cx="21.2986" cy="21.2986" r="20.571" fill="white" stroke="black" stroke-width="1.45522"/><path d="M18.1437 31.8419L26.9584 21.9253L18.1437 12.0088" stroke="black" stroke-width="2.69263" stroke-linecap="round" stroke-linejoin="round"/></svg>Slide Next</button>',
+ responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        slidesToShow:1, 
+        slidesToScroll: 1, 
+        dots: true,
+  centerPadding: '20px',
+      }
+    }
+  ]
+});
+  
+</script>
+
+{% schema %}
+  {
+    "name": "Video Slider",
+    "settings": [
+     {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "liquid",
+      "id": "html",
+      "label": "Html"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text2",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+     {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+         {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Slider"
+    }
+  ]
+  }
+{% endschema %}

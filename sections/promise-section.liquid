@@ -1,0 +1,190 @@
+{%- style -%}
+  .promise-sec {
+    padding-top: {{ section.settings.padding_top | times: 0.47 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.43 | round: 0 }}px;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .promise-sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .promise-sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .promise-sec .sec-head {
+    margin-bottom: 50px;
+    gap: 20px;
+  }
+  .promisebox .promiseicon {
+      width: 70px;
+      object-fit: contain;
+      height: 70px;
+      object-position: center;
+  }
+  .promisebox p {
+      font-size: 18px;
+      font-weight: normal;
+  }
+  .promise_row {
+      display: flex;
+      gap: 7px;
+      justify-content: space-between;
+  }
+  .promisebox .iconbox {
+      margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 1299px) {
+    .promise_row .promisecol {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+    .promise_row {
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: flex-start;
+    }
+    .promisebox {
+        padding: 0 15px;
+        margin-bottom: 15px;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .promise-sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+    .promisebox p {
+        font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .promise_row .promisecol {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+    .promisebox p {
+        font-size: 13px;
+    }
+    .promisebox .promiseicon {
+        width: 50px;
+        height: 50px;
+    }
+    .promisebox {
+        padding: 0 6px;
+        margin-bottom: 20px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Promise Section --------------------- -->
+<section class="promise-sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-center">
+      <h2 class="sec-title">{{section.settings.secheading}}</h2>
+      {% if section.settings.secdescription != blank %}
+      <div class="sec-description">{{section.settings.secdescription}}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="promise_row">
+      {% for block in section.blocks %}
+      <div class="promisecol">
+        <div class="promisebox text-center">
+          <div class="iconbox">
+            <img src="{{ block.settings.promiseicon | image_url }}" class="promiseicon img-fluid" alt="{{ block.settings.promisetitle |escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+          </div>
+          <p>{{block.settings.promisetitle}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Promise Section",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "Text",
+        "name": "Promise Row",
+        "settings": [
+          {
+            "type": "text",
+            "id": "promisetitle",
+            "label": "Promise Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "promiseicon",
+            "label": "Promise Icon/Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promise Section",
+        "category": "Promise Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

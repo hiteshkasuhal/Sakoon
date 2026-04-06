@@ -1,0 +1,552 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {% if section.settings.bg2 != blank %}
+    .block_{{ section.id }} {
+      background-image:url({{section.settings.bg2 | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+  {% if section.settings.bg2_mob != blank %}
+  @media screen and (max-width: 915px) {
+    .block_{{ section.id }} {
+      background-image:url({{section.settings.bg2_mob | image_url}});
+    }
+}
+  {% endif %}
+{%- endstyle -%}
+
+{% if section.settings.svg_desktop != blank %}
+  <div class="desktop_only curve_top {{ section.settings.custom_class }}">{{ section.settings.svg_desktop }}</div>
+  {% endif %}
+  {% if section.settings.svg_mobile != blank %}
+  <div class="mobile_only curve_top {{ section.settings.custom_class }}">{{ section.settings.svg_mobile }}</div>
+  {% endif %}
+
+
+<div class="slider_review_slider_new_custom section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }};color:{{ section.settings.color | default:'#000' }};">
+   <div class="container_hk section-{{ section.id }}-padding isolate">
+     
+     <div class="richtext_blocks_new {{ section.settings.position }} block_{{ section.id }}" style="background-color:{{ section.settings.bg_color2 | default:'transparent' }};color:{{ section.settings.color | default:'#000' }}">
+
+
+
+<div class="reviews_top_slider center">
+       {% if section.settings.rating_text != blank or section.settings.rating != blank %}
+      <div class="review_slider_rating_top">{{ section.settings.rating }}
+       {% if section.settings.rating_img != blank %}
+            <img src="{{ section.settings.rating_img | image_url }}" width="auto" height="auto" fetchpriority="high" loading="eager" alt="{{ section.settings.rating_img.alt }}">   
+       {% endif %} 
+       {% if section.settings.rating_text != blank %}
+      <span>{{ section.settings.rating_text }}</span>
+    {%endif %}</div>
+       {% endif %}
+       {% if section.settings.heading != blank %}
+      <h2 class="rich-text__heading  inline-richtext h1 lp_heading">{{ section.settings.heading }}</h2>
+       {% endif %}
+       {% if section.settings.subheading != blank %}
+      <div class="review_slider_subheading lp_sub_heding">{{ section.settings.subheading }}</div>
+       {% endif %}
+       {% if section.settings.text != blank %}
+      <div class="review_slider_text lp_sub_heding">{{ section.settings.text | replace:'<li>','<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <g clip-path="url(#clip0_9036_1726)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.0824 1.2392C5.41997 0.849784 5.83738 0.537565 6.30629 0.323745C6.77521 0.109925 7.28464 -0.000488249 7.8 1.62294e-06C8.8856 1.62294e-06 9.8584 0.480002 10.5176 1.2392C11.0318 1.20249 11.5478 1.27687 12.0307 1.45729C12.5135 1.6377 12.9519 1.91993 13.316 2.2848C13.6807 2.64885 13.9629 3.0871 14.1433 3.56981C14.3237 4.05251 14.3981 4.56838 14.3616 5.0824C14.7509 5.42004 15.0629 5.83749 15.2766 6.3064C15.4903 6.77531 15.6006 7.2847 15.6 7.8C15.6005 8.31536 15.4901 8.8248 15.2763 9.29371C15.0624 9.76262 14.7502 10.18 14.3608 10.5176C14.3973 11.0316 14.3229 11.5475 14.1425 12.0302C13.9621 12.5129 13.6799 12.9511 13.3152 13.3152C12.9511 13.6799 12.5129 13.9621 12.0302 14.1425C11.5475 14.3229 11.0316 14.3973 10.5176 14.3608C10.18 14.7502 9.76262 15.0624 9.29371 15.2763C8.8248 15.4901 8.31536 15.6005 7.8 15.6C7.28464 15.6005 6.77521 15.4901 6.30629 15.2763C5.83738 15.0624 5.41997 14.7502 5.0824 14.3608C4.5683 14.3976 4.0523 14.3234 3.56945 14.1431C3.08659 13.9628 2.64818 13.6807 2.284 13.316C1.91918 12.9519 1.63698 12.5135 1.45656 12.0306C1.27615 11.5478 1.20174 11.0318 1.2384 10.5176C0.84913 10.18 0.537062 9.76251 0.323382 9.2936C0.109702 8.8247 -0.00058689 8.3153 2.34868e-06 7.8C2.34868e-06 6.7144 0.480002 5.7416 1.2392 5.0824C1.20261 4.56838 1.27704 4.05249 1.45746 3.56978C1.63787 3.08706 1.92004 2.64882 2.2848 2.2848C2.64882 1.92004 3.08706 1.63787 3.56978 1.45746C4.05249 1.27704 4.56837 1.20261 5.0824 1.2392ZM10.688 6.3488C10.736 6.28484 10.7707 6.21193 10.7901 6.13436C10.8096 6.05679 10.8133 5.97611 10.8011 5.89708C10.7889 5.81805 10.761 5.74226 10.7191 5.67416C10.6772 5.60606 10.6221 5.54702 10.557 5.50052C10.4919 5.45402 10.4183 5.42099 10.3402 5.40338C10.2622 5.38577 10.1815 5.38393 10.1028 5.39797C10.0241 5.41201 9.94893 5.44164 9.88182 5.48513C9.81471 5.52862 9.75697 5.58508 9.712 5.6512L7.1232 9.2752L5.824 7.976C5.71026 7.87002 5.55982 7.81232 5.40438 7.81506C5.24894 7.8178 5.10063 7.88077 4.9907 7.9907C4.88077 8.10063 4.8178 8.24894 4.81506 8.40438C4.81232 8.55982 4.87002 8.71026 4.976 8.824L6.776 10.624C6.83759 10.6855 6.91184 10.7329 6.99359 10.7629C7.07534 10.7929 7.16263 10.8047 7.24941 10.7975C7.33619 10.7904 7.42037 10.7644 7.4961 10.7215C7.57184 10.6785 7.63732 10.6196 7.688 10.5488L10.688 6.3488Z" fill="#0BC168"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_9036_1726">
+      <rect width="15.6" height="15.6" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>' }}</div>
+       {% endif %}
+     </div>
+     
+     <div class="relative">
+     <div class="reviews_center_slider_new">
+       <div class="review_slider_main_slider_new slider_{{ section.id }} custom_slick_slider same_height_slider">
+        {%- for block in section.blocks -%}
+       <div class="review_slider_custom_slider_new_item">
+       <div class="review_slider_custom_slider_new_item_inner loop_{{ forloop.index }}">
+       <div class="review_slider_custom_slider_new_item_bg left">
+       <div class="review_slider_custom_slider_top">
+       
+
+          {% if block.settings.image != blank %}
+            <div class="review_image_top">
+            <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image.alt }}">  
+            </div>
+            {% endif %}
+            <div class="review_user_flex">
+          {% if block.settings.user != blank %}
+            <div class="review_user_image">
+              <img src="{{ block.settings.user | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.user.alt }}">  
+           </div>
+            {% endif %}
+            <div class="review_rating2">
+{{ block.settings.rating }}<span>{{ block.settings.rating_text }}</span></div>
+            </div>
+          {% if block.settings.text != blank %}
+            <div class="review_text_slider_new">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+          
+       <div class="review_slider_custom_slider_bottom">
+          {% if block.settings.name != blank %}
+<div class="review_name_main">
+<div class="review_name">
+{% if block.settings.image2 != blank %}
+<img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">
+{% endif %}
+<span>{{ block.settings.name }}</span>
+</div>
+<div class="verified_badge">{{ block.settings.verified_img }}<span>{{ block.settings.verified_text }}</span></div>
+          </div>
+            {% endif %}
+
+            {% if block.settings.richtext != blank %}
+            <div class="review_richtext_slider_new">{{ block.settings.richtext }}</div>
+            {% endif %}
+       
+          </div>
+
+          </div>
+          </div>
+       </div>
+
+       {% endfor %}
+       </div>
+
+
+    
+     </div>
+
+
+    
+
+
+    
+     <div class="slider_navigations center{% if section.blocks.size < section.settings.columns_desktop %} mobile_only{% endif %}{% if section.blocks.size < 1 %} desktop_only{% endif %}">
+  <div class="slider_button_custom custom_prev prev_{{ section.id }}"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.65" y="-0.65" width="34.7" height="34.7" rx="17.35" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 -5.68248e-08 34.7)" stroke="#1898DC" stroke-opacity="1" stroke-width="1.3"/>
+<path d="M23.9961 18H11.9961" stroke="#1898DC" stroke-opacity="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 11.9995L12 17.9995L18 23.9995" stroke="#1898DC" stroke-opacity="1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+       <div class="slider_dots_custom dots_{{ section.id }}"></div>
+  <div class="slider_button_custom custom_next next_{{ section.id }}"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="35.35" y="35.35" width="34.7" height="34.7" rx="17.35" transform="rotate(-180 35.35 35.35)" stroke="#1898DC" stroke-width="1.3"/>
+<path d="M12.0039 18H24.0039" stroke="#1898DC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 11.9995L24 17.9995L18 23.9995" stroke="#1898DC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+     </div>
+     </div>
+
+{% if section.settings.button_label != blank %}
+<div class="review_slider_bottom">
+{% if section.settings.richtext != blank %}
+<div class="review_slider_bottom_text">{{ section.settings.richtext }}</div>
+{% endif %}
+<div class="review_slider_bottom_button">
+<a href="{{ section.settings.button_link | default:'#' }}" class="custom_hk_button">{{ section.settings.button_label }}</a>
+</div>
+{% if section.settings.text2 != blank %}
+<div class="review_slider_bottom_text">
+{% if section.settings.image_bottom != blank %}
+<img src="{{ section.settings.image_bottom | image_url }}" width="auto" height="auto" fetchpriority="high" loading="eager" alt="{{ section.settings.image_bottom.alt }}">  
+{% endif %}
+<span>{{ section.settings.text2 }}</span>
+</div>
+{% endif %}
+</div>
+{% endif %}
+    
+   </div>
+  </div>
+
+  </div>
+
+
+    {% if section.settings.svg_desktop2 != blank %}
+  <div class="desktop_only curve_bottom {{ section.settings.custom_class }}">{{ section.settings.svg_desktop2 }}</div>
+  {% endif %}
+  {% if section.settings.svg_mobile2 != blank %}
+  <div class="mobile_only curve_bottom {{ section.settings.custom_class }}">{{ section.settings.svg_mobile2 }}</div>
+  {% endif %}
+
+
+<script>
+    $('.slider_{{ section.id }}').slick({
+  dots: true,
+  speed: 400,
+  slidesToShow: {{ section.settings.columns_desktop }},
+  slidesToScroll: 1,
+  autoplay: false,
+  centerMode: false,
+  centerPadding: '0px',
+  infinite: false,
+    prevArrow: $('.prev_{{ section.id }}'),
+    nextArrow: $('.next_{{ section.id }}'),
+    appendDots: $('.dots_{{ section.id }}'),
+  cssEase:'linear',
+  responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        speed: 400,
+        infinite: true,
+        slidesToShow:{{ section.settings.columns_mobile }},
+      }
+    }
+  ]
+});
+  
+</script>
+{% schema %}
+  {
+    "name": "Reviews Slider LP",
+    "settings": [
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_desktop",
+      "label": "Curve Top Desktop"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_mobile",
+      "label": "Curve Top Mobile"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_desktop2",
+      "label": "Curve Bottom Desktop"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_mobile2",
+      "label": "Curve Bottom Mobile"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background Mobile"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg2",
+      "label": "Section Block Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg2_mob",
+      "label": "Section Block Background Mobile" 
+    },
+     {
+      "type": "color",
+      "id": "bg_color2",
+      "label": "Section Block Background Color"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content position"
+    },
+     {
+      "type": "color",
+      "id": "color",
+      "label": "Section Text Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "liquid",
+      "id": "rating",
+      "label": "Rating Svg"
+    },
+    {
+      "type": "image_picker",
+      "id": "rating_img",
+      "label": "Rating Img"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating_text",
+      "label": "Rating Text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "SubHeading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bottom",
+      "label": "Bottom Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text2",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Bottom Richtext"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "COlumns Desktop",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "COlumns Mobile",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+     {
+      "type": "review",
+      "name": "Review",
+      "settings": [ 
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "image_picker",
+          "id": "user",
+          "label": "User Image"
+        },
+          {
+          "type": "liquid",
+          "id": "rating",
+          "label": "Rating"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "rating_text",
+          "label": "Rating Text"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Reviewer Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "liquid",
+          "id": "verified_img",
+          "label": "Verfied Svg"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "verified_text",
+          "label": "Verfied Text"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Richtext"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Slider LP"
+    }
+  ]
+  }
+{% endschema %}

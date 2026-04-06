@@ -1,0 +1,234 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {% if section.settings.bg2 != blank %}
+    .block_{{ section.id }} {
+      background-image:url({{section.settings.bg2 | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{%- endstyle -%}
+
+{% assign blocks_custom = false %}
+{% assign blocks_custom_loop = 0 %}
+<div class="richtext_landing_page section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }}">
+   <div class="page-width section-{{ section.id }}-padding isolate">
+     <div class="richtext_blocks_new {{ section.settings.position }} block_{{ section.id }}" style="background-color:{{ section.settings.bg_color2 | default:'transparent' }};color:{{ section.settings.color | default:'#000' }}">
+  
+        <div class="trigger_tabs_main tabs_{{ section.id }}">
+        <div class="trigger_tabs_flex">
+          {% assign first_tab_id = "" %}
+          {% assign tab_loop = 0 %}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {% when 'tab_trigger' %}
+  {% assign tab_loop = tab_loop | plus: 1 %}
+            {% if tab_loop == 1 %}
+          {% assign first_tab_id = block.settings.id %}
+              {% endif %}
+        <div class="trigger_tabs_item_inner">
+        <div class="trigger_tabs_item{% if tab_loop == 1 %} active{% endif %}" data_tab="{{ block.settings.id }}">
+        {{ block.settings.avg }}  {{ block.settings.text }}
+        </div>
+        </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+        </div>
+     </div>
+   </div>
+  </div>
+
+<style>
+  .{{section.settings.trigger_class}}:not(#{{first_tab_id}}) {
+    display:none;
+  }
+</style>
+<script>
+ jQuery('.tabs_{{ section.id }} .trigger_tabs_item').click(function(){
+    jQuery('.tabs_{{ section.id }} .trigger_tabs_item').removeClass('active');
+   jQuery(this).addClass('active');
+    var id = jQuery(this).attr('data_tab');
+    jQuery('.{{ section.settings.trigger_class }}').hide();
+    jQuery('#'+id).show();
+    jQuery('#'+id).find('.slick-slider').slick('refresh');
+});
+</script>
+
+
+{% schema %}
+  {
+    "name": "Tabs Trigger",
+    "settings": [
+      {
+          "type": "text",
+          "id": "trigger_class",
+          "label": "Trigger Tab Class"
+        },
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg2",
+      "label": "Section Block Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color2",
+      "label": "Section Block Background Color"
+    },
+     {
+      "type": "color",
+      "id": "color",
+      "label": "Section Block Text Color"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content position"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+    {
+      "type": "tab_trigger",
+      "name": "Tab Trigger",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "avg",
+          "label": "Tab Svg"
+        },
+          {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Tab Title"
+        },
+         {
+          "type": "text",
+          "id": "id",
+          "label": "Trigger Tab ID"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs Trigger"
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,428 @@
+{%- style -%} 
+  .science-gummies-sec {
+    padding-top:0;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+    overflow:hidden;
+  } 
+  
+   @media screen and (min-width: 767px) {
+    .science-gummies-sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .science-gummies-sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .science-gummies-sec .sec-head {
+    margin-bottom: 32px;
+    gap: 25px;
+  }
+  .slidebox {
+    border: 2px solid #000000;
+    background: #fff;
+    padding: 25px;
+    border-radius: 9px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sciencebehind_slider .slick-track {
+      display: flex;
+  }
+  .sciencebehind_slider .slick-track .slick-slide {
+      height: auto;
+      <!-- padding: 0 15px; -->
+  }
+  .slidebox p {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 500;
+      margin-bottom:25px
+  }
+  .slidebox .slidequote {
+      width: 37px;
+      position: absolute;
+      top: -20px;
+  }
+  .gummiesimg {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    margin-right: 13px;
+  }
+
+.gummiesimgbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.gummiesimgbox .gummiestitleblock {text-align: left;}
+.gummiestitleblock  p {
+    margin: 0;
+}
+.gummiestitleblock h4 {
+    font-size: 25.29px;
+}
+.gummiesimg img {
+    object-fit: contain;
+}
+span.headbadge {
+    width: max-content;
+    background: #000000;
+    font-size: 17px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 4px 30px;
+    line-height: 22px;
+    border-radius: 100px;
+    color: #fff;
+    font-weight: 500;
+}
+.gummiessliderblock .slick-dots li button {
+    background: #FFE5A2 !important;
+}
+.btnblock {
+    margin-top: 26px;
+}
+.gummiessliderblock .slick-dots li.slick-active button {
+    background: #000000 !important;
+}
+.textbtn {
+    font-size: 19.6px;
+    color: #000000;
+    display: flex;
+    text-decoration: underline;
+    align-items: center;
+    justify-content: center;
+}
+
+.textbtn img {
+    width: 13px;
+    margin-left: 10px;
+}
+.main_sciencebehind .slidebox {
+    border: 0;
+    margin-bottom: 19px;
+    padding-top:15px;
+}
+.main_sciencebehind .slidebox .gummiesimgbox {
+    margin-bottom: 15px;
+}
+  
+  @media screen and (max-width: 991px) {
+    .science-gummies-sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .science-gummies-sec .sec-head {
+        margin-bottom: 31px;
+        gap: 8px;
+    }
+    .slidebox p {
+        line-height: 20px;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .gummiesimg {
+      width: 51px;
+      height: 51px;
+    }
+    .gummiessliderblock .scienceprev, .gummiessliderblock .sciencenext {
+        display: none;
+    }
+    .main_sciencebehind .slidebox p {
+        margin-bottom: 0;
+    }
+    .textbtn img {
+      width: 7px;
+    }
+    .textbtn {
+        font-size: 14px;
+    }
+    .main_sciencebehind .slidebox .gummiesimgbox {
+        margin-bottom: 9px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Happy Customers Section --------------------- -->
+<section class="science-gummies-sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    <div class="row align-items-center flex-column-reverse flex-md-row">
+      <div class="col-md-5 col-12">
+        {% if section.settings.secheading != blank %}
+        <div class="sec-head d-flex flex-column text-left">
+          {% if section.settings.badgetxt != blank %}
+          <span class="headbadge">{{section.settings.badgetxt}}</span>
+          {% endif %}
+          <h2 class="sec-title">{{section.settings.secheading}}</h2>
+          <div class="sec-description">{{ section.settings.secdescription }}</div>
+        </div>
+        {% endif %}
+          <div class="gummiessliderblock">
+        
+          <div class="sciencebehind_slider">
+              {% for block in section.blocks %}
+                  {% if block.settings.gummiesimg != blank %}
+                    <div class="reviewslide">
+                      <div class="slidebox text-left">
+                        <div class="gummiesimgbox">
+                          <div class="gummiesimg">
+                            <img src="{{ block.settings.gummiesimg | image_url }}" class="img-fluid" alt="{{ block.settings.gummiestitle | escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low">
+                          </div>
+                          <div class="gummiestitleblock">
+                            <h4>{{block.settings.gummiestitle}}</h4>
+                          </div>
+                        </div>
+                        <p class="mb-0">{{ block.settings.gummiesdesc }}</p>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+
+
+        
+            <div class="sliderarrows">
+              <a href="javascript:void(0);" class="scienceprev prev"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/left-arrow.svg"  alt="Slide Previous" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Slide Previous</span></a>
+              <div class="slick-slider-dots science-slider-dots"></div>
+              <a href="javascript:void(0);" class="sciencenext next"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/right-arrow.svg"   alt="Slide Next" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Slide Next</span></a>
+            </div>
+            {% if section.settings.btntxt != blank %}
+            <div class="btnblock d-flex align-items-center justify-content-center">
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#ingredientpopup"  class="textbtn">{{section.settings.btntxt}}
+{% if template.suffix == 'bloating-relief' %}
+  <img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/img-icon.svg?v=1722717787"  alt="Ingredients Popup" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+  {% else %}
+  <img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/Vector.svg?v=1712649573"  alt="Ingredients Popup" width="auto" height="auto" loading="lazy" fetchpriority="low"/>{% endif %}</a>
+            </div>
+              
+              {% if section.settings.popumimg != blank %}
+              <!-- Modal -->
+              <div class="modal" id="ingredientpopup" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog  modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <button type="button" class="close popupclosebtn" data-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                          <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                        </svg>
+                      </button>
+                        <div class="popupimgblock">
+                        <img src="{{ section.settings.popumimg | image_url  }}" class="img-fluid" alt="Ingredients Popup" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endif %}
+          </div>
+      </div>
+      <div class="col-md-7 col-12">
+        <div class="gummiesimgblock">
+          <img src="{{ section.settings.rightblockimg | image_url }}" class="img-fluid"  alt="{{ section.settings.secheading | escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Science Behind Section",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "text",
+        "id": "badgetxt",
+        "label": "Badge Text"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "rightblockimg",
+        "label": "Right Image"
+      },     
+      {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "popumimg",
+        "label": "Popup Image"
+      }, 
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "title",
+        "name": "Gummies Box",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "gummiesimg",
+            "label": "Gummies Image"
+          },
+          {
+            "type": "richtext",
+            "id": "gummiestitle",
+            "label": "Gummies Title"
+          },
+          {
+            "type": "textarea",
+            "id": "gummiesdesc",
+            "label": "Gummies Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Science Behind Section",
+        "category": "Science Behind Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+{% if template.suffix == 'bloating-relief' %}
+<script type="text/javascript">
+  $(document).ready(function(){
+
+        var slides = $('.sciencebehind_slider .reviewslide');
+        for (var i = 0; i < slides.length; i += 6) {
+            slides.slice(i, i + 6).wrapAll('<div class="main_sciencebehind"></div>');
+        }
+
+    
+    $('.sciencebehind_slider').slick({
+    dots: true,
+    arrows: true,
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: $('.scienceprev'),
+    nextArrow: $('.sciencenext'),
+    appendDots: $('.science-slider-dots'),
+    responsive: [
+      {
+      breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: false,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+      }
+    ]
+    });
+  });
+</script>
+  {% else %}
+<script type="text/javascript">
+  $(document).ready(function(){
+
+        var slides = $('.sciencebehind_slider .reviewslide');
+        for (var i = 0; i < slides.length; i += 3) {
+            slides.slice(i, i + 3).wrapAll('<div class="main_sciencebehind"></div>');
+        }
+
+    
+    $('.sciencebehind_slider').slick({
+    dots: true,
+    arrows: true,
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    prevArrow: $('.scienceprev'),
+    nextArrow: $('.sciencenext'),
+    appendDots: $('.science-slider-dots'),
+    responsive: [
+      {
+      breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: false,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+          }
+      }
+    ]
+    });
+  });
+</script>
+{% endif %}
+{% javascript %}
+{% endjavascript %}
+

@@ -1,0 +1,267 @@
+{%- style -%}
+  .results-sec {
+    padding-top: {{ section.settings.padding_top | times: 0.44 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.30 | round: 0 }}px;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .results-sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .results-sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .results-sec .sec-head {
+    margin-bottom: 74px;
+    gap: 20px;
+  }
+  .customrating img {
+    max-width: 139px;
+  }
+  .customrating span {
+      font-size: 24px;
+      margin-left: 10px;
+  }
+  .customrating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .resultblock {
+      max-width: 267px;
+      margin: 0 auto;
+  }
+  .resultblock .percent {
+      position: relative;
+      display: inline-block;
+  }
+  .resultblock svg {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      transform: rotate(-45deg);
+  }
+  .resultblock svg circle {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: #EFEFEF;
+      stroke-width: 11;
+      stroke-linecap: round;
+  }
+  .resultblock svg circle:last-of-type {
+      stroke-dasharray: 455px;
+      stroke-dashoffset: calc(455px - (455px * var(--percent)) / 100);
+      stroke: #FFB800;
+  }
+  .resultnumber {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .resultnumber h3 {
+      font-size: 35px;
+      font-weight: 600;
+      font-family: Inter,sans-serif!important;
+      margin: 0;
+  }
+  .resulttitle p {
+      font-size: 22px;
+      text-transform: capitalize;
+      line-height: 26px;
+      margin-top: 17px;
+  }
+  .roundbarimgblock img {
+    width: 151px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .results-sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+    .customrating span {
+        font-size: 15px;
+    }
+    .customrating img {
+        max-width: 92px;
+    }
+
+  }
+  @media screen and (max-width: 767px) {
+  /* .resulttitle p {
+      font-size: 12px;
+      line-height: normal;
+  }
+  .resultnumber h3 {
+    font-size: 20px;
+  } */
+    .resultblock {
+      /* transform: scale(0.8); */
+    }
+    .resulttitle p {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 11px;
+    }
+    .roundbarimgblock img {
+        width: 84px;
+    }
+    .resultrow {
+        row-gap: 28px;
+    }
+    .resultblock {
+        max-width: 120px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Results Section --------------------- -->
+<section class="results-sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-center">
+      <div class="customrating">
+        <img src="{{ section.settings.ratingimg | image_url }}" class="img-fluid" alt="rating" width="auto" height="auto" loading="lazy" fetchpriority="low"><span>{{section.settings.ratingtxt}}</span>
+      </div>
+      <h2 class="sec-title">{{section.settings.secheading}}</h2>
+      <div class="sec-description">{{section.settings.secdescription}}</div>
+    </div>
+    {% endif %}
+
+    <div class="row resultrow">
+      {% for block in section.blocks %}
+      <div class="col-md-3 col-6 resultcol">
+        <div class="resultblock text-center">
+          <!-- <div class="percent">
+            <svg>
+              <circle cx="80" cy="80" r="75"></circle>
+                            <circle cx="80" cy="80" r="75" style="--percent: {{block.settings.resultpercentage}}"></circle>
+            </svg>
+            <div class="resultnumber">
+              <h3>{{block.settings.resultpercentage}}<span>%</span></h3>
+            </div>
+          </div> -->
+          {% if block.settings.resultimg != blank %}
+          <div class="roundbarimgblock">
+            <img src="{{ block.settings.resultimg | image_url }}" class="img-fluid" alt="{{ block.settings.resulttitle }}" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+          </div>
+          {% endif %}
+          <div class="resulttitle">{{ block.settings.resulttitle}}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Results Section",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "ratingimg",
+        "label": "Rating Star Image"
+      },
+      {
+        "type": "text",
+        "id": "ratingtxt",
+        "label": "Rating Text"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "Text",
+        "name": "Result Row",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "resulttitle",
+            "label": "Result Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "resultimg",
+            "label": "Result Image"
+          },
+          {
+            "type": "range",
+            "id": "resultpercentage",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Result Percentage",
+            "default": 81
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Results Section",
+        "category": "Results Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

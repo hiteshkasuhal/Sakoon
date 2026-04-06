@@ -1,0 +1,151 @@
+{%- style -%}
+  .verified_user_sec {
+    padding-top: {{ section.settings.padding_top | times: 0.41 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+    overflow:hidden;
+  }
+    
+   @media screen and (min-width: 767px) {
+    .verified_user_sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .verified_user_sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .verified_user_sec .sec-head {
+    margin-bottom: 92px;
+    gap: 25px;
+  }
+  .verified_user_sec .container {
+      max-width: 1024px;
+  }
+  .overviewimg img {
+      max-width: 468px;
+      width: 100%;
+  }
+  .overviewimg,
+  .customerimg {
+      padding: 0 50px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .verified_user_sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .verified_user_sec .sec-head {
+        margin-bottom: 31px;
+        gap: 8px;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Verified User Reviews Section --------------------- -->
+<section class="verified_user_sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-center">
+      <h2 class="sec-title">{{section.settings.secheading}}</h2>
+      {% if section.settings.secdescription != blank %}
+      <div class="sec-description">{{ section.settings.secdescription }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="row align-items-center flex-column-reverse flex-md-row">
+      {% if section.settings.reviewoverviewimg != blank %}
+      <div class="col-md-6 col-12">
+        <div class="overviewimg">
+          <img src="{{ section.settings.reviewoverviewimg | img_url:'master' }}" alt="review rating" class="img-fluid"/>
+        </div>
+      </div>
+      {% endif %}
+      {% if section.settings.customerreviewimg != blank %}
+      <div class="col-md-6 col-12 d-none d-md-block">
+        <div class="customerimg">
+          <img src="{{ section.settings.customerreviewimg | img_url:'master' }}" alt="review rating" class="img-fluid"/>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Verified User Reviews Sec",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "reviewoverviewimg",
+        "label": "Overall Review Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "customerreviewimg",
+        "label": "Customer Review Image"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "presets": [
+      {
+        "name": "Verified User Reviews Sec",
+        "category": "Verified User Reviews Sec"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

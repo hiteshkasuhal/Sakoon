@@ -1,0 +1,190 @@
+{%- style -%}
+  .money-back-sec {
+    padding-top: {{ section.settings.padding_top | times: 0.44 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.44 | round: 0 }}px;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .money-back-sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .money-back-sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .moneybacklogo {
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .moneyback-block {
+      max-width: 570px;
+      margin: auto;
+      padding: 30px;
+  }
+  .moneyback-block .sec-head {
+      gap: 25px;
+  }
+  .full-img:before {
+      content: "";
+      background: #FFB800;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -14px;
+      width: 28px;
+  }
+  .full-img {
+      position: relative;
+  }
+
+  @media screen and (max-width: 991px) {
+
+  }
+  @media screen and (max-width: 767px) {
+    .full-img:before {
+        top: auto;
+        height: 14px;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+    .moneyback-block .btnblock {
+        margin-top: 0;
+    }
+    .moneyback-block .sec-head {
+        gap: 16px;
+    }
+    .moneyback-block {
+        margin-top: 61px;
+    }
+    .moneybacklogo {
+        width: 150px;
+        left: 50%;
+        top: auto;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Money Back Section --------------------- -->
+<section class="money-back-sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container-fluid p-0">
+    <div class="row m-0 flex-column-reverse flex-md-row">
+      <div class="col-md-6 col-12 d-flex p-0">
+        {% if section.settings.secheading != blank %}
+        <div class="moneyback-block">
+          <div class="sec-head d-flex flex-column text-center text-md-left">
+            <h2 class="sec-title">{{section.settings.secheading}}</h2>
+            <div class="sec-description">{{section.settings.secdescription}}</div>
+            <!-- Button trigger modal -->
+            {% if section.settings.btntext != blank %}
+            <div class="btnblock d-flex justify-content-center justify-content-md-start">
+              <a href="javascript:void(0)"  data-toggle="modal" data-target="#moenybackpopup" class="textbtn">{{section.settings.btntext}} <img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/right-arrow.svg" alt="moenybackpopup" width="auto" height="auto" loading="lazy" fetchpriority="low"><span style="display:none;">Open Popup</span></a>
+            </div>
+              
+                {% if section.settings.popumimg != blank %}
+                <!-- Modal -->
+                <div class="modal" id="moenybackpopup" tabindex="-1" role="dialog"  aria-hidden="true">
+                  <div class="modal-dialog  modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close popupclosebtn" data-dismiss="modal" aria-label="Close">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                          </svg>
+                        </button>
+                          <div class="popupimgblock">
+                          <img src="{{ section.settings.popumimg | image_url  }}" class="img-fluid" alt="Popup Image" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+            {% endif %}
+          </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-md-6 col-12 p-0">
+        <div class="moneyimgblock">
+          <div class="full-img">
+            <img src="{{ section.settings.rightimg | image_url }}" class="img-fluid" alt="{{ section.settings.secheading | escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+          </div>
+          {% if section.settings.moneybacklogoimg != blank %}
+          <div class="moneybacklogo">
+            <img src="{{ section.settings.moneybacklogoimg | image_url }}" class="img-fluid" alt="moneybacklogo" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Money Back Section",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+        "type": "text",
+        "id": "btntext",
+        "label": "Popup Button Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "popumimg",
+        "label": "Popup Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "rightimg",
+        "label": "Right Image"
+      },  
+      {
+        "type": "image_picker",
+        "id": "moneybacklogoimg",
+        "label": "Money Back Logo Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Money Back Section",
+        "category": "Money Back Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
