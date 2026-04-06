@@ -1,0 +1,43 @@
+<tr class="cart-item" role="row">
+  <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
+    <a href="{{ product.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
+      <img class="cart-item__image"
+        src="{{ product.featured_image | img_url:'' }}"
+        alt="{{ product.featured_image.alt | escape }}"
+        loading="lazy"
+        width="150"
+        height="{{ 150 | divided_by: product.featured_image.aspect_ratio | ceil }}"
+      > 
+  </td>
+  <td class="cart-item__details" role="cell" headers="CartDrawer-ColumnProduct">
+    <a href="{{ product.url }}" class="cart-item__name h4 break">{{ product.title | escape }}</a>
+    <span>{{ product.price | money }}</span>
+  </td>
+  <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal ">
+    <div class="cart-item__price-wrapper">
+      
+      <div class="product-card-form">
+        {% if product.available %}
+        {% if product.variants.size > 1 %}
+          <select name="id" class="select upsell-variant">
+            {% for variant in product.variants %}
+            {% if variant.available %}
+              <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        {% else %}
+          <input type="hidden" class="upsell-variant" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+        {% endif %}
+        <button type="submit" class="button upsell-btn">ADD</button>
+        {% else %}
+        <button type="submit" class="button upsell-btn upsell-disable" disabled>SOLD OUT</button>
+          
+        {% endif %}
+      </div>
+      {% comment %}
+      <a href="{{ product.url }}" class="upsell-link">VIEW PRODUCT</a>
+      {% endcomment %}
+    </div>
+  </td>
+</tr>
