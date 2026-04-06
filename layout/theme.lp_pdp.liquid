@@ -1,0 +1,824 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+{% render 'replo-head' %}
+<meta property="fb:app_id" content="2037239083683524"/>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+   
+    <meta name="description" content="{{ page_description | escape }}">
+ 
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+{% render 'meta-tags' %}  
+  <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" as="script">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style">
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" as="script">
+  <link rel="preload" as="style" media="screen" href="https://sakoonnutrition.com/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css" crossorigin="anonymous">
+  <link rel="preload" href="{{ 'component-price.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'component-totals.css' | asset_url }}" as="style">
+    <!-- Preload CSS files -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" as="style">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"       integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" as="style">
+
+  <!-- Preload JS files -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"       integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" as="script">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" as="script">
+  <link rel="preload" href="https://cdn.shopify.com/s/files/1/0574/0809/4268/t/1/assets/bootstrap-24.0.46.js" as="script">
+  <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" as="script">
+
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://whale.camera/' crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link data-href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+ 
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+      integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script data-src="{{ 'money.js' | asset_url }}" defer="defer"></script>
+<script>
+  window.CANDYRACK_DISABLED = true;
+
+  Object.defineProperty(window, 'CandyRack', {
+    configurable: false,
+    get: function() { return undefined; },
+    set: function() {}
+  });
+
+  Object.defineProperty(window, 'candyrack', {
+    configurable: false,
+    get: function() { return undefined; },
+    set: function() {}
+  });
+</script>
+{{ content_for_header }}
+
+    {% render 'header-style' %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    >
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+      integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    <link
+      rel="stylesheet"
+      data-href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    >
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   
+    {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'product.min.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'genral.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'style.css' | asset_url | stylesheet_tag: preload: true }}
+    
+    {% if page_title == 'Landing Page' %}
+      {{ 'landing.css' | asset_url | stylesheet_tag: preload: true }} 
+    {% endif %}
+    <style>
+  
+ @font-face {
+        font-family: 'NeueHaasUnicaW1G';
+        src:url('https://cdn.shopify.com/s/files/1/0296/4848/6460/files/Neue_Haas_Unica_W1G.woff2?v=1740155879') format('woff2'),
+            url('https://cdn.shopify.com/s/files/1/0296/4848/6460/files/Neue_Haas_Unica_W1G.woff?v=1740155879') format('woff'),
+            url('https://cdn.shopify.com/s/files/1/0296/4848/6460/files/Neue_Haas_Unica_W1G.ttf?v=1740155880') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+}
+img, video {
+    max-width: 100%;
+}
+.no_buttons .slick-arrow {
+    display: none !important;
+}
+body {
+    font-family: 'NeueHaasUnicaW1G' !important;
+    letter-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: 'NeueHaasUnicaW1G' !important;
+}
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: 'NeueHaasUnicaW1G' !important;
+    font-weight: 400 !important;
+}
+      </style>
+  
+  
+    
+    
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+    {% render "assets_theme" %}
+             <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-728749497">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-728749497');
+</script>
+        <!-- Event snippet for Sakoon Purchase conversion page -->
+<script>
+   gtag('event', 'purchase', {
+       'transaction_id': 'ORDER_ID',
+       'value': ORDER_VALUE,
+       'currency': 'USD',
+       'items': [
+           {
+               'id': 'PRODUCT_ID',
+               'name': 'PRODUCT_NAME',
+               'quantity': 1,
+               'price': PRODUCT_PRICE
+           }
+       ]
+   });
+</script>
+   
+
+  
+    
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MTK74BK');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
+    {{ shop.metafields.loox.global_html_head }}
+    <script>
+      fetch("https://ipinfo.io/json")
+      .then(response=>response.json())
+      .then(response=>{
+        window.geo = response.country;
+      })
+    </script>
+  
+    {% render 'gsf-conversion-pixels' %}
+    <style>
+      button.product-form__submit.button.button--full-width.black_btn.in_w{
+        background: {{ settings.btn-color1 }} !important;
+         border-color: {{ settings.btn-color1 }} !important;
+      }
+      button.product-form__submit.button.button--full-width.black_btn.in_w:hover{
+        background: #fff !important;
+      }
+       button.product-form__submit.button.button--full-width.black_btn.in_w.button--primary span{
+        color: {{ settings.btn-color2 }} !important;
+       }
+        button.product-form__submit.button.button--full-width.black_btn.in_w:hover span{
+          color: #000 !important;
+        }
+      .quick-add__submit{
+        background: {{ settings.btn-color3 }} !important;
+        color: {{ settings.btn-color4 }} !important;
+      }
+      .quick-add__submit span{
+        color: {{ settings.btn-color4 }} !important;
+      }
+      .cart-item__totals.right form.product-card-form button{
+        background: {{ settings.btn-color5 }} !important;
+        color: {{ settings.btn-color6 }} !important;
+      }
+      .cart__ctas button{
+         background: {{ settings.btn-color7 }} !important;
+        color: {{ settings.btn-color8 }} !important;
+      }
+    </style>
+
+
+    {{ shop.metafields.loox.global_html_head }}
+
+  
+    
+
+
+    
+{{ 'homepage.css' | asset_url | stylesheet_tag: preload: true }}
+    <script src="{{ 'homepage.js' | asset_url }}" defer="defer"></script>
+    <script data-src="{{ 'lazysizes.min.js' | asset_url }}"></script>
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ig6wmprx09");
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ 'lp_new.js' | asset_url }}" async="async"></script>
+{{ 'lp_new.css' | asset_url | stylesheet_tag: preload: true }}
+    {% render "nonFlickerCode" %}
+  </head>
+
+  <body class="gradient {{ template | handle }} template_{{ template.name }}">
+    {% if additional_checkout_buttons %}
+<div style="display: none !important">
+    {{ content_for_additional_checkout_buttons }}
+</div>
+{% endif %}
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MTK74BK"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'cart-drawer' -%}
+    {%- endif -%}
+  
+    {% sections 'header_group_lp' %}
+
+            <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+ 
+ {{ content_for_layout }} 
+    </main>
+
+    {% sections 'footer_group_lp' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+    <link rel="preload" href="{{ 'splide.min.js' | asset_url }}" as="script">
+    <script src="{{ 'splide.min.js' | asset_url }}"></script>
+    <script>
+      $(function() {
+        // Card's slider
+        var $carousel = $('.slider-for');
+        $carousel
+        .slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          prevArrow:'<i class="fa fa-chevron-left "></i>',
+          nextArrow:'<i class="fa fa-chevron-right nextone"></i>',
+          adaptiveHeight: true,
+          asNavFor: '.slider-nav'
+        })
+        .magnificPopup({
+          type: 'image',
+          delegate: 'a:not(.slick-cloned)',
+          closeOnContentClick: false,
+          tLoading: 'Загрузка...',
+          mainClass: 'mfp-zoom-in mfp-img-mobile',
+          image: {
+            verticalFit: true,
+            tError: '<a href="%url%">Фото #%curr%</a> не загрузилось.'
+          },
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            tCounter: '<span class="mfp-counter">%curr% - %total%</span>', // markup of counte
+            preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+          },
+          zoom: {
+            enabled: false,
+            duration: 0
+          },
+          removalDelay: 0, //delay removal by X to allow out-animation
+          callbacks: {
+            open: function() {
+              //overwrite default prev + next function. Add timeout for css3 crossfade animation
+              $.magnificPopup.instance.next = function() {
+                var self = this;
+                self.wrap.removeClass('mfp-image-loaded');
+                setTimeout(function() { $.magnificPopup.proto.next.call(self); }, 120);
+              };
+
+              $.magnificPopup.instance.prev = function() {
+                var self = this;
+                self.wrap.removeClass('mfp-image-loaded');
+                setTimeout(function() { $.magnificPopup.proto.prev.call(self); }, 120);
+              };
+              var current = $carousel.slick('slickCurrentSlide');
+              $carousel.magnificPopup('goTo', current);
+            },
+            imageLoadComplete: function() {
+              var self = this;
+              setTimeout(function() { self.wrap.addClass('mfp-image-loaded'); }, 16);
+            }
+
+          }
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          centerMode: false,
+          focusOnSelect: true,
+          arrows: true,
+          prevArrow:'<i class="fa fa-chevron-left"></i>',
+          nextArrow:'<i class="fa fa-chevron-right nextone"></i>',
+          variableWidth: false,
+          adaptiveWidth: true
+        });
+
+
+      });
+
+   /* Landing page slider */
+
+      $(function() {
+        // Card's slider
+        var $carousel = $('.landing_page .slider-for');
+        $carousel
+        .slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          prevArrow:'<i class="far fa-chevron-left "></i>',
+          nextArrow:'<i class="far fa-chevron-right nextone"></i>',
+          adaptiveHeight: true,
+          asNavFor: '.landing_page .slider-nav'
+        })
+        $('.landing_page .slider-nav').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          centerMode: false,
+          focusOnSelect: true,
+          arrows: true,
+          prevArrow:'<i class="fa fa-chevron-left"></i>',
+          nextArrow:'<i class="fa fa-chevron-right nextone"></i>',
+          variableWidth: false,
+          adaptiveWidth: true,
+          vertical: true
+        });
+
+
+      });
+
+      
+
+
+      $('.sec2_product_slider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+
+        prevArrow:'<i class="fa fa-chevron-left"></i>',
+        nextArrow:'<i class="fa fa-chevron-right nextone"></i>',
+        responsive: [
+          {
+            breakpoint: 1000,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+            }
+          }
+        ]
+      });
+       $('.ann_slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed:1500,
+        prevArrow:'',
+        nextArrow:'',
+      });
+
+      $(document).ready(function () {
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.show").each(function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .addClass("fa-minus")
+          .removeClass("fa-plus");
+        });
+
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse")
+        .on("show.bs.collapse", function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .removeClass("fa-plus")
+          .addClass("fa-minus");
+        })
+        .on("hide.bs.collapse", function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .removeClass("fa-minus")
+          .addClass("fa-plus");
+        });
+
+        // var interval = setInterval(function(){
+        //   if($('[data-widget]').length) {
+        //     var one_time_purchase = {{ settings.one_time_purchase | json }};
+        //     var subscribe_and_save = {{ settings.subscribe_and_save | json }};
+        //     if(one_time_purchase != ""){
+        //       let one_time_text = document.querySelector("[data-label-text-onetime]");
+        //       one_time_text.innerText = one_time_purchase
+        //     }
+        //     if(subscribe_and_save != ""){
+        //       let subscribe_text = document.querySelector("[data-label-text-subsave]");
+        //       subscribe_text.innerText = subscribe_and_save;
+        //     }
+        //     clearInterval(interval)
+        //   }
+        // },100);
+        // setTimeout(function(){clearInterval(interval)},30000);
+      });
+    </script>
+    <!-- navidium script end -->
+    <script>
+      
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+      }
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+      }
+    </script>
+
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script type="text/javascript">
+            function openNav() {
+              document.getElementById("mySidebar").style.width = "280px";
+            }
+            function closeNav() {
+              document.getElementById("mySidebar").style.width = "0";
+            }
+
+            function handleMousePos(event) {
+              var mouseClickWidth = event.clientX;
+              if(mouseClickWidth>=280000){
+                document.getElementById("mySidebar").style.width = "0";
+              }
+            }
+
+            document.addEventListener("click", handleMousePos);
+
+            $('.sec8_home_slider').slick({
+              infinite: true,
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              prevArrow:'<i class="fal fa-long-arrow-left sec8_home_slider_prev"></i>',
+              nextArrow:'<i class="fal fa-long-arrow-right sec8_home_slider_next"></i>',
+              responsive: [
+                {
+                  breakpoint: 1000,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+              ]
+            });
+
+            $('.sec9_home_slider').slick({
+              infinite: true,
+              centerMode: true,
+              centerPadding: '60px',
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              autoplaySpeed: 1500,
+              dots:true,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    slidesToShow: 3,
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+              ]
+            });
+
+            $('.annou_slider_container').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              cssEase: 'linear',
+              autoplaySpeed: 0,
+              speed:40000,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    speed:8000,
+                  }
+                }
+              ]
+            });
+
+            $('#annou_txt').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              cssEase: 'linear',
+              variableWidth: true,
+              autoplaySpeed: 0,
+              speed:3000,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    speed:8000,
+                  }
+                }
+              ]
+            });
+
+            $('.upsell_slider').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+            });
+
+            var swiper = new Swiper(".menuSliderSl", {
+          slidesPerView: 4,
+          spaceBetween: 10,
+          grabCursor: true,
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+      });
+
+
+
+      $(document).ready(function() {
+        // Hide the megamenu by default
+        $("#MegaMenu").hide();
+        $("div#menuItem1a").addClass("showSlider");
+
+        // Show the megamenu on click of #megaMenuItem
+        $("#megaMenuItem").click(function() {
+          $("#MegaMenu").toggle();
+          $(this).toggleClass("active");
+          return false; // prevent the event from propagating
+        });
+
+        // Add the 'hovered' class to the first li by default
+        $("#menuItem1").addClass("hovered");
+
+        // Add the 'showSlider' class to the corresponding div on hover of the li
+        $("li[id^='menuItem']").hover(function() {
+          var divId = "#" + $(this).attr("id") + "a";
+          $(divId).addClass("showSlider");
+          $("div[id^='menuItem']").not(divId).removeClass("showSlider");
+
+          // Add the 'active' class to the hovered li and remove from others
+          $(this).addClass("active");
+          $("li[id^='menuItem']").not(this).removeClass("active");
+        });
+
+        // Add the 'active' class to the first li if no li is hovered
+        $("#MegaMenu").mouseleave(function() {
+          $("li#menuItem1").addClass("active");
+          $("li[id^='menuItem']").not("#menuItem1").removeClass("active");
+
+          // Add the 'showSlider' class to the first div if no li is hovered
+          $("div#menuItem1a").addClass("showSlider");
+          $("div[id^='menuItem']").not("#menuItem1a").removeClass("showSlider");
+        });
+
+        // Hide the megamenu when the user clicks outside of it
+        $(document).click(function(event) {
+          if (!$(event.target).closest("#megaMenuItem, #MegaMenu").length) {
+            $("#MegaMenu").hide();
+          }
+        });
+          setTimeout(function(){
+            {% if settings.enable_one %}
+              console.log('settings.enable_one');
+                $('.prive_input_radio[value=one]').trigger('click');
+            {% endif %}
+          },2000);
+      });
+    </script>
+    {{ shop.metafields.loox.global_html_body }}
+  
+    <!-- Gorgias Chat Widget Start -->
+    <script
+      id="gorgias-chat-widget-install-v3"
+      src="https://config.gorgias.chat/bundle-loader/01H7WV6YSP1DS5S5ZTRDRHD410?source=shopify1click"
+    ></script>
+    <script id="gorgias-chat-shopify-install">
+      !function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});
+    </script>
+    
+<script> 
+    $(document).on("change", ".prive_select", function (e) { 
+  e.preventDefault();
+  console.log("asdasd");
+   alert("asdasd");
+});
+ </script>
+    <!-- Gorgias Chat Widget End -->
+
+    {{ shop.metafields.loox.global_html_body }}
+  <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+
+
+{% if product %}    
+<script>
+  window.addEventListener('load', function() {
+  var _learnq = window._learnq || [];
+  function addedToCart() {
+   fetch(`${window.location.origin}/cart.js`)
+   .then(res => res.clone().json().then(data => {
+    var cart = {
+      total_price: data.total_price/100,
+      $value: data.total_price/100,
+      total_discount: data.total_discount,
+      original_total_price: data.original_total_price/100,
+      items: data.items
+    }
+    if (item !== 'undefined') {
+      cart = Object.assign(cart, item)
+    }
+    if (klAjax) {
+       _learnq.push(['track', 'Added to Cart', cart]);
+       klAjax = false;
+      }
+   }))
+  };
+  (function (ns, fetch) {
+    ns.fetch = function() {
+      const response = fetch.apply(this, arguments);
+      response.then(res => {
+        if (`${window.location.origin}/cart/add.js`
+          .includes(res.url) && res.url !== '') {
+              addedToCart()
+        }
+      });
+      return response
+     }
+  }(window, window.fetch));
+  var klAjax = true;
+  var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+  for (var i = 0; i < atcButtons.length; i++) { 
+    atcButtons[i].addEventListener("click", function() {
+      if (klAjax) {
+        _learnq.push(['track', 'Added to Cart', item]);
+        klAjax = false;
+      }
+    })
+  }
+  });
+</script>
+    {% endif %}
+  </body>
+        </html>

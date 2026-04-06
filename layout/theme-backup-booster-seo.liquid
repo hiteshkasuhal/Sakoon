@@ -1,0 +1,1296 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-728749497">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-728749497');
+</script>
+        <!-- Event snippet for Sakoon Purchase conversion page -->
+<script>
+   gtag('event', 'purchase', {
+       'transaction_id': 'ORDER_ID',
+       'value': ORDER_VALUE,
+       'currency': 'USD',
+       'items': [
+           {
+               'id': 'PRODUCT_ID',
+               'name': 'PRODUCT_NAME',
+               'quantity': 1,
+               'price': PRODUCT_PRICE
+           }
+       ]
+   });
+</script>
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+     {% render 'meta-tags' %}
+    <link rel="preload" href="https://cdn.shopify.com/extensions/949f8fdc-d947-492f-9329-878337ec05e8/bundle-builder-kitenzo-84/assets/bb-layout.css" as="style">
+    <link rel="preload" href="https://cdn.shopify.com/extensions/9fe2be79-7ee8-4f17-ae2f-f2e8391761d3/uppromote-affiliate-44/assets/customer-referral.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" as="style">
+      <link rel="preload" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"       integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+ as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"      integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+ as="style">
+    <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'fa.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'custom.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'product.min.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{ 'genral.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{ 'style.css' | asset_url }}" as="style">
+    <link rel="preload" href="https://cdn.shopify.com/extensions/9bc5bcfd-9b55-4de4-9a3b-e0356e3896f6/uppromote-affiliate-26/assets/customer-referral.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap" as="style">
+
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://whale.camera/' crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link data-href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+ 
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" as="script">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <link rel="preload" href="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" as="script">
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preload" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" as="script">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+      integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'money.js' | asset_url }}" defer="defer"></script>
+
+        {% render "nonFlickerCode" %}
+    {% render "scripts" %}
+    <script data-src="{{ 'lazyloadImages.js' | asset_url }}"></script>
+    <script type="text/javascript">
+/* >> TriplePixel :: start*/
+window.TriplePixelData={TripleName:"blueposturefix.myshopify.com",ver:"2.11",plat:"SHOPIFY",isHeadless:false},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","application/json")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1,L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(E=A[H]=function(t,e,a){return void 0===a&&(a=[]),"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),i=L(),m=A[atob("c2NyZWVu")],_.setItem("di_pmt_wt",i),p={id:i,action:"profile",avatar:_.getItem("auth-security_rand_salt_"),time:m[atob("d2lkdGg=")]+":"+m[atob("aGVpZ2h0")],host:A.TriplePixelData.TripleName,plat:A.TriplePixelData.plat,url:window.location.href,ref:document.referrer,ver:A.TriplePixelData.ver},O("https://api.config-security.com/event",5,p),O("https://whale.camera/live/dot.txt",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+    
+
+    <!-- preroder wolf pixel -->
+    <script src="https://pre.bossapps.co/js/script?shop=blueposturefix.myshopify.com" async></script>
+    <!-- preroder wolf pixel -->
+
+    
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MTK74BK');
+    </script>
+    <!-- End Google Tag Manager -->
+
+ {% assign domcontentloadeda = "document.addEventListener('DOMContentLoaded'" %}
+{% assign startasyncLoadinga= "document.addEventListener('StartAsyncLoading'" %} 
+{% assign domcontentloaded = 'e.addEventListener("DOMContentLoaded"' %}
+{% assign startasyncLoading= "e.addEventListener('StartAsyncLoading'" %}
+{% assign rapp = ", asyncLoad" %}{% assign napp= ", function(){}" %}
+{% assign rappload = "if(window.attachEvent)" %}
+{% assign nappload= "document.addEventListener('StartAsyncLoading',function(event){asyncLoad();});if(window.attachEvent)" %}
+{% assign rstorefrontload = "var customDocumentWrite = function(content)" %}
+{% assign nstorefrontload= "document.addEventListener('StartKernelLoading', function() { document.dispatchEvent(new CustomEvent('StartShopifyLoading')); var customDocumentWrite = function(content)" %}
+{% assign rstorefront = "document.getElementsByTagName('head')[0].appendChild(eventsListenerScript)" %}
+{% assign nstorefront= "document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);})" %}
+{% if template == 'cart' %}{{ content_for_header  }}
+{% else %} 
+{{ content_for_header | replace: 'src=', 'data-src=' | replace: domcontentloadeda, startasyncLoadinga  | replace: domcontentloaded, startasyncLoading | replace: rapp, napp  | replace: rappload, nappload | replace: rstorefrontload, nstorefrontload | replace: rstorefront, nstorefront }}{% endif %}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      :root {
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: {{ settings.type_body_font.style }};
+        --font-body-weight: {{ settings.type_body_font.weight }};
+        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-style: {{ settings.type_header_font.style }};
+        --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+        --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+        --color-shadow: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+        --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{ settings.colors_background_1.blue }};
+        --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{ settings.colors_background_2.blue }};
+        --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+        --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{ settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+        --color-base-accent-1: {{ settings.colors_accent_1.red }}, {{ settings.colors_accent_1.green }}, {{ settings.colors_accent_1.blue }};
+        --color-base-accent-2: {{ settings.colors_accent_2.red }}, {{ settings.colors_accent_2.green }}, {{ settings.colors_accent_2.blue }};
+        --payment-terms-background-color: {{ settings.colors_background_1 }};
+
+        --gradient-base-background-1: {% if settings.gradient_background_1 != blank %}{{ settings.gradient_background_1 }}{% else %}{{ settings.colors_background_1 }}{% endif %};
+        --gradient-base-background-2: {% if settings.gradient_background_2 != blank %}{{ settings.gradient_background_2 }}{% else %}{{ settings.colors_background_2 }}{% endif %};
+        --gradient-base-accent-1: {% if settings.gradient_accent_1 != blank %}{{ settings.gradient_accent_1 }}{% else %}{{ settings.colors_accent_1 }}{% endif %};
+        --gradient-base-accent-2: {% if settings.gradient_accent_2 != blank %}{{ settings.gradient_accent_2 }}{% else %}{{ settings.colors_accent_2 }}{% endif %};
+
+        --media-padding: {{ settings.media_padding }}px;
+        --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
+        --media-border-width: {{ settings.media_border_thickness }}px;
+        --media-radius: {{ settings.media_radius }}px;
+        --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
+        --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
+        --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
+        --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
+        --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
+
+          --page-width: 160rem;
+        --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+
+        --product-card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;
+        --product-card-corner-radius: {{ settings.card_corner_radius | divided_by: 10.0 }}rem;
+        --product-card-text-alignment: {{ settings.card_text_alignment }};
+        --product-card-border-width: {{ settings.card_border_thickness | divided_by: 10.0 }}rem;
+        --product-card-border-opacity: {{ settings.card_border_opacity | divided_by: 100.0 }};
+        --product-card-shadow-opacity: {{ settings.card_shadow_opacity | divided_by: 100.0 }};
+        --product-card-shadow-visible: {% if settings.card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --product-card-shadow-horizontal-offset: {{ settings.card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --product-card-shadow-vertical-offset: {{ settings.card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --product-card-shadow-blur-radius: {{ settings.card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --collection-card-image-padding: {{ settings.collection_card_image_padding | divided_by: 10.0 }}rem;
+        --collection-card-corner-radius: {{ settings.collection_card_corner_radius | divided_by: 10.0 }}rem;
+        --collection-card-text-alignment: {{ settings.collection_card_text_alignment }};
+        --collection-card-border-width: {{ settings.collection_card_border_thickness | divided_by: 10.0 }}rem;
+        --collection-card-border-opacity: {{ settings.collection_card_border_opacity | divided_by: 100.0 }};
+        --collection-card-shadow-opacity: {{ settings.collection_card_shadow_opacity | divided_by: 100.0 }};
+        --collection-card-shadow-visible: {% if settings.collection_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --collection-card-shadow-horizontal-offset: {{ settings.collection_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --collection-card-shadow-vertical-offset: {{ settings.collection_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --collection-card-shadow-blur-radius: {{ settings.collection_card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --blog-card-image-padding: {{ settings.blog_card_image_padding | divided_by: 10.0 }}rem;
+        --blog-card-corner-radius: {{ settings.blog_card_corner_radius | divided_by: 10.0 }}rem;
+        --blog-card-text-alignment: {{ settings.blog_card_text_alignment }};
+        --blog-card-border-width: {{ settings.blog_card_border_thickness | divided_by: 10.0 }}rem;
+        --blog-card-border-opacity: {{ settings.blog_card_border_opacity | divided_by: 100.0 }};
+        --blog-card-shadow-opacity: {{ settings.blog_card_shadow_opacity | divided_by: 100.0 }};
+        --blog-card-shadow-visible: {% if settings.blog_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+        --blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+        --blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
+
+        --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
+
+        --popup-border-width: {{ settings.popup_border_thickness }}px;
+        --popup-border-opacity: {{ settings.popup_border_opacity | divided_by: 100.0 }};
+        --popup-corner-radius: {{ settings.popup_corner_radius }}px;
+        --popup-shadow-opacity: {{ settings.popup_shadow_opacity | divided_by: 100.0 }};
+        --popup-shadow-horizontal-offset: {{ settings.popup_shadow_horizontal_offset }}px;
+        --popup-shadow-vertical-offset: {{ settings.popup_shadow_vertical_offset }}px;
+        --popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
+
+        --drawer-border-width: {{ settings.drawer_border_thickness }}px;
+        --drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
+        --drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
+        --drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
+        --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
+        --drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
+
+        --spacing-sections-desktop: {{ settings.spacing_sections }}px;
+        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+
+        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
+        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
+        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
+        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+
+        --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
+        --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
+        --text-boxes-radius: {{ settings.text_boxes_radius }}px;
+        --text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by: 100.0 }};
+        --text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
+        --text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
+        --text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
+
+        --buttons-radius: {{ settings.buttons_radius }}px;
+        --buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+        --buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
+        --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
+        --buttons-shadow-visible: {% if settings.buttons_shadow_opacity > 0 %}1{% else %}0{% endif %};
+        --buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
+        --buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
+        --buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
+        --buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+
+        --inputs-radius: {{ settings.inputs_radius }}px;
+        --inputs-border-width: {{ settings.inputs_border_thickness }}px;
+        --inputs-border-opacity: {{ settings.inputs_border_opacity | divided_by: 100.0 }};
+        --inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | divided_by: 100.0 }};
+        --inputs-shadow-horizontal-offset: {{ settings.inputs_shadow_horizontal_offset }}px;
+        --inputs-margin-offset: {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_opacity > 0 %}{{ settings.inputs_shadow_vertical_offset | abs }}{% else %}0{% endif %}px;
+        --inputs-shadow-vertical-offset: {{ settings.inputs_shadow_vertical_offset }}px;
+        --inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
+        --inputs-radius-outset: {% if settings.inputs_radius > 0 %}{{ settings.inputs_radius | plus: settings.inputs_border_thickness }}{% else %}0{% endif %}px;
+
+        --variant-pills-radius: {{ settings.variant_pills_radius }}px;
+        --variant-pills-border-width: {{ settings.variant_pills_border_thickness }}px;
+        --variant-pills-border-opacity: {{ settings.variant_pills_border_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-opacity: {{ settings.variant_pills_shadow_opacity | divided_by: 100.0 }};
+        --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
+        --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
+        --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        font-size: calc(var(--font-body-scale) * 62.5%);
+        height: 100%;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 100%;
+        min-height: 100%;
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 0.06rem;
+        line-height: calc(1 + 0.8 / var(--font-body-scale));
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+      }
+.shopify-app-block .prive_type_box_active .prive_label:before{
+  background:url('https://cdn.shopify.com/s/files/1/0296/4848/6460/files/recharge-star.png?v=1702529061') no-repeat!important;
+  background-size: 30px 30px !important;
+}
+      @media screen and (min-width: 750px) {
+        body {
+          font-size: 1.6rem;
+        }
+      }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    >
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+      integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    <link
+      rel="stylesheet"
+      data-href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    >
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    {{ 'fa.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'product.min.css' | asset_url | stylesheet_tag }}
+    {{ 'genral.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    
+    {% if page_title == 'Landing Page' %}
+      {{ 'landing.css' | asset_url | stylesheet_tag }} 
+    {% endif %}
+{% if template.name == 'index' %}
+    <style>
+img, video {
+    max-width: 100%;
+}
+.no_buttons .slick-arrow {
+    display: none !important;
+}
+body {
+    font-family: Inter !important;
+    letter-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: "Novecento Wide Bold" !important;
+}
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: Novecento Wide !important;
+}
+      </style>
+  {% endif %}
+    {% if template == 'product.new' %}
+      {{ 'landing.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    {% if template == 'product.subscription' or template.suffix contains 'new_design' or template.suffix contains 'new' or template.suffix contains 'new' or template.suffix == 'sea-moss-new' or template.suffix == 'shilajit-new' or template.suffix == 'honey_capsules' or template.suffix == 'bloating-relief' %}
+      {{ 'subscription.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if template.suffix == 'sea-moss-new'%}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+      {{ 'sea-moss-new.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if template.suffix == 'shilajit-new'%}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+      {{ 'shilajit-new.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if template.suffix == 'honey_capsules' or template.suffix == 'bloating-relief' %}
+      {{ 'honey_capsules.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if  template.suffix == 'bloating-relief' %}
+      {{ 'bloating-relief.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    
+    {%- unless settings.type_body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
+
+    <script data-src="https://www.googleoptimize.com/optimize.js?id=OPT-M8RZRCX"></script>
+
+    <script>
+      /*!
+      * eocjsNewsticker v0.4.2
+      * Copyright (c) 2021 Dieter Schmitt
+      * Released under the MIT license - https://opensource.org/licenses/MIT
+      */
+
+      (function($, window, document, undefined) {
+        $.fn.eocjsNewsticker = function(options) {
+
+          // _______ Options _______
+
+          let defaults = {
+            speed:     20,
+            timeout:   1,
+            divider:   ' ',
+            type:      'static',    // static or ajax
+            source:    '',          // ajax source (url)
+            dataType:  'json',      // data type of the expected file (json or jsonp)
+            callback:  'callback',  // used for jsonp
+            interval:  120          // polling interval of the ajax source (seconds)
+          };
+          let settings = $.extend({}, defaults, options);
+
+
+          // _______ Inner Variables _______
+
+          let self              =  this;
+          let content           =  self.html();
+          let active            =  'eocjs-newsticker-active';
+          let container         =  {};
+          let one               =  {};
+          let two               =  {};
+          let both              =  {};
+          let oneNeedsUpdate    =  false;
+          let twoNeedsUpdate    =  false;
+          let localWindow       =  $(window);
+          let localWindowWidth  =  localWindow.width();
+
+
+          // _______ Init _______
+
+          function init() {
+            if (!self.hasClass(active)) {
+              create();
+              start();
+              self.addClass(active);
+            }
+          }
+
+
+          // _______ Create _______
+
+          function create() {
+
+            self.addClass('eocjs-newsticker').html('<div class="eocjs-newsticker-container"><div class="eocjs-newsticker-one"></div><div class="eocjs-newsticker-two"></div></div>');
+
+            container  =  self.find('.eocjs-newsticker-container');
+            one        =  self.find('.eocjs-newsticker-one');
+            two        =  self.find('.eocjs-newsticker-two');
+            both       =  self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
+
+          }
+
+
+          // _______ Start _______
+
+          function start() {
+
+            if (settings.type === 'static') {
+
+              content = content + ' ' + settings.divider;
+              run(content, (settings.timeout * 1000));
+
+            } else if (settings.type === 'ajax') {
+
+              container.prepend('<div class="eocjs-newsticker-loader"></div>');
+              $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+
+                container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
+                  run(content, 0);
+                  $(this).remove();
+                });
+
+                setInterval(function() {
+                  $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+                    oneNeedsUpdate = true;
+                    twoNeedsUpdate = true;
+                  });
+                }, settings.interval * 1000);
+
+              });
+
+            }
+
+          }
+
+
+          // _______ Ajax _______
+
+          function ajax(source, dataType, callback) {
+
+            return $.ajax({
+              url: source,
+              dataType: dataType,
+              jsonpCallback: callback,
+              success: function(data, textStatus, jqXHR) {
+                content = '';
+                if ($.isPlainObject(data) && !$.isEmptyObject(data)) {
+                  for (let property in data) {
+                    if (data.hasOwnProperty(property)) {
+                      if (content === '') {
+                        content = data[property] + ' ' + settings.divider;
+                      } else {
+                        content = content + ' ' + data[property] + ' ' + settings.divider;
+                      }
+                    }
+                  }
+                } else if (Array.isArray(data) && data.length > 0) {
+                  for (let i = 0; i < data.length; i += 1) {
+                    if (content === '') {
+                      content = data[i] + ' ' + settings.divider;
+                    } else {
+                      content = content + ' ' + data[i] + ' ' + settings.divider;
+                    }
+                  }
+                } else {
+                  content = 'Error: No data found. Check your remote source!';
+                }
+              }
+            });
+
+          }
+
+
+          // _______ Run _______
+
+          function run(content, timeout) {
+
+            update(both, content);
+            two.css({'left': one.width()});
+
+            setTimeout(function() {
+
+              let width  =  one.width();
+              let speed  =  settings.speed * width;
+
+              animateSlide(one, 0, -width, speed);
+              animateSlide(two, width, 0, speed);
+
+            }, timeout);
+
+          }
+
+
+          // _______ Update _______
+
+          function update(slide, content) {
+
+            slide.html(content);
+            while (container.width() > slide.width()) {
+              slide.append(' ' + content);
+            }
+            slide.append('&nbsp;');
+
+          }
+
+
+          // _______ Animation _______
+
+          function animateSlide(slide, start, destination, speed) {
+
+            slide.animate(
+              {left: destination},
+              speed,
+              'linear',
+              function() {
+
+                let width;
+
+                if (start === 0) {
+
+                  if (slide === one && oneNeedsUpdate) {
+                    update(one, content);
+                    oneNeedsUpdate = false;
+                  } else if (slide === two && twoNeedsUpdate) {
+                    update(two, content);
+                    twoNeedsUpdate = false;
+                  }
+
+                  slide === one ? width = two.width() : width = one.width();
+                  speed = settings.speed * width;
+                  slide.css({'left': width});
+                  animateSlide(slide, width, 0, speed);
+
+                } else {
+
+                  slide === one ? width = one.width() : width = two.width();
+                  speed = settings.speed * width;
+                  animateSlide(slide, 0, -width, speed);
+
+                }
+
+              }
+            );
+
+          }
+
+
+          // _______ Resize _______
+
+          localWindow.on('resize', function() {
+
+            let width = localWindow.width();
+
+            if (width != localWindowWidth) {
+
+              if (width > localWindowWidth) {
+                if (one.position().left > 0) {
+                  update(one, content);
+                  twoNeedsUpdate = true;
+                } else if (two.position().left > 0) {
+                  update(two, content);
+                  oneNeedsUpdate = true;
+                }
+              } else {
+                oneNeedsUpdate = true;
+                twoNeedsUpdate = true;
+              }
+
+              localWindowWidth = width;
+
+            }
+
+          });
+
+
+          // _______ Init _______
+
+          init();
+
+          return this;
+
+        };
+      })(jQuery, window, document);
+
+
+
+
+
+
+      $('#annou_txt').eocjsNewsticker({
+        speed:    25,
+        timeout:  0.5
+      });
+    </script>
+
+    {{ shop.metafields.loox.global_html_head }}
+    <script>
+      fetch("https://ipinfo.io/json")
+      .then(response=>response.json())
+      .then(response=>{
+        window.geo = response.country;
+      })
+    </script>
+    <!-- Added by TinyIMG -->
+    {% render 'tinyimg-json-ld-scripts' %}
+    <!-- Added by TinyIMG -->
+    {% render 'gsf-conversion-pixels' %}
+    <style>
+      button.product-form__submit.button.button--full-width.black_btn.in_w{
+        background: {{ settings.btn-color1 }} !important;
+         border-color: {{ settings.btn-color1 }} !important;
+      }
+      button.product-form__submit.button.button--full-width.black_btn.in_w:hover{
+        background: #fff !important;
+      }
+       button.product-form__submit.button.button--full-width.black_btn.in_w.button--primary span{
+        color: {{ settings.btn-color2 }} !important;
+       }
+        button.product-form__submit.button.button--full-width.black_btn.in_w:hover span{
+          color: #000 !important;
+        }
+      .quick-add__submit{
+        background: {{ settings.btn-color3 }} !important;
+        color: {{ settings.btn-color4 }} !important;
+      }
+      .quick-add__submit span{
+        color: {{ settings.btn-color4 }} !important;
+      }
+      .cart-item__totals.right form.product-card-form button{
+        background: {{ settings.btn-color5 }} !important;
+        color: {{ settings.btn-color6 }} !important;
+      }
+      .cart__ctas button{
+         background: {{ settings.btn-color7 }} !important;
+        color: {{ settings.btn-color8 }} !important;
+      }
+    </style>
+
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ig6wmprx09");
+    </script>
+
+    {{ shop.metafields.loox.global_html_head }}
+
+  
+    
+
+
+    
+    <!-- <style>
+      @font-face {
+        font-family: 'Novecento Wide';
+        src: url({{'Novecento-WideBold.eot' | asset_url}});
+        src: url({{'Novecento-WideBold.eot?#iefix') | asset_url}}) format('embedded-opentype'),
+            url({{'Novecento-WideBold.woff2') | asset_url}}) format('woff2'),
+            url({{'Novecento-WideBold.woff') | asset_url}}) format('woff'),
+            url({{'Novecento-WideBold.ttf') | asset_url}}) format('truetype'),
+            url({{'Novecento-WideBold.svg#Novecento-WideBold') | asset_url}}) format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style> -->
+{{ 'homepage.css' | asset_url | stylesheet_tag: preload: true }}
+    <script src="{{ 'homepage.js' | asset_url }}" defer="defer"></script>
+{% render "nFC" %}
+  </head>
+
+  <body class="gradient {{ template | handle }}{% if template.suffix == 'sea-moss-new' or template.suffix == 'shilajit-new' or template.suffix == 'honey_capsules' or template.suffix == 'bloating-relief' or template.suffix contains 'new_design' or template.suffix contains 'new' %}  product-subscription{% endif %}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MTK74BK"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'cart-drawer' -%}
+    {%- endif -%}
+     {% capture layout %}
+    {% sections 'header-group' %}
+
+            <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+ 
+ {{ content_for_layout }} 
+    </main>
+
+    {% sections 'footer-group' %}
+{% endcapture %} {{ layout | replace: "<img","<img loading='lazy' " | replace: "<video","<video loading='lazy' " }}
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    <script src="{{ 'custom.js' | asset_url }}"></script>
+    <script>
+      $(function() {
+        // Card's slider
+        var $carousel = $('.slider-for');
+        $carousel
+        .slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          prevArrow:'<i class="far fa-chevron-left "></i>',
+          nextArrow:'<i class="far fa-chevron-right nextone"></i>',
+          adaptiveHeight: true,
+          asNavFor: '.slider-nav'
+        })
+        .magnificPopup({
+          type: 'image',
+          delegate: 'a:not(.slick-cloned)',
+          closeOnContentClick: false,
+          tLoading: 'Загрузка...',
+          mainClass: 'mfp-zoom-in mfp-img-mobile',
+          image: {
+            verticalFit: true,
+            tError: '<a href="%url%">Фото #%curr%</a> не загрузилось.'
+          },
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            tCounter: '<span class="mfp-counter">%curr% - %total%</span>', // markup of counte
+            preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+          },
+          zoom: {
+            enabled: false,
+            duration: 0
+          },
+          removalDelay: 0, //delay removal by X to allow out-animation
+          callbacks: {
+            open: function() {
+              //overwrite default prev + next function. Add timeout for css3 crossfade animation
+              $.magnificPopup.instance.next = function() {
+                var self = this;
+                self.wrap.removeClass('mfp-image-loaded');
+                setTimeout(function() { $.magnificPopup.proto.next.call(self); }, 120);
+              };
+
+              $.magnificPopup.instance.prev = function() {
+                var self = this;
+                self.wrap.removeClass('mfp-image-loaded');
+                setTimeout(function() { $.magnificPopup.proto.prev.call(self); }, 120);
+              };
+              var current = $carousel.slick('slickCurrentSlide');
+              $carousel.magnificPopup('goTo', current);
+            },
+            imageLoadComplete: function() {
+              var self = this;
+              setTimeout(function() { self.wrap.addClass('mfp-image-loaded'); }, 16);
+            }
+
+          }
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          centerMode: false,
+          focusOnSelect: true,
+          arrows: true,
+          prevArrow:'<i class="fas fa-chevron-left"></i>',
+          nextArrow:'<i class="fas fa-chevron-right nextone"></i>',
+          variableWidth: false,
+          adaptiveWidth: true
+        });
+
+
+      });
+
+   /* Landing page slider */
+
+      $(function() {
+        // Card's slider
+        var $carousel = $('.landing_page .slider-for');
+        $carousel
+        .slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          prevArrow:'<i class="far fa-chevron-left "></i>',
+          nextArrow:'<i class="far fa-chevron-right nextone"></i>',
+          adaptiveHeight: true,
+          asNavFor: '.landing_page .slider-nav'
+        })
+        $('.landing_page .slider-nav').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          centerMode: false,
+          focusOnSelect: true,
+          arrows: true,
+          prevArrow:'<i class="fas fa-chevron-left"></i>',
+          nextArrow:'<i class="fas fa-chevron-right nextone"></i>',
+          variableWidth: false,
+          adaptiveWidth: true,
+          vertical: true
+        });
+
+
+      });
+
+      
+
+
+      $('.sec2_product_slider').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+
+        prevArrow:'<i class="fas fa-chevron-left"></i>',
+        nextArrow:'<i class="fas fa-chevron-right nextone"></i>',
+        responsive: [
+          {
+            breakpoint: 1000,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+            }
+          }
+        ]
+      });
+       $('.ann_slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed:1500,
+        prevArrow:'',
+        nextArrow:'',
+      });
+
+      $(document).ready(function () {
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.show").each(function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .addClass("fa-minus")
+          .removeClass("fa-plus");
+        });
+
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse")
+        .on("show.bs.collapse", function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .removeClass("fa-plus")
+          .addClass("fa-minus");
+        })
+        .on("hide.bs.collapse", function () {
+          $(this)
+          .prev(".card-header")
+          .find(".fal")
+          .removeClass("fa-minus")
+          .addClass("fa-plus");
+        });
+
+        // var interval = setInterval(function(){
+        //   if($('[data-widget]').length) {
+        //     var one_time_purchase = {{ settings.one_time_purchase | json }};
+        //     var subscribe_and_save = {{ settings.subscribe_and_save | json }};
+        //     if(one_time_purchase != ""){
+        //       let one_time_text = document.querySelector("[data-label-text-onetime]");
+        //       one_time_text.innerText = one_time_purchase
+        //     }
+        //     if(subscribe_and_save != ""){
+        //       let subscribe_text = document.querySelector("[data-label-text-subsave]");
+        //       subscribe_text.innerText = subscribe_and_save;
+        //     }
+        //     clearInterval(interval)
+        //   }
+        // },100);
+        // setTimeout(function(){clearInterval(interval)},30000);
+      });
+    </script>
+    <!-- navidium script end -->
+    <script>
+      
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+      }
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+      }
+    </script>
+
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script type="text/javascript">
+            function openNav() {
+              document.getElementById("mySidebar").style.width = "280px";
+            }
+            function closeNav() {
+              document.getElementById("mySidebar").style.width = "0";
+            }
+
+            function handleMousePos(event) {
+              var mouseClickWidth = event.clientX;
+              if(mouseClickWidth>=280){
+                document.getElementById("mySidebar").style.width = "0";
+              }
+            }
+
+            document.addEventListener("click", handleMousePos);
+
+            $('.sec8_home_slider').slick({
+              infinite: true,
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              prevArrow:'<i class="fal fa-long-arrow-left sec8_home_slider_prev"></i>',
+              nextArrow:'<i class="fal fa-long-arrow-right sec8_home_slider_next"></i>',
+              responsive: [
+                {
+                  breakpoint: 1000,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+              ]
+            });
+
+            $('.sec9_home_slider').slick({
+              infinite: true,
+              centerMode: true,
+              centerPadding: '60px',
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              autoplaySpeed: 1500,
+              dots:true,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    slidesToShow: 3,
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+              ]
+            });
+
+            $('.annou_slider_container').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              cssEase: 'linear',
+              autoplaySpeed: 0,
+              speed:40000,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    speed:8000,
+                  }
+                }
+              ]
+            });
+
+            $('#annou_txt').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+              cssEase: 'linear',
+              variableWidth: true,
+              autoplaySpeed: 0,
+              speed:3000,
+              responsive: [
+                {
+                  breakpoint: 1023,
+                  settings: {
+                    speed:8000,
+                  }
+                }
+              ]
+            });
+
+            $('.upsell_slider').slick({
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:'',
+              nextArrow:'',
+              autoplay:true,
+            });
+
+            var swiper = new Swiper(".menuSliderSl", {
+          slidesPerView: 4,
+          spaceBetween: 10,
+          grabCursor: true,
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+      });
+
+
+
+      $(document).ready(function() {
+        // Hide the megamenu by default
+        $("#MegaMenu").hide();
+        $("div#menuItem1a").addClass("showSlider");
+
+        // Show the megamenu on click of #megaMenuItem
+        $("#megaMenuItem").click(function() {
+          $("#MegaMenu").toggle();
+          $(this).toggleClass("active");
+          return false; // prevent the event from propagating
+        });
+
+        // Add the 'hovered' class to the first li by default
+        $("#menuItem1").addClass("hovered");
+
+        // Add the 'showSlider' class to the corresponding div on hover of the li
+        $("li[id^='menuItem']").hover(function() {
+          var divId = "#" + $(this).attr("id") + "a";
+          $(divId).addClass("showSlider");
+          $("div[id^='menuItem']").not(divId).removeClass("showSlider");
+
+          // Add the 'active' class to the hovered li and remove from others
+          $(this).addClass("active");
+          $("li[id^='menuItem']").not(this).removeClass("active");
+        });
+
+        // Add the 'active' class to the first li if no li is hovered
+        $("#MegaMenu").mouseleave(function() {
+          $("li#menuItem1").addClass("active");
+          $("li[id^='menuItem']").not("#menuItem1").removeClass("active");
+
+          // Add the 'showSlider' class to the first div if no li is hovered
+          $("div#menuItem1a").addClass("showSlider");
+          $("div[id^='menuItem']").not("#menuItem1a").removeClass("showSlider");
+        });
+
+        // Hide the megamenu when the user clicks outside of it
+        $(document).click(function(event) {
+          if (!$(event.target).closest("#megaMenuItem, #MegaMenu").length) {
+            $("#MegaMenu").hide();
+          }
+        });
+          setTimeout(function(){
+            {% if settings.enable_one %}
+              console.log('settings.enable_one');
+                $('.prive_input_radio[value=one]').trigger('click');
+            {% endif %}
+          },2000);
+      });
+    </script>
+    {{ shop.metafields.loox.global_html_body }}
+  
+    <!-- Gorgias Chat Widget Start -->
+    <script
+      id="gorgias-chat-widget-install-v3"
+      src="https://config.gorgias.chat/bundle-loader/01H7WV6YSP1DS5S5ZTRDRHD410?source=shopify1click"
+    ></script>
+    <script id="gorgias-chat-shopify-install">
+      !function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{shop.permanent_domain}}",_.SHOPIFY_CUSTOMER_ID="{{customer.id}}",_.SHOPIFY_CUSTOMER_EMAIL="{{customer.email}}"}(window||{});
+    </script>
+    
+<script> 
+    $(document).on("change", ".prive_select", function (e) { 
+  e.preventDefault();
+  console.log("asdasd");
+   alert("asdasd");
+});
+ </script>
+    <!-- Gorgias Chat Widget End -->
+
+    {{ shop.metafields.loox.global_html_body }}
+    {{ "custom.min.js" | asset_url | script_tag }}
+   {%- capture ocu_extend -%}{% render 'oneclickupsellapp-extend' %}{%- endcapture -%}{%- unless ocu_extend contains 'Liquid error' -%}{{ ocu_extend }}{%- endunless -%}   
+ <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+
+
+{% if product %}    
+<script>
+  window.addEventListener('load', function() {
+  var _learnq = window._learnq || [];
+  function addedToCart() {
+   fetch(`${window.location.origin}/cart.js`)
+   .then(res => res.clone().json().then(data => {
+    var cart = {
+      total_price: data.total_price/100,
+      $value: data.total_price/100,
+      total_discount: data.total_discount,
+      original_total_price: data.original_total_price/100,
+      items: data.items
+    }
+    if (item !== 'undefined') {
+      cart = Object.assign(cart, item)
+    }
+    if (klAjax) {
+       _learnq.push(['track', 'Added to Cart', cart]);
+       klAjax = false;
+      }
+   }))
+  };
+  (function (ns, fetch) {
+    ns.fetch = function() {
+      const response = fetch.apply(this, arguments);
+      response.then(res => {
+        if (`${window.location.origin}/cart/add.js`
+          .includes(res.url) && res.url !== '') {
+              addedToCart()
+        }
+      });
+      return response
+     }
+  }(window, window.fetch));
+  var klAjax = true;
+  var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+  for (var i = 0; i < atcButtons.length; i++) { 
+    atcButtons[i].addEventListener("click", function() {
+      if (klAjax) {
+        _learnq.push(['track', 'Added to Cart', item]);
+        klAjax = false;
+      }
+    })
+  }
+  });
+</script>
+    {% endif %}
+
+      </body>
+        </html>
