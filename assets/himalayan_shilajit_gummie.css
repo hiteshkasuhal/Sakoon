@@ -1,0 +1,125 @@
+/* product css start */
+.iron_pdt_text1 {
+    width: 100%;
+    max-width: 100%;
+}
+.iron_pdt_heating {
+    width: 541px;
+}
+
+
+
+@media (min-width: 915px) {
+.custom_sticky_flex {
+    gap: 25px;
+}
+.pdp_sticky_title {
+    padding-right: 50px;
+}
+}
+
+
+
+@media (max-width: 915px) {
+.iron_pdt_text1 {
+    width: 321px;
+    max-width: 100%;
+}
+body .iron_pdt_heating.h1 {
+    width: 300px;
+}
+}
+/* product css end */
+
+
+
+/* why css start */
+@media (min-width: 915px) {
+.iron_why_list1 .icons_with_text_flex .icons_with_text_item p {
+    width: 234px;
+    max-width: 100%;
+}
+}
+
+
+
+@media (max-width: 915px) {
+.iron_why_list1 .icons_with_text_flex .icons_with_text_item p {
+    width: 161px;
+}
+}
+/* why css end */
+
+
+
+/* ing css start */
+.iron_ing_section .slider_navigations.center {
+    display: none !important;
+}
+
+
+
+@media (min-width: 915px) {
+.iron_ing_section .review_slider_custom_slider_new_item_bg.left {
+    aspect-ratio: 265 / 220;
+}
+}
+
+
+
+@media (max-width: 915px) {
+.iron_ing_section .review_rating2 {
+    gap: 5px;
+}
+.iron_ing_section .lp_sub_heding {
+    width: 271px;
+}
+.iron_ing_section .same_height_slider .review_slider_custom_slider_new_item:last-child {
+    width: 100%;
+}
+.iron_ing_section .same_height_slider .review_slider_custom_slider_new_item:last-child .review_slider_custom_slider_new_item_bg.left {
+    aspect-ratio: 330 / 140;
+}
+}
+/* ing css end */
+
+
+
+/* number css start */
+@media (max-width: 915px) {
+body .iron_number_section .h1 {
+    width: 279px;
+}
+.iron_number_section .two_layers_subheading {
+    width: 300px;
+}
+}
+/* number css end */
+
+
+
+/* video css start */
+@media (max-width: 915px) {
+.video_slider_subheading {
+    width: 300px;
+}
+}
+/* video css end */
+
+
+
+/* table css start */
+@media (max-width: 915px) {
+body .iron_table_section .h1 {
+    width: 249px;
+}
+.iron_table_list .icons_with_text_flex .icons_with_text_item {
+    padding: 15px 9px;
+}
+}
+/* table css end */
+
+
+.pdp_sticky_title {
+    font-size: 24px;
+}

@@ -1,0 +1,231 @@
+body .free_shipping .bestsellerbadge h5 {
+    line-height: 0;
+}
+body .bestsellerbadge {
+    color: #fff;
+    align-items: center;
+    gap: 3px;
+}
+body .product_price p.save_price {
+    background: #F05AA9;
+}
+html body.product-subscription form .product-form__buttons button.product-form__submit.button.button--full-width.black_btn.in_w {
+    border: 0.922px #FFB800;
+    background: #FFB800 !important;
+}
+body.product-subscription .main_key_benefit .tab_title.active {
+    border-color: #F05AA9;
+}
+body.product-subscription .yellow {
+    color: #F05AA9;
+}
+body .slick-slider-dots li.slick-active button {
+    background: #F05AA9 !important;
+}
+body .product_pakage.selected, .product_pakage:hover {
+    border-radius: 10px;
+    border: 1px solid #F05AA9;
+    background: #FBC6E2;
+}
+body .banner-slider .slick-dots li.slick-active button {
+    background: #F05AA9 !important;
+}
+body .verblock {
+    justify-content: center;
+}
+body span.verified_custom {
+    font-style: normal;
+}
+body section.video_with_text .sliderarrows .slick-arrow {
+    display: none;
+}
+body span.infobadge.text-center {
+    order: 1;
+    background: #F05AA9;
+}
+body section.product-info-sec .infocontent_box p strong {
+    color: #F05AA9;
+    font-weight: 700;
+    display: block;
+}
+body section.product-info-sec .infocontent_box p strong {
+    color: #F05AA9;
+    font-weight: 700;
+    display: block;
+line-height: 100%;
+}
+body .checklistblock li img {
+    padding: 0;
+}
+body .checklistblock li img {
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+body .sec-head h2.sec-title strong {
+    color: #F05AA9;
+}
+body span.blocks_custom_top {
+    background: #F05AA9;
+    color: #fff;
+}
+
+body span.headbadge {
+    background: #9F3C70;
+}
+
+body .gummiestitleblock h4 strong {
+    //display: block;
+}
+body .gummiestitleblock h4 br {
+    //display: none;
+}
+body .table_head .table_col.secondcol:before, body .tablebody .tablerow:last-of-type .secondcol:after {
+    background: #F05AA9;
+}
+body .table_col.secondcol {
+    background: #F05AA9;
+}
+body .sec-head h2.sec-title span {
+    color: #F05AA9;
+}
+body .benifitscontent ul li:before {
+    background-image: url(https://cdn.shopify.com/s/files/1/0296/4848/6460/files/tick.svg?v=1722704805);
+}
+body .landing_footer {
+    background: #000 !important;
+    color: #fff !important;
+}
+body .landing_footer .footerlogo {
+    filter: brightness(0) invert(1);
+}
+body .landing_footer .copy_right a {
+    color: #fff;
+}
+body .landing_footer .main_list a {
+    color: #fff;
+}
+body .locale-selectors__container {
+    background: #000 !important;
+}
+body .tabcontent {
+    border-radius: 5px;
+    border: 0.6px solid #000;
+    background: #FFF;
+}
+.product-subscription .tabcontent .tab_content_data h4.review_title span {
+    display: block;
+}
+body.product-subscription .product_pakage {
+    border-radius: 10px;
+    border: 0.6px solid #000;
+    background: #FFF;
+}
+body .product_pakage.selected, body .product_pakage:hover {
+    border-radius: 10px;
+    border: 1px solid #F05AA9;
+    background: #fbc6e2;
+}
+body.product-subscription .product_pakage h5 span {
+    text-transform: capitalize;
+}
+body .ann2.slick-slide {
+    background: #F05AA9 !important;
+   font-size: 14px !important;
+   font-style: normal !important;
+   font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    font-family: Inter, sans-serif !important;
+}
+body button.product-form__submit.button.button--full-width.black_btn.in_w.button--primary span {
+    color: #000 !important;
+}
+
+span.best_value_new, .product_pakage span.free_shipping {
+    background: #f05aa9;
+    color: #fff;
+}
+
+@media (min-width:768px) {
+body .gummiesimgblock img {
+    max-width: 60%;
+    margin: 0 auto;
+    display: block;
+}
+}
+
+
+
+
+
+
+@media (max-width:768px) {
+  
+body .science-gummies-sec:before {
+    content: "";
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: -150px;
+    background: url(https://cdn.shopify.com/s/files/1/0296/4848/6460/files/Vector_32_b3319856-be41-4b54-b287-d65757c03755.png?v=1722711038);
+    background-size: contain;
+}
+body .science-gummies-sec {
+    position: relative;
+}
+body section.science-gummies-sec .gummiesimgblock {
+     margin-top: -235px;
+}
+  body .product-subscription .prod_name_prod {
+    font-size: 20px;
+}
+body section.product-info-sec .infocontent_box p {
+    padding-top: 25px;
+}
+body .colcontent {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+  
+.product-info-sec {
+    position: relative;
+}
+.product-info-sec:before {
+    content: "";
+    width: 274.605px;
+    height: 0.5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: #000;
+}
+  body .results-sec {
+    padding-bottom: 50px;
+}
+  body section.product-info-sec .infocontent_box p {
+    font-size: 26px;
+}
+  .gummiesimgblock img {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+}
+  body span.headbadge {
+    margin-top: 20px;
+}
+
+ body .stickybottombar a {
+    border: 0.922px solid #FFB800;
+    background: #FFB800;
+    color: #000;
+}
+}
+
+body .sec-head h2.sec-title span, body .sec-head h2.sec-title strong, body section.product-info-sec .infocontent_box p strong {
+    color: unset;
+}
+body span.infobadge.text-center {
+    color: #000;
+}

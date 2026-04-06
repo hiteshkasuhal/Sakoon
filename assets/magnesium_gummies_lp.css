@@ -1,0 +1,65 @@
+/* product css start */
+@media (max-width: 915px) {
+.iron_pdt_text1 {
+    width: 100%;
+}
+}
+/* product css end */
+
+
+
+/* why css start */
+@media (min-width: 915px) {
+.iron_why_list1 .icons_with_text_flex .icons_with_text_item p {
+    width: 234px;
+    max-width: 100%;
+}
+}
+
+
+
+@media (max-width: 915px) {
+.iron_why_list1 .icons_with_text_flex .icons_with_text_item p {
+    width: 164px;
+}
+.iron_why_list1 .icons_with_text_flex .icons_with_text_item:nth-child(1) p {
+    width: 190px;
+}
+}
+/* why css end */
+
+
+
+/* number css start */
+@media (max-width: 915px) {
+body .iron_number_section .h1 {
+    width: 279px;
+}
+.iron_number_section .two_layers_subheading {
+    width: 330px;
+}
+}
+/* number css end */
+
+
+
+/* video css start */
+@media (max-width: 915px) {
+.video_slider_subheading {
+    width: 300px;
+}
+}
+/* video css end */
+
+
+
+/* table css start */
+@media (max-width: 915px) {
+body .iron_table_section .h1 {
+    width: 249px;
+}
+.iron_table_list .icons_with_text_flex .icons_with_text_item {
+    padding: 15px 9px;
+}
+}
+/* table css end */
