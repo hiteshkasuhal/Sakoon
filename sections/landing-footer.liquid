@@ -1,0 +1,257 @@
+{%- style -%}
+  .landing_footer {
+    padding-top: {{ section.settings.padding_top | times: 0.70 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.70 | round: 0 }}px;
+    overflow:hidden;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .landing_footer {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .landing_footer {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .shopify-section-group-footer-group {
+      display: none;
+  }
+  .footerlogo img {
+      max-width: 349px;
+      width: 100%;
+  }
+  .footer_icon img {
+      max-width: 320px;
+      width: 100%;
+  }
+  .copy_right {
+      font-size: 20px;
+      text-align: center;
+  }
+  .main_list {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 0;
+      list-style: none;
+  }
+  .main_list a {
+      font-size: 20px;
+      color: #000;
+  }
+  .main_list .menu_item {
+      margin-left: 70px;
+  }
+  .footer_bottom_block {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+  }
+  .copy_right  a {
+      color: #000;
+  }
+  .stickybottombar a {
+      border-radius: 100px;
+      background: #0073FF;
+      letter-spacing: 0;
+      font-size: 24.09px;
+      padding: 14px 15px;
+      font-weight: 700;
+      color: #fff;
+      display: inline-block;
+      transition: all 0.5s;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+  }
+  .stickybottombar {
+      padding: 15px;
+      background: #fff;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      display:none;
+  }  
+  /* .stickybottombar a:hover {
+      background: #000;
+  } */
+  
+  @media screen and (max-width: 991px) {
+    .main_list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .main_list .menu_item {
+        margin-left: 0;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .copy_right {
+        display: none;
+    }
+    .main_list a {
+        font-size: 10px;
+    }
+    .main_list {
+        list-style: disc;
+        padding-left: 20px;
+    }
+    .footer_bottom_block {
+        gap: 45px;
+    }
+    .footer_icon img {
+        max-width: 180px;
+    }
+    .stickybottombar a {
+        font-size: 16px;
+    }
+    .stickybottombar {
+      padding: 10px;
+      display:block;
+    }
+  }
+{%- endstyle -%}
+
+<section class="landing_footer" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+   <div class="container">    
+    <div class="footer_bottom_block">
+      <div class="row align-items-center">
+        <div class="col-md-3 col-6">
+          {% if section.settings.footerlogo != blank %}
+          <div class="footerlogo">
+            <a href="{{section.settings.logolink}}">
+              <img src="{{ section.settings.footerlogo | image_url }}" class="img-fluid"  alt="footerlogo" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Footer Logo</span>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-md-9 col-6">
+          <ul class="main_list">
+            {% for block in section.blocks %}
+              {% if block.settings.menutxt != blank %}
+              <li class="menu_item">
+                 <a href="{{ block.settings.menu_link }}">{{ block.settings.menutxt }}</a>
+              </li>
+                {% endif %}
+           {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% if section.settings.footer_copyright != blank %}
+        <div class="copy_right text-black">{{ section.settings.footer_copyright }}</div>
+      {% endif %}
+      
+      {% if section.settings.footerpaymentimg != blank %}
+        <div class="footer_icon text-center">
+          <img src="{{ section.settings.footerpaymentimg | image_url }}" class="img-fluid" alt="footerpaymentimg" width="auto" height="auto" loading="lazy" fetchpriority="low" /> 
+        </div>
+      {% endif %}
+    </div>    
+   </div>
+</section>
+
+{% if section.settings.stickybtntxt != blank %}
+  <div class="stickybottombar">
+    <a href="{{section.settings.stickybtnlink}}">{{section.settings.stickybtntxt}}</a>
+  </div>
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Landing Footer",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "url",
+        "id": "logolink",
+        "label": "Logo Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "footerlogo",
+        "label": "Footer Logo"  
+      },
+      {
+        "type": "image_picker",
+        "id": "footerpaymentimg",
+        "label": "Footer Payment Icon"  
+      },
+      {
+        "type": "html",
+        "id": "footer_copyright",
+        "label": "Copyright"
+      },
+      {
+        "type": "text",
+        "id": "stickybtntxt",
+        "label": "Sticky Button Text"
+      },      {
+        "type": "url",
+        "id": "stickybtnlink",
+        "label": "Sticky Button Link"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+    { 
+      "type": "footer_lending_menu",
+      "name": "Footer Menu Item",
+      "settings": [
+        {
+          "type": "url",
+          "id": "menu_link",
+          "label": "Menu Link"
+        },
+        {
+          "type": "text",
+          "id": "menutxt",
+          "label": "Menu Text"
+        }
+      ]  
+    }
+  ],
+    "presets": [
+      {
+        "name": "Landing Footer"
+      }
+    ]
+  }
+{% endschema %}

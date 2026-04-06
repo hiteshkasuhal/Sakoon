@@ -1,0 +1,259 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="icons_with_text_section section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }}">
+   <div class=" {% if section.settings.enable_slider != true %}container_hk {% endif %}section-{{ section.id }}-padding isolate">
+    {%if section.settings.heading != blank %}
+      <div class="icon_with_text_lp_top center">
+        <h2 class="h1" style="color:{{ section.settings.text_color | default:'#000' }}">{{ section.settings.heading }}</h2>
+      </div>
+   {% endif %}
+     <div class="flex_custom slider_{{ section.id }} no_buttons custom_slick_slider">
+        {%- for block in section.blocks -%}
+          {% if block.settings.text != blank or block.settings.svg != blank or block.settings.image != blank %}
+     <div class="flex_custom_item">
+     <div class="flex_custom_item_inner">
+     <div class="flex_custom_item_flex" style="color:{{ section.settings.text_color | default:'#000' }}">
+       {{ block.settings.svg }}
+       {% if block.settings.image != blank %}
+         <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" loading="eager" alt="{{ block.settings.image.alt }}">
+       {% endif %}
+       <span>{{ block.settings.text }}</span>
+     </div>
+     </div>
+     </div>
+       {% endif %}
+       {% endfor %}
+       {% if section.settings.enable_slider == true %}
+          {%- for i in (1..3) -%}
+          {%- for block in section.blocks -%}
+          {% if block.settings.text != blank or block.settings.svg != blank or block.settings.image != blank %}
+     <div class="flex_custom_item">
+     <div class="flex_custom_item_inner">
+     <div class="flex_custom_item_flex" style="color:{{ section.settings.text_color | default:'#000' }}">
+       {{ block.settings.svg }} 
+       {% if block.settings.image != blank %}
+         <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" loading="eager" alt="{{ block.settings.image.alt }}">
+       {% endif %}
+       <span>{{ block.settings.text }}</span>
+     </div>
+     </div>
+     </div>
+       {% endif %}
+       {% endfor %}
+       {% endfor %}
+       {% endif %}
+     </div>
+   </div>
+  </div>
+  {% if section.settings.enable_slider == true %}
+<script>
+    $('.slider_{{ section.id }}').slick({
+  dots: false,
+  speed: {{section.settings.slider_speed | times:1000}},
+  slidesToShow: {{ section.settings.columns_desktop }},
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 1,
+  infinite: true,
+draggable: false,
+swipeToSlide: false,
+touchMove: false,
+      variableWidth: true,
+  cssEase:'linear',
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: {{section.settings.columns_mobile }}, 
+        slidesToScroll: 1, 
+      }
+    }
+  ]
+});
+</script>
+    {% endif %}
+
+{% schema %}
+  {
+    "name": "Icons With Text LP",
+    "settings": [
+       {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+     {
+      "type": "color",
+      "id": "text_color",
+      "label": "Section Text Color"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+     {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable Slider"
+    },
+      {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "sec",
+      "label": "Slider Scrolling Speed",
+      "default": 9,
+      "info":"Time to scroll one Item"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "label": "Columns Desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 6,
+      "step": 0.5,
+      "default": 2,
+      "label": "Columns Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+         {
+          "type": "liquid",
+          "id": "svg",
+          "label": "Svg"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icons With Text LP"
+    }
+  ]
+  }
+{% endschema %}

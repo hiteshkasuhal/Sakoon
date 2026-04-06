@@ -1,0 +1,81 @@
+
+
+<div class="sec8_home">
+  
+  
+  <h1> {{ section.settings.heading }} </h1>
+  <p> {{ section.settings.subheading }} </p>
+  
+  <div class="sec8_home_slider">
+    
+    {% for block in section.blocks %}
+    <div class="sec8_home_slider_elem">
+      <div class="sec8_home_slider_inner">
+        <img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/q_50x.png?v=1641222746" width="50px">
+        <p> {{ block.settings.review }} </p>
+        <div class="reviewer_info">
+          <img src=" {{ block.settings.image | img_url:'120x' }} " class="rev_img">
+          <span> {{ block.settings.author }} </span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  
+  </div>
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Testimonial's",
+     "settings": [
+                  {
+                   "type":"text",
+                   "id":"heading",
+                   "label":"Heading"
+                 },
+                 {
+                   "type":"text",
+                   "id":"subheading",
+                   "label":"Subheading"
+                 }
+                ],
+       "blocks":[
+                  {
+                    "type":"Features",
+                    "name":"Features",
+                    "settings":[
+                                {
+                                   "type":"textarea",
+                                   "id":"review",
+                                   "label":"Review Text"
+                                },
+                                { 
+                                   "type":"image_picker",
+                                   "id":"image",
+                                   "label":"Author Image"
+                                },
+                                {
+                                   "type":"text",
+                                   "id":"author",
+                                   "label":"Author Name"
+                                }
+                               ]
+                  }
+                ],
+    "presets":[
+               {
+                 "name":"Testimonail's",
+                 "category":"custom"
+               }
+              ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

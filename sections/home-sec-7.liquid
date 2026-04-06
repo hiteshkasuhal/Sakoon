@@ -1,0 +1,76 @@
+
+<div class="sec6_home">
+  <div class="sec6_home_heading_container">
+    <img data-src="{{ section.settings.bg | img_url:'540x' }}" class="lazyload" id="img10">
+    <h6> {{ section.settings.heading }} </h6>
+    <h2> {{ section.settings.subheading }} </h2>
+  </div>
+  <div class="sec6_home_flx">
+    
+    {% for block in section.blocks %}
+    <div class="sec6_home_flx_inner_ele">
+      <div class="yellow_circ"></div>
+      <img data-src=" {{ block.settings.image | img_url:'320x' }} " class="lazyload">
+      <h6> {{ block.settings.heading }} </h6>
+    </div>
+    {% endfor  %}
+    
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Keep It Real",
+    "settings": [
+                  {
+                   "type":"text",
+                   "id":"heading",
+                   "label":"Heading"
+                 },
+                 {
+                   "type":"text",
+                   "id":"subheading",
+                   "label":"Subheading"
+                 },
+                 {
+                   "type":"image_picker",
+                   "id":"bg",
+                   "label":"Select Background Image"
+                 }
+                ],
+       "blocks":[
+                  {
+                    "type":"Features",
+                    "name":"Features",
+                    "settings":[
+                                { 
+                                   "type":"image_picker",
+                                   "id":"image",
+                                   "label":"Select Icon"
+                                },
+                                {
+                                   "type":"text",
+                                   "id":"heading",
+                                   "label":"Heading"
+                                }
+                               ]
+                  }
+                ],
+   "presets":[
+                {
+                  "name":"Keep It Real",
+                  "category":"custom"
+                }
+              ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

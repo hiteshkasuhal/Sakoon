@@ -1,0 +1,54 @@
+<div class="sec2_home">
+  <div class="sec2_home_left">
+    <img src=" {{ section.settings.image | img_url:'720x' }} " width="100%">
+  </div>
+  <div class="sec2_home_right">
+    <h2> {{ section.settings.heading }} </h2>
+    <p> {{ section.settings.description }} </p>
+    <button onclick="window.location='{{ section.settings.btn-link }}'" class="black_btn"> {{ section.settings.btn-text }} </button>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "True Health",
+    "settings": [
+                  {
+                   "type":"text",
+                   "id":"heading",
+                   "label":"Heading"
+                 },
+                 {
+                   "type":"textarea",
+                   "id":"description",
+                   "label":"Description"
+                 },
+                 {
+                   "type":"text",
+                   "id":"btn-text",
+                   "label":"Button Text"
+                 },
+                 {
+                   "type":"url",
+                   "id":"btn-link",
+                   "label":"Button Link"
+                 },
+                 {
+                   "type":"image_picker",
+                   "id":"image",
+                   "label":"Select Image"
+                 }
+                ],
+    "presets":[{
+                 "name":"True Health",
+                 "category":"custom"
+              }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

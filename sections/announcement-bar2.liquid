@@ -1,0 +1,39 @@
+<div class="asyncLoad announcements">
+  <div class="ann_slider">
+    {% for block in section.blocks %}
+  <div class="ann2">
+    {{ block.settings.scroll  }}
+  </div>
+ {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Announcement Bar 2",
+    "settings": [],
+    "blocks":[
+            {
+               "name":"Scroll_Text",
+               "type":"Scroll",
+               "settings":[
+                           {
+                            "type":"text",
+                            "id":"scroll",
+                            "label":"Scroll Text"
+                           }
+                          ]
+             }
+    ],
+     "presets": [
+       {
+         "name": "Announcement Bar 2"
+       }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

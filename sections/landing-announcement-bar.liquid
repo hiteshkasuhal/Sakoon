@@ -1,0 +1,156 @@
+{%- style -%}
+  .landing_announcement_bar {
+    padding-top: {{ section.settings.padding_top | times: 0.41 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+    overflow:hidden;
+  }
+   
+   @media screen and (min-width: 767px) {
+    .landing_announcement_bar {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .landing_announcement_bar {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .announcements,
+  .essential_annoucement_bar_wrapper {
+      display: none !important;
+  }
+
+  .sep {
+      width: 8px;
+      display: inline-block;
+      height: 8px;
+      background: #000000;
+      border-radius: 100%;
+  }
+  .announce_text {
+      font-size: 18px;
+      text-transform: uppercase;
+      white-space: nowrap;
+  }
+ .announcementblock {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 28px;
+     margin: 0 11px;
+ }
+
+  .announcementrow {
+      animation: 25s slides infinite linear;
+  }
+  @keyframes slides{0%{transform:translate(0)}to{transform:translate(-100%)}}
+  
+  @media screen and (max-width: 991px) {
+
+  }
+  @media screen and (max-width: 767px) {
+    .announce_text {
+        font-size: 12px;
+    }
+    .announcementblock {
+        gap: 15px;
+        margin:0 7px;
+    }
+    .sep {
+        width: 4px;
+        height: 4px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="asyncLoad landing_announcement_bar" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="announcementrow d-flex">
+    {% for block in section.blocks %}
+      {% for block in section.blocks %}
+        <div class="announcementblock">
+          <span class="sep"></span>
+          <span class="announce_text">{{block.settings.title}}</span>
+        </div>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <div class="announcementblock">
+          <span class="sep"></span>
+          <span class="announce_text">{{block.settings.title}}</span>
+        </div>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <div class="announcementblock">
+          <span class="sep"></span>
+          <span class="announce_text">{{block.settings.title}}</span>
+        </div>
+      {% endfor %}
+      {% for block in section.blocks %}
+        <div class="announcementblock">
+          <span class="sep"></span>
+          <span class="announce_text">{{block.settings.title}}</span>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Landing Announcement Bar",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Title",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Landing Announcement Bar"
+      }
+    ]
+  }
+{% endschema %}

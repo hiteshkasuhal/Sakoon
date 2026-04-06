@@ -1,0 +1,185 @@
+
+{%- style -%}
+  
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="slider_images_custom review_images_custom section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }}">
+   <div class="page-width section-{{ section.id }}-padding isolate">
+
+
+
+     <div class="images_center ">
+       
+       <div class="images_slider_main slider_{{ section.id }} no_buttons" dir="rtl">
+         
+        {%- for block in section.blocks -%}
+          {% if block.settings.image != blank %}
+       <div class="images_slider_item">
+       <div class="images_slider_item_inner center">
+       <div class="images_slider_item_bg">
+            <div class="images_slide_slider_new_image">
+            <img data-src="{{ block.settings.image | image_url }}" class="lazyload" width="auto" height="auto" loading="lazy" alt="{{ block.settings.image.alt }}">  
+            </div>
+          </div>
+       </div>
+          </div>
+            {% endif %}
+       {% endfor %}
+       </div>
+     </div>
+      
+     
+   </div>
+  </div>
+
+<script>
+    $('.slider_{{ section.id }}').slick({
+  dots: false,
+  speed: 9000,
+  slidesToShow: 9,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 0,
+  infinite: true,
+  cssEase:'linear',
+draggable: false,
+       rtl: true,
+swipeToSlide: false,
+touchMove: false,
+  prevArrow:'<button class="slick-arrow slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none"><circle cx="21.5" cy="21" r="20.5" stroke="black"/><path d="M18.972 20.4512L25.5557 26.7188C25.6714 26.8285 25.7633 26.9588 25.826 27.1024C25.8886 27.246 25.9209 27.3999 25.9209 27.5554C25.9209 27.7109 25.8886 27.8649 25.826 28.0085C25.7633 28.152 25.6714 28.2824 25.5557 28.392C25.3213 28.613 25.0048 28.7369 24.675 28.7369C24.3452 28.7369 24.0288 28.613 23.7943 28.392L16.3354 21.2935C16.11 21.0779 15.9805 20.7879 15.9738 20.4837C15.9671 20.1796 16.0837 19.8846 16.2993 19.6602L23.7891 12.5062C24.022 12.2837 24.3382 12.1584 24.668 12.158C24.9979 12.1575 25.3144 12.2819 25.548 12.5038C25.7816 12.7257 25.913 13.0269 25.9135 13.3411C25.914 13.6554 25.7834 13.9569 25.5506 14.1795L18.972 20.4512Z" fill="#202020"/></svg>Slide Previous</button>',
+nextArrow:'<button class="slick-arrow slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="43" height="42" viewBox="0 0 43 42" fill="none"><circle cx="21.5" cy="21" r="20.5" transform="rotate(-180 21.5 21)" stroke="black"/><path d="M24.028 21.5488L17.4443 15.2812C17.3286 15.1715 17.2367 15.0412 17.174 14.8976C17.1114 14.754 17.0791 14.6001 17.0791 14.4446C17.0791 14.2891 17.1114 14.1351 17.174 13.9915C17.2367 13.848 17.3286 13.7176 17.4443 13.608C17.6787 13.387 17.9952 13.2631 18.325 13.2631C18.6548 13.2631 18.9712 13.387 19.2057 13.608L26.6646 20.7065C26.89 20.9221 27.0195 21.2121 27.0262 21.5163C27.0329 21.8204 26.9163 22.1154 26.7007 22.3398L19.2109 29.4938C18.978 29.7163 18.6618 29.8416 18.332 29.842C18.0021 29.8425 17.6856 29.7181 17.452 29.4962C17.2184 29.2743 17.087 28.9731 17.0865 28.6589C17.086 28.3446 17.2166 28.0431 17.4494 27.8205L24.028 21.5488Z" fill="#202020"/></svg>Slide Next</button>',
+    responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        slidesToShow:3.5, 
+        slidesToScroll: 1, 
+      }
+    }
+  ]
+});
+</script>
+
+{% schema %}
+  {
+    "name": "images Slider",
+    "settings": [
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+     {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider"
+    }
+  ]
+  }
+{% endschema %}

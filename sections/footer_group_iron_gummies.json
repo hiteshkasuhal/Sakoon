@@ -1,0 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer Group Iron Gummies",
+  "type": "footer",
+  "sections": {
+    "richtext_lpnew_gzECRN": {
+      "type": "richtext_lpnew",
+      "blocks": {
+        "image_6Dx9qR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/lp_footer_logo.webp",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "custom_class": "lpfooter_logo"
+          }
+        },
+        "richtext_xHMzWc": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Trusted by thousands worldwide, our halal-certified gummies deliver real results with pure ingredients.</p>",
+            "html": "",
+            "custom_class": "footer_text1"
+          }
+        },
+        "richtext_4zQnFa": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Shop</p><ul><li><a href=\"#\" title=\"#\">Manage Your Subscription</a></li><li><a href=\"#\" title=\"#\">Join Rewards Program</a></li><li><a href=\"#\" title=\"#\">Become an Affiliate</a></li><li><a href=\"#\" title=\"#\">Our Story / Charity</a></li><li><a href=\"#\" title=\"#\">Lab Test Report</a></li><li><a href=\"#\" title=\"#\">Halal Certificates</a></li></ul>",
+            "html": "",
+            "custom_class": "footer_menu footer_menu_1"
+          }
+        },
+        "richtext_KWpBnW": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Policies</p><ul><li><a href=\"#\" title=\"#\">Terms & Conditions</a></li><li><a href=\"#\" title=\"#\">Privacy Policy</a></li><li><a href=\"#\" title=\"#\">Shipping Policy</a></li><li><a href=\"#\" title=\"#\">Returns / Cancellation Policy</a></li></ul>",
+            "html": "",
+            "custom_class": "footer_menu footer_menu_2"
+          }
+        },
+        "richtext_4r8PHD": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Contact us</p><ul><li><a href=\"#\" title=\"#\">Support Center</a></li><li><a href=\"#\" title=\"#\">My Account</a></li></ul>",
+            "html": "<ul>\n<li><a href=\"https://www.instagram.com/sakoonnutrition/\" target=\"blank\"><svg width=\"25\" height=\"24\" viewBox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.6665 8.75C10.8716 8.75 9.4165 10.2051 9.4165 12C9.4165 13.7949 10.8716 15.25 12.6665 15.25C14.4614 15.25 15.9165 13.7949 15.9165 12C15.9165 10.2051 14.4614 8.75 12.6665 8.75Z\" fill=\"#EBA701\"/>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.43623 3.08103C10.8843 2.69565 14.4491 2.69565 17.8972 3.08103C19.7956 3.2932 21.3268 4.78898 21.5495 6.69403C21.9619 10.219 21.9619 13.7801 21.5495 17.3051C21.3268 19.2102 19.7956 20.7059 17.8972 20.918C14.4491 21.3034 10.8843 21.3034 7.43623 20.918C5.53783 20.7059 4.00664 19.2102 3.78381 17.3051C3.37154 13.7801 3.37154 10.219 3.78381 6.69403C4.00664 4.78898 5.53783 3.2932 7.43623 3.08103ZM17.6667 5.99956C17.1144 5.99956 16.6667 6.44727 16.6667 6.99956C16.6667 7.55184 17.1144 7.99956 17.6667 7.99956C18.219 7.99956 18.6667 7.55184 18.6667 6.99956C18.6667 6.44727 18.219 5.99956 17.6667 5.99956ZM7.91669 11.9996C7.91669 9.37617 10.0433 7.24956 12.6667 7.24956C15.2901 7.24956 17.4167 9.37617 17.4167 11.9996C17.4167 14.6229 15.2901 16.7495 12.6667 16.7495C10.0433 16.7495 7.91669 14.6229 7.91669 11.9996Z\" fill=\"#EBA701\"/>\n</svg></a>\n</li>\n<li><a href=\"https://www.facebook.com/Sakoonnutrition\" target=\"blank\"><svg width=\"25\" height=\"24\" viewBox=\"0 0 25 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9.8645 21.5H13.8645V13.49H17.4685L17.8645 9.51H13.8645V7.5C13.8645 7.23479 13.9698 6.98043 14.1574 6.79289C14.345 6.60535 14.5993 6.49999 14.8645 6.49999H17.8645V2.5H14.8645C13.5385 2.5 12.2667 3.02678 11.329 3.96446C10.3913 4.90215 9.8645 6.17391 9.8645 7.5V9.51H7.86451L7.46851 13.49H9.8645V21.5Z\" fill=\"#EBA701\"/>\n</svg></a>\n</li>\n</ul>",
+            "custom_class": "footer_menu footer_menu_3"
+          }
+        },
+        "richtext_9zK4Tk": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p><strong>Join Our Newsletter</strong></p>",
+            "html": "<div class=\"newsletter_main_html\">\n<div class=\"newsletter_form_lp\">\n {% form 'customer', class: 'newsletter-form_lp' %}\n              <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n              <div class=\"newsletter-form__field-wrapper_lp\">\n                <div class=\"field_lp\">\n                  <input\n                    id=\"NewsletterForm--{{ section.id }}\"\n                    type=\"email\"\n                    name=\"contact[email]\"\n                    class=\"field__input_lp\"\n                    value=\"{{ form.email }}\"\n                    aria-required=\"true\"\n                    autocorrect=\"off\"\n                    autocapitalize=\"off\"\n                    autocomplete=\"email\"\n                    {% if form.errors %}\n                      autofocus\n                      aria-invalid=\"true\"\n                      aria-describedby=\"Newsletter-error--{{ section.id }}\"\n                    {% elsif form.posted_successfully? %}\n                      aria-describedby=\"Newsletter-success--{{ section.id }}\"\n                    {% endif %}\n                    placeholder=\"Enter your email\"\n                    required\n                  >\n                   <button\n                    type=\"submit\"\n                    class=\"button custom_hk_button\"\n                    name=\"commit\"\n                    id=\"Subscribe\"\n                    aria-label=\"{{ 'newsletter.button_label' | t }}\"\n                  ><svg width=\"10\" height=\"16\" viewBox=\"0 0 10 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1.3999 0.799805L8.5999 7.9998L1.3999 15.1998\" stroke=\"white\" stroke-width=\"1.44\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>\n</button>\n                </div>\n                {%- if form.errors -%}\n                  <small class=\"newsletter-form__message form__message\" id=\"Newsletter-error--{{ section.id }}\">\n                    {%- render 'icon-error' -%}\n                    {{- form.errors.translated_fields.email | capitalize }}\n                    {{ form.errors.messages.email -}}\n                  </small>\n                {%- endif -%}\n              </div>\n              {%- if form.posted_successfully? -%}\n                <h3\n                  class=\"newsletter-form__message newsletter-form__message--success form__message\"\n                  id=\"Newsletter-success--{{ section.id }}\"\n                  tabindex=\"-1\"\n                  autofocus\n                >\n                  {% render 'icon-success' -%}\n                  {{- 'newsletter.success' | t }}\n                </h3>\n              {%- endif -%}\n            {% endform %}\n</div>\n</div> \n\n\n\n<div class=\"bottom_copyright\">\n<div class=\"copyright_lp\">© {{ \"now\" | date: \"%Y\" }} Sakoon Nutrition, All Rights Reserved</div>\n<div class=\"payments_lp\">\n<img src=\"https://cdn.shopify.com/s/files/1/0296/4848/6460/files/lp_footer_brand.webp?v=1756818273\" alt=\"payments\" width=\"auto\" height=\"auto\" loading=\"eager\" fetchpriority=\"high\">\n</div>\n</div>",
+            "custom_class": "footer_join"
+          }
+        },
+        "icon_with_text_MehEby": {
+          "type": "icon_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/lp_footer_brandmob.webp",
+            "text1": "© 2024 Sakoon Nutrition, All Rights Reserved",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "custom_class": "lpnew_copy_brand mobile_only"
+          }
+        }
+      },
+      "block_order": [
+        "image_6Dx9qR",
+        "richtext_xHMzWc",
+        "richtext_4zQnFa",
+        "richtext_KWpBnW",
+        "richtext_4r8PHD",
+        "richtext_9zK4Tk",
+        "icon_with_text_MehEby"
+      ],
+      "name": "Richtext Lpnew",
+      "settings": {
+        "custom_class": "lpnew_footer_section",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "#000000",
+        "bg_color2": "",
+        "color": "#ffffff",
+        "position": "left",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "trigger_class": ""
+      }
+    }},
+  "order": [
+    "richtext_lpnew_gzECRN"]
+}

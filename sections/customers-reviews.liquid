@@ -1,0 +1,207 @@
+{%- style -%}
+  .customer_reviews_sec {
+    padding-top: {{ section.settings.padding_top | times: 0.41 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.41 | round: 0 }}px;
+    overflow:hidden;
+  }
+  
+   @media screen and (min-width: 767px) {
+    .customer_reviews_sec {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+  }
+ 
+  @media screen and (min-width: 1024px) {
+    .customer_reviews_sec {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  .customer_reviews_sec .sec-head {
+    margin-bottom: 100px;
+    gap: 25px;
+  }
+  .customervideo_slider {
+      margin-bottom: 100px !important;
+  }
+  .customervideo_slider .reivewslide {
+      padding: 0 38px;
+  }
+  .customervideo_slider .reivewslide video {
+      border-radius: 10px;
+      vertical-align: middle;
+      display: inline-block;
+      width: 100%;
+  }
+
+  @media screen and (max-width: 991px) {
+    .customer_reviews_sec .sec-head {
+      margin-bottom: 27px;
+      gap: 10px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .customer_reviews_sec .sec-head {
+        margin-bottom: 31px;
+        gap: 8px;
+    }
+    .customervideo_slider .reivewslide {
+        padding: 0 20px;
+    }
+    .customervideo_slider {
+        margin-bottom: 30px !important;
+    }
+  }
+{%- endstyle -%}
+
+
+<!-- --------------------- Happy Customers Section --------------------- -->
+<section class="customer_reviews_sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+  <div class="container">
+    {% if section.settings.secheading != blank %}
+    <div class="sec-head d-flex flex-column text-center">
+      <img src="{{ section.settings.ratingstgar | image_url }}" class="img-fluid ratingimg" alt="{{ section.settings.secheading | escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low" >
+      <h2 class="sec-title">{{section.settings.secheading}}</h2>
+      <div class="sec-description">{{ section.settings.secdescription }}</div>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div class="col-md-12 col-12">
+          <div class="videosliderblock">        
+            <div class="customervideo_slider">
+              {% for block in section.blocks %}
+                {% if block.settings.videourl != blank %}
+                  <div class="reivewslide">
+                    <div class="review_video">
+                      <video controls poster="{{ block.settings.videocoverimg | img_url:'master' }}"><source src="{{ block.settings.videourl }}" type="video/mp4"></video>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+              <div class="sliderarrows">
+                <a href="javascript:void(0);" class="customervideoprev prev"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/left-arrow.svg"  alt="Slide previous" width="auto" height="auto" loading="lazy" fetchpriority="low"/><span style="display:none;">Slide Previous</span></a>
+                <div class="slick-slider-dots customervideo-slider-dots"></div>
+                <a href="javascript:void(0);" class="customervideonext next"><img src="https://cdn.shopify.com/s/files/1/0296/4848/6460/files/right-arrow.svg" alt="Slide next" width="auto" height="auto" loading="lazy" fetchpriority="low" /><span style="display:none;">Slide Next</span></a>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Customers Reviews Section",
+    "settings": [      
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "ratingstgar",
+        "label": "Rating Star Image"
+      },
+      {
+        "type": "html",
+        "id": "secheading",
+        "label": "Section Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secdescription",
+        "label": "Section Description"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "video",
+        "name": "Review Video",
+        "settings": [
+          {
+            "type": "url",
+            "id": "videourl",
+            "label": "Video URL"
+          },
+          {
+            "type": "image_picker",
+            "id": "videocoverimg",
+            "label": "Video Cover Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Customers Reviews Section",
+        "category": "Customers Reviews Section"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+<script type="text/javascript">
+  $(document).ready(function(){    
+    $('.customervideo_slider').slick({
+    dots: true,
+    arrows: true,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    prevArrow: $('.customervideoprev'),
+    nextArrow: $('.customervideonext'),
+    appendDots: $('.customervideo-slider-dots'),
+    responsive: [
+      {
+      breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+      }
+    ]
+    });
+  });
+</script>
+
+{% javascript %}
+{% endjavascript %}

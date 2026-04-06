@@ -1,0 +1,106 @@
+
+
+
+<h1 class="h1_gur"> {{ section.settings.heading }} </h1>
+<p class="p1_gur"> {{ section.settings.subheading }} </p>
+<img src=" {{ section.settings.image | image_url }} " id="img34" alt="{{ section.settings.image.alt }}" loading="lazy" fetchpriority="low" width="auto" height="auto">
+
+
+<div class="sec2_gur">
+  <h1> {{ section.settings.heading1 }} </h1>
+
+  
+  {%  for block in section.blocks  %}
+   <div class="sec2_flx_container_gur">
+    <div class="container sec2_flx_gur">
+      <h3> {{ block.settings.point }} </h3>
+      <div class="sec2_flx_gur_icon">
+        <img src=" {{ block.settings.image | image_url }} " alt="{{ block.settings.image.alt }}" loading="lazy" fetchpriority="low" width="auto" height="auto">
+      </div>
+      <div class="flx_txt_cont_gur">
+        <h2> {{ block.settings.heading }} </h2>
+        <p> {{ block.settings.subheading }} </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  
+  
+ 
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Hero Section",
+    "settings": [
+                 
+                 {
+                   "type":"text",
+                   "id":"heading",
+                   "label":"Heading"
+                 },
+                 {
+                   "type":"textarea",
+                   "id":"subheading",
+                   "label":"Subheading"
+                 },
+                 {
+                   "type":"image_picker",
+                   "id":"image",
+                   "label":"Main Image"
+                 },
+                 {
+                   "type":"text",
+                   "id":"heading1",
+                   "label":"Heading"
+                 }
+                  
+                ],
+   "blocks":[
+                {
+                  "name":"How_its_work",
+                  "type":"How_its_work",
+                  "settings":[
+                               
+                              
+                              {
+                               "type":"text",
+                               "id":"point",
+                               "label":"Point No"
+                             },
+                             {
+                               "type":"image_picker",
+                               "id":"image",
+                               "label":"Select Icon"
+                             },
+                             {
+                               "type":"text",
+                               "id":"heading",
+                               "label":"Heading"
+                             },
+                             {
+                               "type":"textarea",
+                               "id":"subheading",
+                               "label":"Subheading"
+                             }
+                 
+                             ]
+                }
+            ],
+    "presets":[
+      {
+        "name":"Gurantee Hero Section"
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

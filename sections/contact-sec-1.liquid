@@ -1,0 +1,239 @@
+
+<div class="sec1_home sec1_contact">
+
+  <img src="{{section.settings.image | image_url }}" width="100%" class="desktop_item" alt="{{ section.settings.image.alt }}" loading="lazy" fetchpriority="low"  height="auto">
+
+  <div class="sec1_contact_inner">
+      <h1>{{section.settings.heading}}</h1>
+      <p>{{section.settings.subheading}}</p>
+  </div>
+</div>
+
+
+
+<!-- GET IN <span class="clr_golden">TOUCH</span> -->
+<div class="sec2_contact">
+  <h2>{{section.settings.heading2}}</h2>
+  <div class="sec2_contact_flx">
+    <div class="sec2_contact_address_container">
+      <h6 class="sec2_contact_flx_heading">{{section.settings.address}}</h6>
+      <p class="p_sec2_contact_flx">{{section.settings.details}}</p>
+    </div>
+    <div class="sec2_contact_contact_container">
+      <h6 class="sec2_contact_flx_heading">{{section.settings.contact}}</h6>
+      <p class="p_sec2_contact_flx">{{section.settings.email}}</p>
+    </div>
+  </div>
+  <h5>{{section.settings.heading3}}</h5>
+  
+  
+  {%- form 'contact', id: 'ContactForm' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+    {%- elsif form.errors -%}
+      <div class="form__message">
+        <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+      </div>
+      <ul class="form-status-list caption-large" role="list">
+        <li>
+          <a href="#ContactForm-email" class="link">
+            {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+          </a>
+        </li>
+      </ul>
+    {%- endif -%}
+  
+    <div class="contact__fields row">
+      <div class="field col-md-6 col-12">
+        <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'templates.contact.form.name' | t }}">
+        <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+      </div>
+      <div class="field field--with-error col-md-6 col-12" >
+        <input
+          autocomplete="email"
+          type="email"
+          id="ContactForm-email"
+          class="field__input"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          placeholder="{{ 'templates.contact.form.email' | t }}"
+        >
+        <label class="field__label" for="ContactForm-email">{{ 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+        {%- if form.errors contains 'email' -%}
+          <small class="contact__field-error" id="ContactForm-email-error">
+            <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+            <span class="form__message">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</span>
+          </small>
+        {%- endif -%}
+      </div>
+    </div>
+   
+  
+    <div class="field">
+      <textarea
+        rows="1"
+        id="ContactForm-body"
+        class="text-area field__input"
+        name="contact[{{ 'templates.contact.form.comment' | t }}]"
+        placeholder="{{ 'templates.contact.form.comment' | t }}"
+      >
+        {{- form.body -}}
+      </textarea>
+      <label class="form__label field__label hh" for="ContactForm-body">What’s in your mind?</label>
+    </div>
+  
+    <div class="contact__button text-center mb-5">
+      <button type="submit" class="button">
+        {{ 'templates.contact.form.send' | t }}
+      </button>
+    </div>
+  {%- endform -%}
+
+  
+  <div class="contact_icon_container_contactPage">
+    <a target="_blank" href="{{section.settings.insta}}">   <svg   width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 9.47918C11.0555 9.47918 9.47918 11.0555 9.47918 13C9.47918 14.9445 11.0555 16.5208 13 16.5208C14.9445 16.5208 16.5208 14.9445 16.5208 13C16.5208 11.0555 14.9445 9.47918 13 9.47918Z" fill="#FFC300"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33368 3.33827C11.0691 2.92077 14.9309 2.92077 18.6664 3.33827C20.723 3.56812 22.3818 5.18855 22.6231 7.25235C23.0698 11.0711 23.0698 14.9289 22.6231 18.7477C22.3818 20.8115 20.723 22.4319 18.6664 22.6617C14.9309 23.0792 11.0691 23.0792 7.33368 22.6617C5.27708 22.4319 3.61829 20.8115 3.37691 18.7477C2.93027 14.9289 2.93027 11.0711 3.37691 7.25235C3.61829 5.18855 5.27708 3.56812 7.33368 3.33827ZM18.4167 6.50001C17.8184 6.50001 17.3333 6.98503 17.3333 7.58334C17.3333 8.18165 17.8184 8.66668 18.4167 8.66668C19.015 8.66668 19.5 8.18165 19.5 7.58334C19.5 6.98503 19.015 6.50001 18.4167 6.50001ZM7.85418 13C7.85418 10.158 10.1581 7.85418 13 7.85418C15.842 7.85418 18.1458 10.158 18.1458 13C18.1458 15.842 15.842 18.1458 13 18.1458C10.1581 18.1458 7.85418 15.842 7.85418 13Z" fill="#FFC300"/>
+    </svg><span style="display:none;">Open Instagram</span>
+    </a>
+     <a target="_blank" href="{{section.settings.fb}}">
+    <svg class="clickable" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.43144 19.7082H12.0981V12.3657H15.4018L15.7648 8.71734H12.0981V6.87484C12.0981 6.63172 12.1947 6.39856 12.3666 6.22666C12.5385 6.05475 12.7717 5.95817 13.0148 5.95817H15.7648V2.2915H13.0148C11.7992 2.2915 10.6334 2.77439 9.77387 3.63393C8.91433 4.49347 8.43144 5.65926 8.43144 6.87484V8.71734H6.59811L6.23511 12.3657H8.43144V19.7082Z" fill="#FFC300"/>
+    </svg><span style="display:none;">Open facebook</span>
+    </a>
+     <a target="_blank" href="{{section.settings.yt}}">
+    <svg class="clickable" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57126 5.29797C11.1849 5.01526 14.8151 5.01526 18.4287 5.29797L20.8562 5.48788C22.2082 5.59366 23.3144 6.60701 23.5379 7.94468C24.0971 11.2916 24.0971 14.7082 23.5379 18.0551C23.3144 19.3928 22.2082 20.4062 20.8562 20.5119L18.4287 20.7018C14.8151 20.9846 11.1849 20.9846 7.57126 20.7018L5.14383 20.5119C3.79175 20.4062 2.68565 19.3928 2.46214 18.0551C1.90292 14.7082 1.90292 11.2916 2.46214 7.94468C2.68565 6.60701 3.79175 5.59366 5.14383 5.48788L7.57126 5.29797ZM10.8333 15.6759V10.3239C10.8333 10.0713 11.1089 9.91526 11.3255 10.0452L15.7855 12.7212C15.9959 12.8475 15.9959 13.1524 15.7855 13.2786L11.3255 15.9546C11.1089 16.0846 10.8333 15.9285 10.8333 15.6759Z" fill="#FFC300"/>
+    </svg><span style="display:none;">Open Youtube</span>
+    </a>
+     <a target="_blank" href="{{section.settings.twitter}}">
+    <svg  class="clickable" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.8098 6.22724C21.8677 6.14647 21.7821 6.04218 21.6894 6.07811C21.0307 6.33344 20.3423 6.50571 19.64 6.5906C20.4219 6.12348 21.0253 5.4124 21.3599 4.57053C21.394 4.48477 21.3003 4.40819 21.2195 4.4528C20.4928 4.85414 19.7091 5.14313 18.8949 5.30957C18.8608 5.31654 18.8257 5.30494 18.8018 5.27969C18.1908 4.63502 17.3866 4.20578 16.5098 4.05745C15.6147 3.90601 14.6946 4.05596 13.8938 4.48379C13.0931 4.91162 12.457 5.59313 12.0853 6.42144C11.7319 7.209 11.6365 8.08691 11.8108 8.93003C11.8243 8.99545 11.7731 9.05721 11.7065 9.05307C10.1224 8.95469 8.57469 8.53336 7.15868 7.81446C5.74627 7.09739 4.49554 6.09983 3.48267 4.8833C3.43772 4.82931 3.35252 4.83629 3.31977 4.89845C3.0046 5.49651 2.83958 6.16311 2.84003 6.8406C2.83875 7.51498 3.00425 8.17922 3.32178 8.77416C3.63932 9.36911 4.09905 9.87631 4.66003 10.2506C4.0651 10.2344 3.48178 10.0873 2.95128 9.82067C2.88291 9.78631 2.8009 9.83524 2.80446 9.91167C2.84583 10.8009 3.17228 11.6936 3.73734 12.3786C4.33866 13.1074 5.17328 13.6062 6.10003 13.7906C5.74328 13.8992 5.3729 13.9564 5.00003 13.9606C4.79709 13.9582 4.59454 13.9433 4.39356 13.9158C4.31904 13.9056 4.2582 13.9764 4.28428 14.0469C4.5607 14.7944 5.04903 15.4467 5.6911 15.9228C6.37755 16.4318 7.2056 16.7142 8.06003 16.7306C6.61723 17.8659 4.83591 18.4855 3.00003 18.4906C2.81138 18.4912 2.62282 18.4851 2.43471 18.4723C2.3287 18.4651 2.27995 18.6063 2.37132 18.6605C4.16009 19.7221 6.20462 20.2831 8.29003 20.2806C9.82972 20.2966 11.3572 20.0056 12.7831 19.4247C14.2091 18.8437 15.5051 17.9845 16.5952 16.8971C17.6854 15.8097 18.548 14.516 19.1326 13.0915C19.7172 11.667 20.0121 10.1403 20 8.6006V8.12077C20 8.0892 20.015 8.05951 20.0402 8.04048C20.7184 7.52834 21.3149 6.91691 21.8098 6.22724Z" fill="#FFC300"/>
+    </svg><span style="display:none;">Open Twitter</span>
+    </a>
+
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+				{
+                   "type":"image_picker",
+                   "id":"image",
+                   "label":"Image"
+                 },
+                 {
+                   "type":"text",
+                   "id":"heading",
+                   "label":"Heading"
+                 },{
+                   "type":"textarea",
+                   "id":"subheading",
+                   "label":"Subheading"
+                 },{
+                   "type":"text",
+                   "id":"heading2",
+                   "label":"Heading"
+                 },{
+                   "type":"text",
+                   "id":"address",
+                   "label":"address heading"
+                 },{
+                   "type":"textarea",
+                   "id":"details",
+                   "label":"Address Detail"
+                 },{
+                   "type":"text",
+                   "id":"contact",
+                   "label":"contact heading"
+                 },{
+                   "type":"text",
+                   "id":"email",
+                   "label":"Phone & Email "
+                 },{
+                   "type":"text",
+                   "id":"heading3",
+                   "label":"Heading Form"
+                 },{
+                   "type":"url",
+                   "id":"insta",
+                   "label":"Instagram URL"
+                 },{
+                   "type":"url",
+                   "id":"fb",
+                   "label":"facebook URL"
+                 },{
+                   "type":"url",
+                   "id":"yt",
+                   "label":"Youtube URL"
+                 },{
+                   "type":"url",
+                   "id":"twitter",
+                   "label":"Twitter URL"
+                 }
+                 
+
+
+			],
+  "presets":[
+    {
+      "name":"Contact page"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+<style> 
+.field__input {
+    border: none;
+    flex-grow: 1;
+    border-bottom: solid 1px;
+    text-align: left;
+    padding: 1.5rem;
+}
+  .field__input:active{ box-shadow: none;
+    outline: none;}
+  .field__input:focus{ box-shadow: none;
+    outline: none;}
+  .field__input:hover{
+
+    box-shadow: none;
+    outline: none;
+  
+  }
+  button.button {
+    background-color: #fec303;
+    /* border-color: #fec303; */
+    border-radius: 44px;
+    border: none;
+    padding: 10px 50px;
+    outline: none;
+    box-shadow: none;
+}
+  .customer .field label, .field__label{
+  color: black;
+    font-weight: 200;
+    font-size: 15px;
+  }
+  .text-area{
+  min-height: 0px;}
+  .customer .field input, .customer select, .field__input, .select__select{box-shadow: none;}
+  .hh{margin-left: -18px;}
+  .clickable{cursor: pointer;}
+</style>

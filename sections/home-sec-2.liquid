@@ -1,0 +1,198 @@
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+
+
+<div class="sec2_home">
+  <img src="{{ 'img4.png' | file_img_url : 'master'}}" id="img4">
+  <div class="container sec3_prod">
+    <h1> {{ section.settings.heading }} </h1>
+    <div class="row">
+      {% for product in collections[section.settings.collection].products limit:2 %}
+      {% assign btn_label = "ADD TO CART" %}
+      {% unless product.available %}
+      {% assign btn_label = "Out of Stock" %}
+      {% endunless %}
+
+
+
+
+      <div class="col-12 col-md-6 col-lg-6 {% if forloop.index == 1 %} sec3_prod_left {% endif %} {% if forloop.index == 2 %} sec3_prod_right {% endif %}">
+        {%- form 'product', product, id: product_form_id, class: 'product_form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <product-form class="product-form">
+          <div class="sec3_prod_inner">
+            <img style="cursor:pointer;" onclick="window.location='{{ product.url }}'" src=" {{ product.featured_image | img_url:'720x' }} ">
+            <h1 style="cursor:pointer;" onclick="window.location='{{ product.url }}'"> {{ product.title }} </h1>
+            <div class="price_container_sec3">
+              <span id="dis-price">{{ product.compare_at_price | money | remove: '.00' }} </span>
+              <span id="pro-price"> {{ product.price | money  }} </span>
+            </div>
+
+            <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+
+
+            <div class="product_form">
+
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <div class="product-form__input product-form__quantity quan-align" {{ block.shopify_attributes }}>
+
+                <quantity-input class="quantity">
+                  <button class="quantity__button no-js-hidden" name="minus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                    {% render 'icon-minus' %}
+                  </button>
+                  <input class="quantity__input"
+                         type="number"
+                         name="quantity"
+                         id="Quantity-{{ section.id }}"
+                         min="1"
+                         value="1"
+
+                         >
+                  <button id="plusbut" class="quantity__button no-js-hidden" name="plus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                    {% render 'icon-plus' %}
+                  </button>
+                </quantity-input>
+              </div>
+              <button type="submit"  {% unless product.available %} disabled = "disabled" {% endunless %}
+                      value="Add to cart" class="black_btn js_add_to_cart_home incr_w">{{btn_label}}</button>
+
+            </div>
+
+          </div>
+        </product-form>  
+        {%- endform -%}
+      </div>
+
+
+
+
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+
+<!-- <script>
+
+  $(".js_add_to_cart_home").on('click',function(){
+    let form$ = $(this).closest('.product_form');
+    let variantId = form$.find("input[name=id]").val();
+    let quantity = form$.find(".quantity .quantity__input").val();
+    let item = Shopify.miniCart.CART_Obj.items.find(d=>d.id == variantId);
+    console.log(item);
+    if(item){
+      Shopify.miniCart.open();
+      for (let index = 0; index < quantity; index++) {
+        $('.drawer_product_flx').find(`.cart_quantity_container[data-variant-id=${variantId}] button[data-value=plus]`).click();
+      }
+      form$.find(".quantity .quantity__input").val(1);
+    }else {
+      quantity = parseInt(quantity);
+      let formData = {
+        items: [{
+          id: variantId,
+          quantity: quantity
+        }
+               ]          
+      }
+      Shopify.miniCart.addToCart(formData)
+      .then(response=>{
+        console.log(response)
+        Shopify.miniCart.getCart().then(cart=>{
+          Shopify.miniCart.CART_Obj = cart;
+          Shopify.miniCart.open(response);
+          form$.find(".quantity .quantity__input").val(1);
+        })
+      })
+    }
+  })
+
+</script> -->
+
+
+
+
+
+{% schema %}
+{
+"name": "Featured Collection",
+"settings": [
+{
+"type":"text",
+"id":"heading",
+"label":"Heading"
+},
+{
+"type":"collection",
+"id":"collection",
+"label":"Select Collection"
+}
+],
+"presets":[
+{
+"name":"Featured Collection",
+"category":"custom"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+<style>
+
+  quantity-input.quantity {
+    border: none !important;
+  }
+
+  button.quantity__button.no-js-hidden {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #ffc300;
+    background: #ffc300;
+    color: white;
+    border-radius: 30px;
+    margin-top: 7px;
+  }
+
+  .quantity__input {
+    color: currentColor;
+    font-size: 1.8rem;
+    font-weight: 600;
+    opacity: 1;
+
+  }
+
+
+  .quan-align {
+    max-width: 14rem !important;
+    margin:auto !important;
+  }
+
+</style>

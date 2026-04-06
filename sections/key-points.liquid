@@ -1,0 +1,133 @@
+{%- style -%}
+.key_point_sec {
+  padding-top: {{ section.settings.padding_top | times: 0.80 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.80 | round: 0 }}px;
+}
+.keypointblock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.keypointblock h3 {
+    margin-bottom: 0;
+    font-family: Inter,sans-serif!important;
+    font-weight: 600;
+    text-align: center;
+    font-size: 22px;
+    line-height: 28px;
+}
+.keypointicon img {
+    width: 60px;
+}
+
+@media screen and (min-width: 1024px) {
+  .key_point_sec {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+@media only screen and (max-width: 767px){
+.keypointblock {
+    flex-direction: column;
+    gap: 10px;
+}
+.keypointblock h3 {
+    font-size: 11px;
+    line-height: normal;
+}
+.keypointicon img {
+    width: 30px;
+}
+}
+{%- endstyle -%}
+
+<!-- --------------------------- Key Points Section Start ---------------------------- -->
+    <section class="key_point_sec" style="background-color:{{section.settings.bgcolor}};color:{{section.settings.textcolor}};">
+      <div class="container">
+        <div class="row">
+          {% for block in section.blocks %}
+          <div class="col-4">
+            <div class="keypointblock">
+              {% if block.settings.keypointicon != blank %}
+              <div class="keypointicon">
+                <img src="{{ block.settings.keypointicon | image_url }}" class="text-center" alt="{{ block.settings.keypointtitle | escape }}" width="auto" height="auto" loading="lazy" fetchpriority="low"/>
+              </div>
+              {% endif %}
+              <div class="box_content">
+                {% if block.settings.keypointtitle != blank %}
+                <h3>{{ block.settings.keypointtitle}}</h3>
+                {% endif %}
+              </div>
+            </div>
+          </div>          
+          {% endfor %}          
+        </div>
+      </div>
+    </section>
+{% schema %}
+  {
+    "name": "Key Points",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Key Point",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "keypointicon",
+            "label": "Key Point Image"
+          },
+          {
+            "type": "text",
+            "id": "keypointtitle",
+            "label": "Key Point Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Key Points",
+        "category": "Key Points"
+      }
+    ]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,38 @@
+<div class="asyncLoad announcements">
+  <div class="ann_scroll">
+  <div id="annou_txt">
+     {% for block in section.blocks  %}
+    <div>
+      <i class="fas fa-circle ann_dot"></i>
+      <span>  {{ block.settings.scroll }} </span>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Announcement Bar",
+    "class":"custom_announcement_bar",
+    "settings": [],
+    "blocks":[
+           {
+               "name":"Scroll_Text",
+               "type":"Scroll",
+               "settings":[
+                           {
+                            "type":"text",
+                            "id":"scroll",
+                            "label":"Scroll Text"
+                           }
+                          ]
+             }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

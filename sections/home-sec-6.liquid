@@ -1,0 +1,89 @@
+
+
+<div class="sec4_home">
+  <div class="sec4_home_left">
+    <h1>{{ section.settings.heading }}</h1>
+    <div class="divone">
+    <p> {{ section.settings.description }} </p>
+    <button onclick="window.location='{{ section.settings.btn-link }}'"> {{ section.settings.btn-text }} </button>
+    </div>
+   </div>
+  <div class="sec4_home_right">
+    <img src=" {{ section.settings.image | img_url:'720x' }} " width="100%">
+  </div>
+    <div class="sec4_home_left">
+  <div class="divtwo text-center">
+    <p> {{ section.settings.description }} </p>
+    <button onclick="window.location='{{ section.settings.btn-link }}'"> {{ section.settings.btn-text }} </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Happy Health",
+    "settings": [
+                   {
+                   "type":"textarea",
+                   "id":"heading",
+                   "label":"Heading"
+                 },
+                 {
+                   "type":"textarea",
+                   "id":"description",
+                   "label":"Description"
+                 },
+                 {
+                   "type":"text",
+                   "id":"btn-text",
+                   "label":"Button Text"
+                 },
+                 {
+                   "type":"url",
+                   "id":"btn-link",
+                   "label":"Button Link"
+                 },
+                 {
+                   "type":"image_picker",
+                   "id":"image",
+                   "label":"Select Image"
+                 }
+                ],
+      "presets":[
+                {
+                  "name":"Happy Health",
+                  "category":"custom"
+                }
+              ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style> 
+  .divtwo{display:none!important;}
+  
+  @media screen and (max-width: 768px){
+    .sec4_home_left{text-align: center; }
+  .sec4_home_left h1{font-size: 20px;}
+    .divone{display:none!important;}
+    .divtwo{display:block!important; padding: 10px 0 20px;}
+  
+  }
+    
+    
+  
+  
+
+
+
+</style>

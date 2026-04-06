@@ -1,0 +1,329 @@
+
+<div class="footer">
+  <div class="go_to_top">
+    <a href="#"><svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="30" cy="30" r="30" fill="#FFC300"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M38.2393 32.9683C37.7389 33.4687 36.9277 33.4687 36.4273 32.9683L30.5 27.041L24.5726 32.9683C24.0722 33.4687 23.261 33.4687 22.7606 32.9683C22.2603 32.468 22.2603 31.6567 22.7606 31.1564L29.594 24.323C30.0943 23.8227 30.9056 23.8227 31.4059 24.323L38.2393 31.1564C38.7396 31.6567 38.7396 32.468 38.2393 32.9683Z" fill="white"/>
+</svg><span style="display:none;">Go To Top</span>
+</a>
+  </div>
+  <div class="footer_content_container">
+    <div class="footer_content footer_content1 test2">
+    {% if section.settings.logo == "img" %}
+      <a href="/">
+        <img class="footer_logo test" src="{{section.settings.logo-img | image_url }}" width="auto" height="auto" loading="lazy" fetchpriority="low" alt="{{ shop.name }}"> 
+      </a>
+    {% endif %}
+    {% if section.settings.logo == "svg" %}
+      <a href="/">
+      <img  class="footer_logo test2" src="{{section.settings.logo-svg}}" width="auto" height="auto" loading="lazy" fetchpriority="low" alt="{{ shop.name }}">
+      </a>
+    {% endif %}
+  </div>
+  <div class="footer_content footer_content4 mobile_only">
+      <span class="footer_heading"> {{ section.settings.heading2 }} </span>
+        {% form 'customer', class: 'newsletter-form' %}
+      <div class="new_letter_input_container">
+        
+        
+      
+              <input type="hidden" name="contact[tags]" value="newsletter">
+             
+               <label for="NewsletterForm--{{ section.id }}" style="display:none;">Label</label>
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class=""
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="Newsletter-error--{{ section.id }}"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="Newsletter-success--{{ section.id }}"
+                    {% endif %}
+                    placeholder="Enter Your Email"                  
+                  required>
+                
+                  <button type="submit" class="" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                  Subscribe
+                  </button>
+               
+               
+            
+        
+<!--         <input type="" name="" placeholder="Enter your Email"> -->
+<!--         <button>Subscribe</button> -->
+        
+        
+      </div>
+      
+      
+              {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
+                {%- endif -%}
+             
+              {%- if form.posted_successfully? -%}
+                <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
+              {%- endif -%}
+      
+      {% endform %}
+      <div class="footer_icons_container">
+          {% if section.settings.instagram != blank %}
+        <a href=" {{ section.settings.instagram }} "  aria-label="Follow Sakoon Nutrition On Instagram">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 9.47918C11.0555 9.47918 9.47917 11.0555 9.47917 13C9.47917 14.9445 11.0555 16.5208 13 16.5208C14.9445 16.5208 16.5208 14.9445 16.5208 13C16.5208 11.0555 14.9445 9.47918 13 9.47918Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33367 3.33827C11.0691 2.92077 14.9309 2.92077 18.6664 3.33827C20.723 3.56812 22.3818 5.18855 22.6231 7.25235C23.0698 11.0711 23.0698 14.9289 22.6231 18.7477C22.3818 20.8115 20.723 22.4319 18.6664 22.6617C14.9309 23.0792 11.0691 23.0792 7.33367 22.6617C5.27707 22.4319 3.61828 20.8115 3.37689 18.7477C2.93026 14.9289 2.93026 11.0711 3.37689 7.25235C3.61828 5.18855 5.27707 3.56812 7.33367 3.33827ZM18.4167 6.50001C17.8184 6.50001 17.3333 6.98503 17.3333 7.58334C17.3333 8.18165 17.8184 8.66668 18.4167 8.66668C19.015 8.66668 19.5 8.18165 19.5 7.58334C19.5 6.98503 19.015 6.50001 18.4167 6.50001ZM7.85417 13C7.85417 10.158 10.158 7.85418 13 7.85418C15.842 7.85418 18.1458 10.158 18.1458 13C18.1458 15.842 15.842 18.1458 13 18.1458C10.158 18.1458 7.85417 15.842 7.85417 13Z"/>
+      </svg>
+        </a>
+         {% endif %}
+          {% if section.settings.facebook != blank %}
+        <a href="{{ section.settings.facebook }}"  aria-label="Follow Sakoon Nutrition On facebook">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.4315 19.7084H12.0982V12.3659H15.4018L15.7648 8.71752H12.0982V6.87502C12.0982 6.63191 12.1947 6.39875 12.3667 6.22684C12.5386 6.05493 12.7717 5.95835 13.0148 5.95835H15.7648V2.29169H13.0148C11.7993 2.29169 10.6335 2.77457 9.77393 3.63411C8.91439 4.49366 8.4315 5.65944 8.4315 6.87502V8.71752H6.59817L6.23517 12.3659H8.4315V19.7084Z"/>
+      </svg>
+        </a>
+        {% endif %}
+          {% if section.settings.youtube != blank %}
+        <a href=" {{ section.settings.youtube }} " aria-label="Follow Sakoon Nutrition On Youtube">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57129 5.2981C11.1849 5.01538 14.8151 5.01538 18.4288 5.2981L20.8562 5.48801C22.2083 5.59379 23.3144 6.60713 23.5379 7.9448C24.0971 11.2918 24.0971 14.7083 23.5379 18.0553C23.3144 19.3929 22.2083 20.4063 20.8562 20.5121L18.4288 20.702C14.8151 20.9847 11.1849 20.9847 7.57129 20.702L5.14386 20.5121C3.79178 20.4063 2.68568 19.3929 2.46217 18.0553C1.90295 14.7083 1.90295 11.2918 2.46217 7.9448C2.68568 6.60713 3.79178 5.59379 5.14386 5.48801L7.57129 5.2981ZM10.8333 15.676V10.324C10.8333 10.0714 11.1089 9.91539 11.3255 10.0454L15.7855 12.7213C15.9959 12.8476 15.9959 13.1525 15.7855 13.2787L11.3255 15.9547C11.1089 16.0847 10.8333 15.9286 10.8333 15.676Z"/>
+      </svg>
+        </a>
+        {% endif %}
+        {% if section.settings.twitter != blank %}
+        <a href=" {{ section.settings.twitter }} " aria-label="Follow Sakoon Nutrition On Twitter" >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.8097 6.22724C21.8677 6.14647 21.7821 6.04218 21.6894 6.07811C21.0307 6.33344 20.3422 6.50571 19.64 6.5906C20.4219 6.12348 21.0253 5.4124 21.3599 4.57053C21.3939 4.48477 21.3003 4.40819 21.2195 4.4528C20.4928 4.85414 19.709 5.14313 18.8949 5.30957C18.8608 5.31654 18.8257 5.30494 18.8018 5.27969C18.1908 4.63502 17.3865 4.20578 16.5098 4.05745C15.6146 3.90601 14.6945 4.05596 13.8938 4.48379C13.093 4.91162 12.4569 5.59313 12.0852 6.42144C11.7318 7.209 11.6365 8.08691 11.8108 8.93003C11.8243 8.99545 11.7731 9.05721 11.7064 9.05307C10.1224 8.95469 8.57466 8.53336 7.15865 7.81446C5.74624 7.09739 4.49551 6.09983 3.48264 4.8833C3.43769 4.82931 3.35249 4.83629 3.31973 4.89845C3.00457 5.49651 2.83955 6.16311 2.84 6.8406C2.83872 7.51498 3.00421 8.17922 3.32175 8.77416C3.63929 9.36911 4.09902 9.87631 4.66 10.2506C4.06507 10.2344 3.48175 10.0873 2.95125 9.82067C2.88288 9.78631 2.80087 9.83524 2.80443 9.91167C2.8458 10.8009 3.17225 11.6936 3.73731 12.3786C4.33863 13.1074 5.17325 13.6062 6.1 13.7906C5.74325 13.8992 5.37287 13.9564 5 13.9606C4.79706 13.9582 4.59451 13.9433 4.39353 13.9158C4.31901 13.9056 4.25817 13.9764 4.28425 14.0469C4.56067 14.7944 5.04899 15.4467 5.69107 15.9228C6.37752 16.4318 7.20557 16.7142 8.06 16.7306C6.6172 17.8659 4.83588 18.4855 3 18.4906C2.81135 18.4912 2.62279 18.4851 2.43468 18.4723C2.32867 18.4651 2.27992 18.6063 2.37129 18.6605C4.16006 19.7221 6.20459 20.2831 8.29 20.2806C9.82969 20.2966 11.3571 20.0056 12.7831 19.4247C14.2091 18.8437 15.505 17.9845 16.5952 16.8971C17.6854 15.8097 18.548 14.516 19.1326 13.0915C19.7171 11.667 20.012 10.1403 20 8.6006V8.12077C20 8.0892 20.0149 8.05951 20.0401 8.04048C20.7184 7.52834 21.3149 6.91691 21.8097 6.22724Z"/>
+        </svg>
+        </a>
+        {% endif %}
+
+<br>
+
+    </div>
+    </div>
+    {% for block in section.blocks %}
+    <div class="footer_content footer_content2">
+      <span class="footer_heading"> {{ block.settings.heading }} :</span>
+      {% for link in linklists[block.settings.menu].links %}
+        <a href=" {{ link.url }} "> {{ link.title }} </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="footer_content footer_content4 desktop_only">
+      <span class="footer_heading"> {{ section.settings.heading2 }} </span>
+        {% form 'customer', class: 'newsletter-form' %}
+      <div class="new_letter_input_container">
+        
+        
+      
+              <input type="hidden" name="contact[tags]" value="newsletter">
+             
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class=""
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="Newsletter-error--{{ section.id }}"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="Newsletter-success--{{ section.id }}"
+                    {% endif %}
+                    placeholder="Enter Your Email" aria-label="Enter Your Email"                   
+                  required>
+                
+                  <button type="submit" class="" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                  Subscribe
+                  </button>
+               
+               
+            
+        
+<!--         <input type="" name="" placeholder="Enter your Email"> -->
+<!--         <button>Subscribe</button> -->
+        
+        
+      </div>
+      
+      
+              {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
+                {%- endif -%}
+             
+              {%- if form.posted_successfully? -%}
+                <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
+              {%- endif -%}
+      
+      {% endform %}
+      <div class="footer_icons_container">
+          {% if section.settings.instagram != blank %}
+        <a href=" {{ section.settings.instagram }} " aria-label="Follow Sakoon Nutrition On Instagram">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 9.47918C11.0555 9.47918 9.47917 11.0555 9.47917 13C9.47917 14.9445 11.0555 16.5208 13 16.5208C14.9445 16.5208 16.5208 14.9445 16.5208 13C16.5208 11.0555 14.9445 9.47918 13 9.47918Z"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33367 3.33827C11.0691 2.92077 14.9309 2.92077 18.6664 3.33827C20.723 3.56812 22.3818 5.18855 22.6231 7.25235C23.0698 11.0711 23.0698 14.9289 22.6231 18.7477C22.3818 20.8115 20.723 22.4319 18.6664 22.6617C14.9309 23.0792 11.0691 23.0792 7.33367 22.6617C5.27707 22.4319 3.61828 20.8115 3.37689 18.7477C2.93026 14.9289 2.93026 11.0711 3.37689 7.25235C3.61828 5.18855 5.27707 3.56812 7.33367 3.33827ZM18.4167 6.50001C17.8184 6.50001 17.3333 6.98503 17.3333 7.58334C17.3333 8.18165 17.8184 8.66668 18.4167 8.66668C19.015 8.66668 19.5 8.18165 19.5 7.58334C19.5 6.98503 19.015 6.50001 18.4167 6.50001ZM7.85417 13C7.85417 10.158 10.158 7.85418 13 7.85418C15.842 7.85418 18.1458 10.158 18.1458 13C18.1458 15.842 15.842 18.1458 13 18.1458C10.158 18.1458 7.85417 15.842 7.85417 13Z"/>
+      </svg>
+        </a>
+         {% endif %}
+          {% if section.settings.facebook != blank %}
+        <a href="{{ section.settings.facebook }}" aria-label="Follow Sakoon Nutrition On Facebook">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.4315 19.7084H12.0982V12.3659H15.4018L15.7648 8.71752H12.0982V6.87502C12.0982 6.63191 12.1947 6.39875 12.3667 6.22684C12.5386 6.05493 12.7717 5.95835 13.0148 5.95835H15.7648V2.29169H13.0148C11.7993 2.29169 10.6335 2.77457 9.77393 3.63411C8.91439 4.49366 8.4315 5.65944 8.4315 6.87502V8.71752H6.59817L6.23517 12.3659H8.4315V19.7084Z"/>
+      </svg>
+        </a>
+        {% endif %}
+          {% if section.settings.youtube != blank %}
+        <a href=" {{ section.settings.youtube }} " aria-label="Follow Sakoon Nutrition On Youtube">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57129 5.2981C11.1849 5.01538 14.8151 5.01538 18.4288 5.2981L20.8562 5.48801C22.2083 5.59379 23.3144 6.60713 23.5379 7.9448C24.0971 11.2918 24.0971 14.7083 23.5379 18.0553C23.3144 19.3929 22.2083 20.4063 20.8562 20.5121L18.4288 20.702C14.8151 20.9847 11.1849 20.9847 7.57129 20.702L5.14386 20.5121C3.79178 20.4063 2.68568 19.3929 2.46217 18.0553C1.90295 14.7083 1.90295 11.2918 2.46217 7.9448C2.68568 6.60713 3.79178 5.59379 5.14386 5.48801L7.57129 5.2981ZM10.8333 15.676V10.324C10.8333 10.0714 11.1089 9.91539 11.3255 10.0454L15.7855 12.7213C15.9959 12.8476 15.9959 13.1525 15.7855 13.2787L11.3255 15.9547C11.1089 16.0847 10.8333 15.9286 10.8333 15.676Z"/>
+      </svg>
+        </a>
+        {% endif %}
+        {% if section.settings.twitter != blank %}
+        <a href=" {{ section.settings.twitter }} " aria-label="Follow Sakoon Nutrition On Twitter">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.8097 6.22724C21.8677 6.14647 21.7821 6.04218 21.6894 6.07811C21.0307 6.33344 20.3422 6.50571 19.64 6.5906C20.4219 6.12348 21.0253 5.4124 21.3599 4.57053C21.3939 4.48477 21.3003 4.40819 21.2195 4.4528C20.4928 4.85414 19.709 5.14313 18.8949 5.30957C18.8608 5.31654 18.8257 5.30494 18.8018 5.27969C18.1908 4.63502 17.3865 4.20578 16.5098 4.05745C15.6146 3.90601 14.6945 4.05596 13.8938 4.48379C13.093 4.91162 12.4569 5.59313 12.0852 6.42144C11.7318 7.209 11.6365 8.08691 11.8108 8.93003C11.8243 8.99545 11.7731 9.05721 11.7064 9.05307C10.1224 8.95469 8.57466 8.53336 7.15865 7.81446C5.74624 7.09739 4.49551 6.09983 3.48264 4.8833C3.43769 4.82931 3.35249 4.83629 3.31973 4.89845C3.00457 5.49651 2.83955 6.16311 2.84 6.8406C2.83872 7.51498 3.00421 8.17922 3.32175 8.77416C3.63929 9.36911 4.09902 9.87631 4.66 10.2506C4.06507 10.2344 3.48175 10.0873 2.95125 9.82067C2.88288 9.78631 2.80087 9.83524 2.80443 9.91167C2.8458 10.8009 3.17225 11.6936 3.73731 12.3786C4.33863 13.1074 5.17325 13.6062 6.1 13.7906C5.74325 13.8992 5.37287 13.9564 5 13.9606C4.79706 13.9582 4.59451 13.9433 4.39353 13.9158C4.31901 13.9056 4.25817 13.9764 4.28425 14.0469C4.56067 14.7944 5.04899 15.4467 5.69107 15.9228C6.37752 16.4318 7.20557 16.7142 8.06 16.7306C6.6172 17.8659 4.83588 18.4855 3 18.4906C2.81135 18.4912 2.62279 18.4851 2.43468 18.4723C2.32867 18.4651 2.27992 18.6063 2.37129 18.6605C4.16006 19.7221 6.20459 20.2831 8.29 20.2806C9.82969 20.2966 11.3571 20.0056 12.7831 19.4247C14.2091 18.8437 15.505 17.9845 16.5952 16.8971C17.6854 15.8097 18.548 14.516 19.1326 13.0915C19.7171 11.667 20.012 10.1403 20 8.6006V8.12077C20 8.0892 20.0149 8.05951 20.0401 8.04048C20.7184 7.52834 21.3149 6.91691 21.8097 6.22724Z"/>
+        </svg>
+        </a>
+        {% endif %}
+
+<br>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="copyright_footer">
+  
+  <div class="copyright_footer_txt">
+    {{ section.settings.copyright }}
+  </div>
+  <div class="copyright_footer_links">
+    {% for link in linklists[section.settings.policy].links %}
+    <a href=" {{ link.url }}"> {{ link.title }} </a>
+    {% endfor %}
+   
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+                 {
+                        "type": "select",
+                        "id": "logo",
+                        "label": "Logo Img Or Svg",
+                        "options": [
+                    {
+                        "value": "img",
+                        "label": "Img"
+                    },
+                    {
+                        "value": "svg",
+                        "label": "SVG"
+                    }
+                    
+                    ],
+                        "default": "svg"
+                    },
+                   {
+                         "type":"image_picker",
+                         "id":"logo-img",
+                         "label":"Select Logo"
+                    },
+                    {
+                         "type":"text",
+                         "id":"logo-svg",
+                         "label":"Svg Src"
+                    },
+                    {
+                        "type":"text",
+                        "id":"heading2",
+                        "label":"Newsletter Heading"
+                    },
+                    {
+                        "type":"header",
+                        "content":"Social Link's"
+                    },
+                    {
+                        "type":"url",
+                        "id":"instagram",
+                        "label":"Instagram Link"
+                    },
+                    {
+                        "type":"url",
+                        "id":"facebook",
+                        "label":"Facebook Link"
+                    },
+                    {
+                        "type":"url",
+                        "id":"youtube",
+                        "label":"Youtube Link"
+                    },
+                    {
+                        "type":"url",
+                        "id":"twitter",
+                        "label":"Twitter Link"
+                    },
+                    {
+                        "type":"link_list",
+                        "id":"policy",
+                        "label":"Policy Menu"
+                    },
+                    {
+                        "type":"text",
+                        "id":"copyright",
+                        "label":"Copyright Text"
+                    }
+                    
+                ],
+    "blocks":[
+      {
+        "type":"link",
+        "name":"Link List",
+        "settings":[
+          {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+          },
+          {  
+            "type":"link_list",
+            "id":"menu",
+            "label":"Select Menu"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+<style>
+  
+ input#NewsletterForm--custom-footer:focus {
+    padding: 8px 15px 8px 15px !important;
+}
+  
+</style>
