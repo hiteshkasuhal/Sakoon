@@ -1,0 +1,114 @@
+.sec-head h2.sec-title span {
+    color: #B39743;
+}
+span.infobadge.text-center {
+    background: linear-gradient(90deg, #E1D08A 0%, #CEB04E 23%, #805614 69%, #CEB04E 100%);
+    color: #000;
+}
+h4.review_title span, .tab_content_data.integration h2 span {
+    display: block;
+}
+h4.benifit_title span, .tab_content_data.integration h2 span {
+    color: #FFB800;
+}
+.product-subscription .ingredientsdesc p strong {
+    width: 100%;
+}
+section.product-info-sec {
+  background-image: url(https://cdn.shopify.com/s/files/1/0296/4848/6460/files/section2-BG.webp?v=1715101260);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+section.happy-customers-sec {
+  background-image: url(https://cdn.shopify.com/s/files/1/0296/4848/6460/files/customer-bg.webp?v=1715101050);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+section.customer_reviews_sec {
+  background-image: url(https://cdn.shopify.com/s/files/1/0296/4848/6460/files/video_bg.webp?v=1715101259);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.verblock img {
+    max-width: 16px;
+}
+ul.checklistblock li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.product_pakage_img_container img {
+    height: 65px;
+    object-fit: contain;
+}
+section.science-gummies-sec a.textbtn img {
+    filter: brightness(1) invert(1);
+}
+section.compare-sec h2.sec-title span {
+    display: block;
+}
+.product_pakage h5 {
+    white-space: nowrap;
+}
+.slick-vertical .slick-slide {
+    cursor: pointer;
+}
+span.prices_custom_for_hidden {
+    display: none;
+}
+.tabcontent {
+    overflow: hidden;
+}
+.imgbox img {
+    border: unset !important;
+}
+
+@media (min-width:1170px) {
+  section.product-info-sec .sec-description p {
+    max-width: calc(100% + 80px);
+    width: calc(100% + 80px);
+    margin-left: -40px;
+}
+  .gummiesimgblock {
+    padding-left: 80px;
+}
+}
+
+@media (min-width:768px) {
+  .mobile_only {
+    display:none !important;
+  }
+  .customervideo_slider .slick-track .reivewslide:only-child {
+    padding: 0;
+}
+}
+@media (max-width:768px) {
+  .desktop_only {
+    display:none !important;
+  }
+  .gummiesimgblock {
+    max-width: calc(100% + 30px);
+    width: calc(100% + 30px);
+    margin-left: -15px;
+}
+  .science-gummies-sec .sec-head h2.sec-title {
+    order: -1;
+}
+  section.science-gummies-sec span.headbadge {
+    width: 100%;
+    text-align: center;
+    max-width: calc(100% - 60px);
+}
+  .customer_reviews_sec .sec-head h2.sec-title img {
+    max-width: 130px;
+}
+  section.product-info-sec .checklistblock {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 16px;
+}
+}
