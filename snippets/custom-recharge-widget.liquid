@@ -1,0 +1,57 @@
+{% if product.selected_or_first_available_selling_plan_allocation %}
+  <div class="custom-recharge_wrapper"> 
+    <div class="crw--main active hide">
+      <div class="crw--left_wrap">
+        <div class="toggle-btn active">
+          <label for="cb-value" style="display:none;">Toggle Button</label>
+          <input type="checkbox" checked class="cb-value" id="cb-value">
+          <span class="round-btn"></span>
+        </div> 
+        <div class="crw--bot_wrap">
+          {% if settings.crw_image != blank %}
+            <img src="{{ settings.crw_image |img_url:'original' }}" class="crw--bot_img"alt="Bot Imager" width="auto" height="auto" fetchpriority="low" loading="lazy">
+          {% endif %}
+          <h2 class="crw-bot_title">{{ settings.crw_title }}</h2>
+        </div>
+      </div>
+      <div class="crw--right_wraper">
+        <div class="crw_save_price">
+          <span class="dy_price"></span>
+          {{ settings.crw_save_price }}
+        </div>
+        <span class="crw_save_text">{{ settings.crw_stext }}</span>
+          <label for="recharge_otpion" style="display:none;">Toggle Button</label>
+        <select class="recharge_option" id="recharge_otpion">
+          {% for group in product.selling_plan_groups %}
+            {% if group.app_id == '5836469' %}
+              {% assign revers_loop = group.selling_plans %}
+              {% for selling_plan in revers_loop %}
+                {% if selling_plan.name contains 'week' %}
+                  <option value="{{ selling_plan.id }}" {{ selling_plan.unit }}>{{ selling_plan.name }}</option>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="crw--footer">
+      {% for i in (1..4) %}
+        {% capture text %}text_{{ i }}{% endcapture %}
+        {% capture on_svg %}on_svg_{{ i }}{% endcapture %}
+        {% capture off_svg %}off_svg_{{ i }}{% endcapture %}
+        <div class="crw--text_wrap">
+          {% if settings[on_svg] != blank and settings[off_svg] != blank %}
+            <div class="crw--icon">
+              <div class="crw--icon_on">{{ settings[on_svg] }}</div>
+              <div class="crw--icon_off" style="display:none;">{{ settings[off_svg] }}</div>
+            </div>
+          {% endif %}
+          {% if settings[text] != blank %}
+            <div class="crw--label">{{ settings[text] }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

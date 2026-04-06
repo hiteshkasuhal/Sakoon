@@ -1,0 +1,110 @@
+{% assign api = shop.metafields.zipifyoneclickupsell | size %}{%- unless api == 0 -%}
+<script>((o,c,u)=>{o[c]=o[c]||{},o[u]=o[u]||{},o[c].OCU=o[c].OCU||{api:o[u]}})(window,'Zipify','OCUApi');</script>
+{%- if template.name == 'product' -%}
+<script>  
+  !function() {
+    const form = document.querySelector('form[action="/cart/add"]');
+    form?.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      Zipify.OCU.api.showUpsell({ form, customCallback: Zipify.OCU.api.callbackBeforeRedirect });
+    }, true);
+  }();
+  Zipify.OCU.api.customAddToCartButton = '.product-form__submit';
+  Zipify.OCU.api.customAddToCartEventHandler = (button) => {
+    if (Zipify.OCU.api.context.popupDispatcher.destination === 'checkout') return;
+    if (!button) return;
+    button.disabled = false;
+    button.click();
+  };
+  Zipify.OCU.api.getCustomAddToCartData = (e) => {
+    try {
+      const selector = 'form[action="/cart/add"]';
+      const form = document.querySelector(selector);
+      const data = Object.fromEntries(new FormData(form));
+      
+      return {
+        ...data,
+        quantity: data.quantity ?? 1
+      };
+    } catch (err) {
+      console.log(err.message);
+      return {};
+    }
+  };
+</script>
+{%- endif -%}
+<script>
+  Zipify.OCU.api._addProtection = () => {
+    try {
+      return new Promise((resolve) => {
+        if($('#hasSP').val() == "hasSP"){
+          if ($('#hasShipping').prop('checked')) {
+            var id=$('#shippingProduct').val();
+            $.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              data: {
+                quantity: 1,
+                id: id
+              },
+              dataType: 'json', 
+              success: function (data) {
+                Zipify.OCU.api.cart = [...OCUIncart.cart_items, data];
+                resolve()
+              } 
+            });
+          }else{
+            resolve();
+          }
+        }
+      })
+    } catch (err) {
+      return Promise.resolve();
+    }
+  };
+  Zipify.OCU.api.isWindowLocationForClickListener = true;
+  Zipify.OCU.api.excludeActionButton = '.recommendation-modal__button, .recommendation-modal__close-button';
+  Zipify.OCU.api.customCheckoutButton = '#CartDrawer-Checkout' ;
+  Zipify.OCU.api._callbackBeforeRedirect = false;
+  Zipify.OCU.api.callbackBeforeRedirect = (dispatcher, event, customCallback) => {
+    return new Promise(async (resolve) => {
+      if (Zipify.OCU.api._callbackBeforeRedirect) return
+      Zipify.OCU.api._callbackBeforeRedirect = true;
+      setTimeout(() => (Zipify.OCU.api._callbackBeforeRedirect = false), 100);
+        try {
+            if (dispatcher.destination === 'checkout') {
+              await Zipify.OCU.api._addProtection();
+              return resolve({});
+            }
+
+            const { response, type } = event.detail;
+            if (!(type === 'Upgrade' && response.accepted)) {
+              if (customCallback) {
+                window.OCUDisableEvents = true;
+                setTimeout(() => (window.OCUDisableEvents = false), 100);
+                dispatcher?.eventTarget?.click();
+                return;
+              } else return resolve({});
+            }
+
+            dispatcher._upsellAppInstance().hide();
+            setTimeout(() => Zipify.OCU.api.store.set('submitted', false));
+
+            const cartDrawer = document.querySelector('cart-drawer');
+
+            fetch('/?sections=cart-drawer').then(res => res.json()).then(res => {
+              cartDrawer.renderContents({sections: res});
+              cartDrawer.classList.remove('is-empty');
+              cartDrawer.open();
+              Zipify.OCU.api.renderOCUDiscounts();
+              if (dispatcher.event?.target) dispatcher.event.target.disabled = false;
+            });
+        
+        } catch (e) {
+            resolve({});
+        }
+    });
+};
+</script>
+{%- endunless -%}
